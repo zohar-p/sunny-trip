@@ -7,21 +7,21 @@ queries:
 3. from
 4. flight duration
 
-filters:
-weather temp range
+### filters:
+- weather temp range
 
-no currency convertion
-
-save to DB
+### functionality:
+- no currency convertion
+- save to DB
 
 ## Features
-1. weather condition
-travel tips
-live shows
-airline logo
-sort
-link for booking
-map
-login
-allow to not input flight duration and price
-currency convertion
+1. allow to not input flight duration and price
+2. weather condition
+3. sort
+4. airline logo
+5. currency convertion
+6. link for booking
+7. travel tips / live shows
+8. filter saved flights
+8. map
+9. login
