@@ -73,9 +73,10 @@
     <script id='flights-template' type='text/x-handlebars-template'>
         {{#each data}}
             <div class="flight">
-                    <div class="flight-city-name">{{cityName}}</div>
+                    <div class="flight-city-name">{{toCity}}</div>
                         <div class="flight-details">
-                        <div><b>Date:</b> {{date}}</div>
+                        <div><b>From:</b> {{fromDate}}</div>
+                        <div><b>To:</b> {{fromDate}}</div>
                         <div><b>Price:</b> €{{price}}</div>
                         <div><b>Flight duration:</b> {{flightDuration}} hours</div>
                     </div>

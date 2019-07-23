@@ -1,6 +1,9 @@
 class Renderer {
 
     renderSearchResults(data) {
+        data.forEach(data=>data.condition = data.temp[0].condition.text);
+        data.forEach(data=> data.temp = data.temp[0].avgTemp);
+        data.forEach(data=>data.conditionPic = data.temp[0].condition.icon);
         const source = $('#flights-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template({ data });
@@ -70,17 +73,17 @@ render.renderNoResults()
 // render.renderSearchResults(a)
 
 // // check saved
-let b = [{
-    id: 37465,
-    fromCity: "Haifa",
-    fromDate: "10/11/2019",
-    toDate: "20/11/2019",
-    price: 3000,
-    duration: 5.5,
-    fromTemp: 25,
-    toTemp: 30,
+// let b = [{
+//     id: 37465,
+//     fromCity: "Haifa",
+//     fromDate: "10/11/2019",
+//     toDate: "20/11/2019",
+//     price: 3000,
+//     duration: 5.5,
+//     fromTemp: 25,
+//     toTemp: 30,
 
 
-}]
+// }]
 
-    render.renderSavedSearches(b)
+//     render.renderSavedSearches(b)
