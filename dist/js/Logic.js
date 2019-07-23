@@ -3,8 +3,8 @@ class Logic {
         this.flights = []
     }
 
-    async getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration){
-        const flightsResponse = await apiManager.getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration)
+    async getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration){
+        const flightsResponse = await apiManager.getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration)
         console.log(flightsResponse)
         this.flights = flightsResponse
     }

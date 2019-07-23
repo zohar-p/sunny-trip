@@ -1,8 +1,8 @@
 class APIManager {
 
-    getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration){
+    getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration){
         console.log(fromCity)
-        return this.useAjax('get', `/flights/${fromCity}/${fromDate}/${toDate}/${fromTemp}/${toTemp}/${price}/${flightDuration}`)
+        return this.useAjax('get', `/flights/${fromCity}/${fromDate}/${toDate}/${fromTemp}/${toTemp}?maxPrice=${maxPrice}&flightDuration=${flightDuration}`)
     }
 
     saveSearch(inputValues){
@@ -25,9 +25,9 @@ class APIManager {
             success,
             error: (xhr, text, err) => console.log(`
             ERROR on $.ajax call:
-            XHR: xhr
-            Text: text
-            Error: err`)
+            XHR: ${xhr}
+            Text: ${text}
+            Error: ${err}`)
         })
     }
     
