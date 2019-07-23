@@ -15,7 +15,7 @@ $('#search').on('click', async function () {
     const emptyInputs = inputs.filter(i => i.val() == '')
 
     if(emptyInputs.length ){
-        const matchingFlights = await logic.getSearchResults()
+        const matchingFlights = await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(matchingFlights)
     } else {
         emptyINputs.forEach(i => renderer.renderEmptyInput(i))
