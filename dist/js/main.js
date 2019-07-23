@@ -33,7 +33,6 @@ $('#search-btn').on('click', async function () {
 });
 
 $('#save-search-btn').on('click', function () {
-
     const emptyInputs = inputs.filter(i => i.val() == '')
 
     if(emptyInputs.length){
