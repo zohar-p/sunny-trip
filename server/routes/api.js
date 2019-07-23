@@ -17,7 +17,7 @@ router.get(
         let weatherResults = [];
 
         const reqParams = {
-            fromCity: req.params.fromCity.replace("-", " "),
+            fromCity: req.params.fromCity.replace("-", " ").toLowerCase(),
             fromDate: req.params.fromDate,
             toDate: req.params.toDate,
             fromTemp: req.params.fromTemp,
@@ -26,15 +26,9 @@ router.get(
             dur: req.query.flightDuration
         };
 
-        console.log(reqParams);
-
         //Format the dates:
-        reqParams.fromDate = moment(reqParams.fromDate, "YYYY-MM-DD").format(
-            "DD/MM/YYYY"
-        );
-        reqParams.toDate = moment(reqParams.toDate, "YYYY-MM-DD").format(
-            "DD/MM/YYYY"
-        );
+        reqParams.fromDate = moment(reqParams.fromDate, "YYYY-MM-DD").format("DD/MM/YYYY");
+        reqParams.toDate = moment(reqParams.toDate, "YYYY-MM-DD").format("DD/MM/YYYY");
 
         try {
             const cityCodes = await CityCode.find(
@@ -57,10 +51,16 @@ router.get(
                 )
             );
 
-            const cityCodesRes = await Promise.all(cityCodesReq);
+            //Error handle for promise all
+            const cityCodesRes = await Promise.all(
+                cityCodesReq.map(p => p.catch(e => e))
+            );
+            const cityValidCodesRes = cityCodesRes.filter(
+                result => !(result instanceof Error)
+            );
 
             //Set all the results to airportsResults
-            cityCodesRes.forEach(r => {
+            cityValidCodesRes.forEach(r => {
                 airportsResults.push(JSON.parse(r).data);
             });
 
@@ -80,7 +80,6 @@ router.get(
                 });
             });
 
-            console.log("IM HERE");
             //For each city, push Weather request to array
             for (cityKey in airportsCities) {
                 weatherReq.push(
@@ -112,10 +111,6 @@ router.get(
 
                 if (isTempValid) return cityWeat;
             });
-
-            //console.log(validWeather)
-
-            //console.log(airportsCities)
 
             if (validWeather.length === 0) return res.send("No results found");
 
