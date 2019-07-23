@@ -2,13 +2,13 @@ const logic = new Logic
 const renderer = new Renderer
 const apiManager = new APIManager
 
-const fromCity = $('#from-city')
-const fromDate = $('#from-date')
-const toDate = $('#to-date')
-const maxPrice = $('#max-price')
-const flightDuration = $('#flight-duration')
-const fromTemp = $('#from-temp')
-const toTemp = $('#to-temp')
+const fromCity = $('#from-city-input')
+const fromDate = $('#from-date-input')
+const toDate = $('#to-date-input')
+const maxPrice = $('#max-price-input')
+const flightDuration = $('#flight-duration-input')
+const fromTemp = $('#from-temp-input')
+const toTemp = $('#to-temp-input')
 const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
 
 const checkEmptyInputs = (empty, notEmpty) => {
@@ -21,12 +21,25 @@ const checkEmptyInputs = (empty, notEmpty) => {
     }
 }
 
+const validateInputs = () => {
+    maxPrice < 1 ? renderer.renderEmptyInput(maxPrice, 'Max price must be at least 1') : null
+    flightDuration < 1 ? renderer.renderEmptyInput(flightDuration, 'Max flight duration must be at least 1') : null
+    if(toDate <= fromDate) {
+        renderer.renderEmptyInput(fromDate)
+        renderer.renderEmptyInput(toDate, 'Return date must be later than departure date')
+    }
+    if(toTemp <= fromTemp) {
+        renderer.renderEmptyInput(fromTemp)
+        renderer.renderEmptyInput(toTemp, 'Max temperature must be higher than min temperature')
+    }
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
     const emptyInputs = inputs.filter(i => i.val() == '')
     const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
     const preformSearch = async () => {
-        const matchingFlights = await logic.getSearchResults(...inputs)
-        renderer.renderSearchResults(matchingFlights)
+        await logic.getSearchResults(...inputs)
+        renderer.renderSearchResults(logic.flights)
     }
     
     checkEmptyInputs(renderEmptyInput, preformSearch)
