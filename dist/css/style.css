@@ -8,6 +8,7 @@
 body {
   font-family: 'Source Code Pro', monospace;
   width: 100%;
+  color: #2d3436;
 }
 
 .btn {
@@ -15,6 +16,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   outline: none;
+  border: none;
 }
 
 .hr {
@@ -26,14 +28,17 @@ body {
 }
 
 body {
-  background-color: #f4f4fc;
+  background-color: #ecf0f1;
 }
 
 .app-name {
-  font-family: 'Bungee Outline', cursive;
-  font-size: 7vw;
-  font-weight: bold;
+  background-image: url("../assets/road2.jpg");
+  background-size: cover;
+  font-family: 'Nunito', sans-serif;
+  font-size: 9vw;
   text-align: center;
+  padding-top: 11vh;
+  padding-bottom: 11vh;
 }
 
 #container-search {
@@ -74,6 +79,7 @@ body {
 }
 
 .search-input {
+  border: none;
   height: 5vh;
   margin: 0.5vh 0;
   font-family: 'Source Code Pro', monospace;
@@ -81,7 +87,7 @@ body {
 }
 
 .btn {
-  background-color: #0b0138;
+  background-color: #0f092b;
   color: white;
   text-align: center;
   margin: 0 0.5vw;
@@ -92,7 +98,7 @@ body {
 
 .btn:hover {
   background-color: white;
-  color: #0b0138;
+  color: #0f092b;
 }
 
 #container-results {
@@ -185,18 +191,19 @@ body {
   padding: 1vw;
   height: auto;
   width: 30vw;
+  border-radius: 1vw;
 }
 
 .search .delete-saved-search-btn {
   font-size: 0.8vw;
   width: 5vw;
-  background-color: #770404;
+  background-color: #440f0f;
   float: right;
 }
 
 .search .delete-saved-search-btn:hover {
   background-color: #f4f4fc;
-  color: #770404;
+  color: #440f0f;
 }
 
 .search .search-para {
