@@ -12,6 +12,10 @@ class APIManager {
         this.useAjax('get', '/search')
     }
 
+    deleteSavedSearch(DBID){
+        this.useAjax('delete/:' + DBID, '/search')
+    }
+
     useAjax(method, url, success = response=>response, data){
         return $.ajax({
             method,
