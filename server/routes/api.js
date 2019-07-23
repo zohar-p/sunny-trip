@@ -48,6 +48,11 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
     }
 })
 
+router.get('/search', async (req, res) => {
+    const allSavedSearches = Search.find({})
+    res.send(allSavedSearches)
+})
+
 router.post('/search', (req, res) => {
     const inputValues = req.body
     const newSearch = new Search(inputValues)
