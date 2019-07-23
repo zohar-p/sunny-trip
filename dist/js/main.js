@@ -25,6 +25,7 @@ const validateInputs = () => {
     maxPrice < 1 ? renderer.renderInputError(maxPrice, 'Max price must be at least 1') : null
     flightDuration < 1 ? renderer.renderInputError(flightDuration, 'Max flight duration must be at least 1') : null
     if(toDate <= fromDate) {
+        console.log('error')
         renderer.renderInputError(fromDate)
         renderer.renderInputError(toDate, 'Return date must be later than departure date')
     }
