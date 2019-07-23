@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>Sunny Trip</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="">
 </head>
-<body>
-<header></header>
-<main></main>
-<footer></footer>
 
-<script src="js/APIManager.js"></script>
-<script src="js/Renderer.js"></script>
-<script src="js/Logic.js"></script>
-<script src="js/main.js"></script>
+<body>
+    <header>SUNNY TRIP</header>
+    <main>
+        <div class="container-search">
+            <input id="fromCity" type="text">
+            <input id="fromDate" type="date">
+            <input id="toDate" type="date">
+            <input id="maxPrice" type="number">
+            <input id="dur" type="number">
+            <input id="fromTemp" type="number">
+            <input id="toTemp" type="text">
+        </div>
+
+        <div id="search-btn">SEARCH</div>
+
+
+
+        <div id="container-results"></div>
+
+
+    </main>
+    <footer></footer>
+
+    <script id='flights-template' type='text/x-handlebars-template'>
+        {{#each }}
+            <div class="flight">
+                    <div>{{cityName}}</div>
+                    <div>{{fromDate}}</div>
+                    <div>{{toDate}}</div>
+                    <div>{{maxPrice}}</div>
+                    <div>{{dur}}</div>
+                    <div>{{condition}}</div>
+                    <div>{{conditionPic}}</div>
+            </div>
+        {{/each}}
+    </script>
+
+    <script id='savedSearch-template' type='text/x-handlebars-template'>
+        {{#each }}
+            <div class="flight" data-id={{id}}>
+                    <div>{{fromCity}}</div>
+                    <div>{{date}}</div>
+                    <div>{{price}}</div>
+                    <div>{{dur}}</div>
+                    <div>{{temp}}</div>
+                    <div>{{fromTemp}}</div>
+                    <div>{{toTemp}}</div>
+            </div>
+        {{/each}}
+    </script>
+
+
+
+
+
+    <script src="js/APIManager.js"></script>
+    <script src="js/Renderer.js"></script>
+    <script src="js/Logic.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
