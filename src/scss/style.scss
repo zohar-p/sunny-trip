@@ -1,9 +1,155 @@
 @import "_global";
 
-#search-btn{
-    background-color: rgba(16, 0, 88, 0.514);
+body{
+background-color: rgb(244, 244, 252);
+}
+
+.app-name{
+    font-family: 'Bungee Outline', cursive;
+    font-size: 7vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+#container-search{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 7vh 12vw;
+    
+}
+#container-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 2vw;
+}
+
+
+
+.search-input{
+    height: 5vh;
+    margin: 0.5vh 0;
+    font-family: 'Source Code Pro', monospace;
+    padding-left: 0.3vw;
+}
+
+
+
+.btn{
+    background-color: rgb(11, 1, 56);
     color: white;
+    text-align: center;
+    margin: 0 0.5vw;
+    transition: 0.3s;
+    font-family: 'Source Code Pro', monospace;
+
+    &:hover{
+        background-color: white;
+        color: rgb(11, 1, 56);
+    }
 
 
+    
+}
+
+#container-results{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1vh 0vw;
+    justify-content: flex-start;
+}
+
+.flight{
+    display: grid;
+    grid-template-areas: 
+    "n n"
+    "d w";
+    border: 0.5vw solid rgb(36, 2, 2);
+    margin: 2vw 3vh;
+    border-radius: 1vw;
+    background-color: aliceblue;
+    width: 30vw;
+    
+    .flight-city-name{
+        grid-area: n;
+        // padding: 1vw;
+        font-family: 'Londrina Shadow', cursive;
+        font-size: 4vw;
+        font-weight: bold;
+        text-align: center;
+    }
+    .flight-details{
+        grid-area: d;
+        padding: 1vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .city-weather{
+        grid-area: w;
+        padding: 1vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .conditionPic{
+        height: 7vh;
+        width: 3vw;
+    }
+    
+}
+
+
+
+
+.no-result{
+    border: 0.5vw solid rgb(36, 2, 2);
+    height: auto;
+    font-size: 5vw;
+    margin: 5vh auto;
+    padding: 5vw;
 
 }
+
+.search{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-end;
+    border: 0.5vw solid rgb(36, 2, 2);
+    font-size: 1vw;
+    margin: 1vh 1vw;
+    padding: 1vw;
+    height: auto;
+    width: 30vw;
+
+
+    .delete-saved-search-btn{
+        font-size: 0.8vw;
+        width: 5vw;
+        background-color: rgb(119, 4, 4);
+   `    float: right;        
+
+        &:hover{
+            background-color: rgb(244, 244, 252);
+            color: rgb(119, 4, 4);
+        }
+    }
+
+    .search-para{
+        padding: 0.3vh 0.5vw;
+    }
+}
+
+
+
+
+
+
+
+

@@ -2,23 +2,67 @@ const logic = new Logic
 const renderer = new Renderer
 const apiManager = new APIManager
 
-$('#search-btn').on('click', async function () {
-    const fromCity = $('#from-city')
-    const fromDate = $('#from-date')
-    const toDate = $('#to-date')
-    const fromTemp = $('#from-temp')
-    const toTemp = $('#to-temp')
-    const price = $('#price')
-    const flightDuration = $('#flight-duration')
-    const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration]
+const fromCity = $('#from-city-input')
+const fromDate = $('#from-date-input')
+const toDate = $('#to-date-input')
+const maxPrice = $('#max-price-input')
+const flightDuration = $('#flight-duration-input')
+const fromTemp = $('#from-temp-input')
+const toTemp = $('#to-temp-input')
+const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
 
-    const emptyInputs = inputs.filter(i => i.val() == '')
+const checkEmptyInputs = (empty, notEmpty) => {
+    const emptyInputs = inputs.filter(i => i.val() == false)
 
     if(emptyInputs.length){
-        emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+        empty()
     } else {
-        const matchingFlights = await logic.getSearchResults(...inputs)
-        renderer.renderSearchResults(matchingFlights)
+        notEmpty()
     }
+}
+
+const validateInputs = () => {
+    maxPrice < 1 ? renderer.renderEmptyInput(maxPrice, 'Max price must be at least 1') : null
+    flightDuration < 1 ? renderer.renderEmptyInput(flightDuration, 'Max flight duration must be at least 1') : null
+    if(toDate <= fromDate) {
+        renderer.renderEmptyInput(fromDate)
+        renderer.renderEmptyInput(toDate, 'Return date must be later than departure date')
+    }
+    if(toTemp <= fromTemp) {
+        renderer.renderEmptyInput(fromTemp)
+        renderer.renderEmptyInput(toTemp, 'Max temperature must be higher than min temperature')
+    }
+}
+
+$('#search-btn').on('click', async function () { // does this have to be async?
+    const emptyInputs = inputs.filter(i => i.val() == '')
+    const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+    const preformSearch = async () => {
+        await logic.getSearchResults(...inputs)
+        renderer.renderSearchResults(logic.flights)
+    }
+    
+    checkEmptyInputs(renderEmptyInput, preformSearch)
 });
+
+$('#save-search-btn').on('click', function () {
+    const saveSearch = () => {
+        let inputsValues = {}
+        inputs.forEach(i => {
+            inputsValues[i] = i.val()
+        })
+        logic.saveSearch(inputsValues)
+    }
+
+    checkEmptyInputs(renderEmptyInput, saveSearch)
+});
+
+$('#container-results').on('click', '.delete-saved-search-btn', function () {
+    const relDBID = $(this).closest('.search').data('id')
+    logic.deleteSavedSearch(relDBID)
+});
+
+$('#show-saved-searches-btn').on('click', function () {
+    logic.getSavedSearches()
+})
 

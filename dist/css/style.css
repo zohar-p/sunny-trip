@@ -4,4 +4,202 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+body {
+  font-family: 'Source Code Pro', monospace;
+  width: 100%;
+}
+
+.btn {
+  padding: .5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.hr {
+  width: 90%;
+  height: 1px;
+  background: #ecf0f1;
+  background: -webkit-gradient(linear, left top, right top, from(#ecf0f1), color-stop(15%, #b2bec3), color-stop(85%, #b2bec3), to(#ecf0f1));
+  background: linear-gradient(90deg, #ecf0f1 0%, #b2bec3 15%, #b2bec3 85%, #ecf0f1 100%);
+}
+
+body {
+  background-color: #f4f4fc;
+}
+
+.app-name {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 7vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+#container-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 7vh 12vw;
+}
+
+#container-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.input-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1vh 2vw;
+}
+
+.search-input {
+  height: 5vh;
+  margin: 0.5vh 0;
+  font-family: 'Source Code Pro', monospace;
+  padding-left: 0.3vw;
+}
+
+.btn {
+  background-color: #0b0138;
+  color: white;
+  text-align: center;
+  margin: 0 0.5vw;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #0b0138;
+}
+
+#container-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 1vh 0vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.flight {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "n n" "d w";
+  border: 0.5vw solid #240202;
+  margin: 2vw 3vh;
+  border-radius: 1vw;
+  background-color: aliceblue;
+  width: 30vw;
+}
+
+.flight .flight-city-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: n;
+  font-family: 'Londrina Shadow', cursive;
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flight .flight-details {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: d;
+  padding: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.flight .city-weather {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: w;
+  padding: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.flight .conditionPic {
+  height: 7vh;
+  width: 3vw;
+}
+
+.no-result {
+  border: 0.5vw solid #240202;
+  height: auto;
+  font-size: 5vw;
+  margin: 5vh auto;
+  padding: 5vw;
+}
+
+.search {
+  border: 0.5vw solid #240202;
+  font-size: 1vw;
+  margin: 1vh 1vw;
+  padding: 1vw;
+  height: auto;
+  width: 30vw;
+}
+
+.search .delete-saved-search-btn {
+  font-size: 0.8vw;
+  width: 5vw;
+  background-color: #770404;
+  float: right;
+}
+
+.search .delete-saved-search-btn:hover {
+  background-color: #f4f4fc;
+  color: #770404;
+}
+
+.search .search-para {
+  padding: 0.3vh 0.5vw;
+}
 /*# sourceMappingURL=style.css.map */

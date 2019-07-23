@@ -7,64 +7,111 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sunny Trip</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Outline|Londrina+Shadow|Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="icon"
+        href="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png">
 </head>
 
 <body>
-    <header>SUNNY TRIP</header>
-    <main>
-        <div class="container-search">
-            <input id="fromCity" type="text">
-            <input id="fromDate" type="date">
-            <input id="toDate" type="date">
-            <input id="maxPrice" type="number">
-            <input id="dur" type="number">
-            <input id="fromTemp" type="number">
-            <input id="toTemp" type="text">
-        </div>
 
-        <div id="search-btn">SEARCH</div>
+    <header id="header">
+        <div class="app-name">SUNNY TRIP</div>
+    </header>
+
+    <main id="main">
+        <div id="container-search">
+            <div id="from-city-box" class="input-box">
+                <label for="from-city-input">From</label>
+                <input id="from-city-input" class="search-input" type="text" placeholder="Tel Aviv (Any)">
+            </div>
+
+            <div id="from-date-box" class="input-box">
+                <label for="from-date-input">Depart</label>
+                <input id="from-date-input" class="search-input" type="date" >
+            </div>
+
+            <div id="to-date-box" class="input-box">
+                <label for="to-date-input">Return</label>
+                <input id="to-date-input" class="search-input" type="date">
+            </div>
+
+            <div id="max-price-box" class="input-box">
+                <label for="max-price-input">Max Price</label>
+                <input id="max-price-input" class="search-input" type="number">
+            </div>
+
+            <div id="flight-duration-box" class="input-box">
+                <label for="flight-duration-input">Flight Duration</label>
+                <input id="flight-duration-input" class="search-input" type="number">
+            </div>
+
+            <div id="from-temp-box" class="input-box">
+                <label for="from-temp-input">Min Temp.</label>
+                <input id="from-temp-input" class="search-input" type="number">
+            </div>
+
+            <div id="to-temp-box" class="input-box">
+                <label for="to-temp-input">Max Temp.</label>
+                <input id="to-temp-input" class="search-input" type="number">
+            </div>
+
+        </div>
+        <div id="container-buttons">
+            <button id="search-btn" class="btn">SEARCH</button>
+            <button id="save-search-btn" class="btn">SAVE SEARCH</button>
+            <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
+        </div>
 
 
 
         <div id="container-results"></div>
 
 
+
+
+
+
+
+
     </main>
     <footer></footer>
 
     <script id='flights-template' type='text/x-handlebars-template'>
-        {{#each }}
+        {{#each data}}
             <div class="flight">
-                    <div>{{cityName}}</div>
-                    <div>{{fromDate}}</div>
-                    <div>{{toDate}}</div>
-                    <div>{{maxPrice}}</div>
-                    <div>{{dur}}</div>
-                    <div>{{condition}}</div>
-                    <div>{{conditionPic}}</div>
+                    <div class="flight-city-name">{{cityName}}</div>
+                        <div class="flight-details">
+                        <div><b>Date:</b> {{date}}</div>
+                        <div><b>Price:</b> €{{price}}</div>
+                        <div><b>Flight duration:</b> {{flightDuration}} hours</div>
+                    </div>
+                    <div class="city-weather">
+                        <div><b>Temperature:</b> {{temp}}°c</div>
+                        <div>{{condition}}</div>
+                        <img class="conditionPic" src='{{conditionPic}}' alt="Weather Icon">
+                    </div>
             </div>
         {{/each}}
     </script>
 
+    
     <script id='savedSearch-template' type='text/x-handlebars-template'>
-        {{#each }}
-            <div class="flight" data-id={{id}}>
-                    <div>{{fromCity}}</div>
-                    <div>{{date}}</div>
-                    <div>{{price}}</div>
-                    <div>{{dur}}</div>
-                    <div>{{temp}}</div>
-                    <div>{{fromTemp}}</div>
-                    <div>{{toTemp}}</div>
-            </div>
+        {{#each data}}
+        <div class="search" data-id='{{id}}'>
+            <p class="search-para">
+            <div>You searched for a flight from <b>{{fromCity}}</b>, between <b>{{fromDate}}</b> and <b>{{toDate}}</b></div>
+            <div>You looked for a flight with a max price of <b>€{{price}}</b> and a duration less than <b>{{duration}}</b> hours.</div>
+            <div>Your weather request was between <b>{{fromTemp}}°c</b> and <b>{{toTemp}}°c</b>.</div>
+            </p>
+            <button class="delete-saved-search-btn btn">DELETE</button>
+        </div>
         {{/each}}
     </script>
 
 
 
-
-
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
     <script src="js/APIManager.js"></script>
     <script src="js/Renderer.js"></script>
     <script src="js/Logic.js"></script>
