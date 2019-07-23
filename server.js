@@ -18,7 +18,7 @@ app.use('/', api)
 
 
 
-//Load all data to DB
+// Load all data to DB
 // const loadAll = function () {
 //     for (item of data) {
 //         new cityCode ( {city: item.city.replace("-"," ").toLowerCase(), airportCode: item.airportCode} ).save();

@@ -47,4 +47,10 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
     }
 })
 
+router.post('/search', (req, res) => {
+    const inputValues = req.body.inputValues
+    console.log(inputValues)
+    res.end()
+})
+
 module.exports = router;
