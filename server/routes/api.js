@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const moment = require('moment');
 const CityCode = require('../models/City-Code')
+const Search = require('../models/Search')
 const request = require('request-promise-native');
 
 
@@ -48,9 +49,10 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
 })
 
 router.post('/search', (req, res) => {
-    const inputValues = req.body.inputValues
-    console.log(inputValues)
-    res.end()
+    const inputValues = req.body
+    const newSearch = new Search(inputValues)
+    newSearch.save()
+    res.send(newSearch)
 })
 
 module.exports = router;

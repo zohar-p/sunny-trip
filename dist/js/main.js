@@ -28,7 +28,6 @@ $('#search-btn').on('click', async function () { // does this have to be async?
         const matchingFlights = await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(matchingFlights)
     }
-
     
     checkEmptyInputs(renderEmptyInput, preformSearch)
 });
