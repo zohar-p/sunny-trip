@@ -20,5 +20,4 @@ $('#search').on('click', async function () {
         const matchingFlights = await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(matchingFlights)
     }
-
 });
