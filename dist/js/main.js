@@ -14,11 +14,11 @@ $('#search').on('click', async function () {
 
     const emptyInputs = inputs.filter(i => i.val() == '')
 
-    if(emptyInputs.length ){
+    if(emptyInputs.length){
+        emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+    } else {
         const matchingFlights = await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(matchingFlights)
-    } else {
-        emptyINputs.forEach(i => renderer.renderEmptyInput(i))
     }
 
 });
