@@ -1,6 +1,7 @@
 class APIManager {
 
     getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration){
+        console.log(fromCity)
         return this.useAjax('get', `/flights/${fromCity}/${fromDate}/${toDate}/${fromTemp}/${toTemp}/${price}/${flightDuration}`)
     }
 

@@ -5,6 +5,7 @@ class Logic {
 
     async getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration){
         const flightsResponse = await apiManager.getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration)
+        console.log(flightsResponse)
         this.flights = flightsResponse
     }
 
