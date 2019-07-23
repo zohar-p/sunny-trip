@@ -5,38 +5,36 @@ const apiManager = new APIManager
 const fromCity = $('#from-city')
 const fromDate = $('#from-date')
 const toDate = $('#to-date')
+const maxPrice = $('#max-price')
+const flightDuration = $('#flight-duration')
 const fromTemp = $('#from-temp')
 const toTemp = $('#to-temp')
-const price = $('#price')
-const flightDuration = $('#flight-duration')
-const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration]
+const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
 
 const checkEmptyInputs = (empty, notEmpty) => {
-    const emptyInputs = inputs.filter(i => i.val() == '')
+    const emptyInputs = inputs.filter(i => i.val() == false)
 
     if(emptyInputs.length){
-        notEmpty()
-    } else {
         empty()
+    } else {
+        notEmpty()
     }
 }
 
-$('#search-btn').on('click', async function () {
+$('#search-btn').on('click', async function () { // does this have to be async?
     const emptyInputs = inputs.filter(i => i.val() == '')
-
-    if(emptyInputs.length){
-        emptyInputs.forEach(i => renderer.renderEmptyInput(i))
-    } else {
+    const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+    const preformSearch = async () => {
         const matchingFlights = await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(matchingFlights)
     }
+
+    
+    checkEmptyInputs(renderEmptyInput, preformSearch)
 });
 
 $('#save-search-btn').on('click', function () {
-    const emptyInputs = inputs.filter(i => i.val() == '')
-
-    if(emptyInputs.length){
-    } else {
+    const saveSearch = () => {
         let inputsValues = {}
         inputs.forEach(i => {
             inputsValues[i] = i.val()
@@ -44,5 +42,6 @@ $('#save-search-btn').on('click', function () {
         logic.saveSearch(inputsValues)
     }
 
+    checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
