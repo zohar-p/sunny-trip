@@ -1,6 +1,6 @@
 class Logic {
     constructor(){
-        flights = []
+        this.flights = []
     }
 
     getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration){
