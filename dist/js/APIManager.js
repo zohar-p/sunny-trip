@@ -8,6 +8,14 @@ class APIManager {
         this.useAjax('post', 'search', null, inputValues)
     }
     
+    getSavedSearches(){
+        this.useAjax('get', '/search')
+    }
+
+    deleteSavedSearch(DBID){
+        this.useAjax('delete/:' + DBID, '/search')
+    }
+
     useAjax(method, url, success = response=>response, data){
         return $.ajax({
             method,

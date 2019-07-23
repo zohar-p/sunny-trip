@@ -45,3 +45,12 @@ $('#save-search-btn').on('click', function () {
     checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
+$('#container-results').on('click', '.delete-saved-search-btn', function () {
+    const relDBID = $(this).closest('.search').data('id')
+    logic.deleteSavedSearch(relDBID)
+});
+
+$('#show-saved-searches-btn').on('click', function () {
+    logic.getSavedSearches()
+})
+

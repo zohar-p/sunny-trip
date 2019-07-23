@@ -11,4 +11,12 @@ class Logic {
         return apiManager.saveSearch(inputValues)
     }
 
+    getSavedSearches(){
+        return apiManager.getSavedSearches()
+    }
+
+    deleteSavedSearch(DBID){
+        apiManager.deleteSavedSearch(DBID)
+    }
+
 }
