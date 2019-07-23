@@ -49,7 +49,7 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
 })
 
 router.get('/search', async (req, res) => {
-    const allSavedSearches = Search.find({})
+    const allSavedSearches = await Search.find({})
     res.send(allSavedSearches)
 })
 
@@ -58,6 +58,12 @@ router.post('/search', (req, res) => {
     const newSearch = new Search(inputValues)
     newSearch.save()
     res.send(newSearch)
+})
+
+router.delete('/search/:id', async (req, res) => {
+    const id = req.params.id
+    const deletedDoc = await Search.findByIdAndDelete({_id: id})
+    res.send(deletedDoc)
 })
 
 module.exports = router;
