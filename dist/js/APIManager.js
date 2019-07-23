@@ -4,6 +4,10 @@ class APIManager {
         return this.useAjax('get', `/flights/${fromCity}/${fromDate}/${toDate}/${fromTemp}/${toTemp}/${price}/${flightDuration}`)
     }
 
+    saveSearch(inputValues){
+        this.useAjax('post', 'search', null, inputValues)
+    }
+    
     useAjax(method, url, success = response=>response, data){
         return $.ajax({
             method,
