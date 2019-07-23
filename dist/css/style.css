@@ -4,4 +4,44 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.btn {
+  padding: .5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.hr {
+  width: 90%;
+  height: 1px;
+  background: #ecf0f1;
+  background: -webkit-gradient(linear, left top, right top, from(#ecf0f1), color-stop(15%, #b2bec3), color-stop(85%, #b2bec3), to(#ecf0f1));
+  background: linear-gradient(90deg, #ecf0f1 0%, #b2bec3 15%, #b2bec3 85%, #ecf0f1 100%);
+}
+
+body {
+  background-color: #f4f4fc;
+}
+
+.app-name {
+  font-family: 'Bungee Outline', cursive;
+  font-size: 5vw;
+  font-weight: bold;
+  text-align: center;
+  height: 15vh;
+}
+
+.btn {
+  background-color: #0b0138;
+  color: white;
+  width: 10vw;
+  height: 100%;
+  text-align: center;
+}
 /*# sourceMappingURL=style.css.map */
