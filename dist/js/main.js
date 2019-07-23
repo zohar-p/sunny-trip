@@ -47,3 +47,7 @@ $('#save-search-btn').on('click', function () {
 
 });
 
+$('#show-saved-searches-btn').on('click', function () {
+    logic.getSavedSearches()
+})
+

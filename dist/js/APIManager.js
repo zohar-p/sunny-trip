@@ -8,6 +8,10 @@ class APIManager {
         this.useAjax('post', 'search', null, inputValues)
     }
     
+    getSavedSearches(){
+        this.useAjax('get', '/search')
+    }
+
     useAjax(method, url, success = response=>response, data){
         return $.ajax({
             method,

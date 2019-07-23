@@ -11,4 +11,8 @@ class Logic {
         return apiManager.saveSearch(inputValues)
     }
 
+    getSavedSearches(){
+        return apiManager.getSavedSearches()
+    }
+
 }
