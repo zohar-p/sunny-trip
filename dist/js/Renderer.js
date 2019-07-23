@@ -16,12 +16,16 @@ class Renderer {
         $("#container-results").append(newHTML);
     }
 
+    renderInputPopUp(input, msg){
+        inputBox = input.closest('.input-box').append(`<div class="input-popup">${msg}</div>`)
+    }
+
     renderInputError(input, msg) {
         input.addClass('input-error')
         if(msg === 'empty') {
             input.attr('placeholder', 'Field is empty')
         } else {
-
+            this.renderInputPopUp(input, msg)
         }
         // input.css("box-shadow", "inset 0 0 4px red")
         // input::placeholder.css("color", "red")
