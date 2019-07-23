@@ -50,7 +50,7 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
             //Run over all the cities in airport and sperate them by city name
             airtport.forEach(flight => {
                 //Replace the another language letters to english letters
-                flight.cityTo = removeAccents(flight.cityTo);
+                flight.cityTo = removeAccents(flight.cityTo).toLowerCase();
                 if(flight.cityTo in airportsCities)
                     airportsCities[flight.cityTo].push(flight);
                 else{
@@ -73,20 +73,75 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
         weatherResults = await Promise.all(weatherReq.map(p => p.catch(e => e)));
         const weatherValidResults = weatherResults.filter(result => !(result instanceof Error));
 
-        let validWeatherCities = weatherValidResults.filter(cityWeat => {
+        //Take only the cities with the valid weather
+        let validWeather = weatherValidResults.filter(cityWeat => {
             cityWeat = JSON.parse(cityWeat);
-
             const isTempValid = (cityWeat.forecast.forecastday.every(dayWeat => {
                 return dayWeat.day.avgtemp_c >= reqParams.fromTemp && 
                         dayWeat.day.avgtemp_c <= reqParams.toTemp
             }))
 
             if(isTempValid)
-                return cityWeat   
+                return cityWeat
         });
 
-        res.send(validWeatherCities)
-        //res.end();
+        //console.log(validWeather)
+        
+        //console.log(airportsCities)
+
+        if(validWeather.length === 0)
+            return res.send("No results found")
+        
+        let validCitiesWeather = validWeather.map(weather => {
+
+            weather = JSON.parse(weather);
+            let forecast = weather.forecast.forecastday.map(f =>{
+                return{
+                    date: f.date,
+                    avgTemp: f.day.avgtemp_c,
+                    condition: f.day.condition
+                }
+            })
+
+            return {name: weather.location.name.toLowerCase(), forecast};
+        });
+
+
+        for(cityName in airportsCities){
+           const valid = validCitiesWeather.some(validWeather =>
+                cityName.toLowerCase() === validWeather.name
+            )
+            if(!valid)
+                delete airportsCities[cityName]
+        }
+
+        let finalResults = [];
+        for(cityName in airportsCities){
+            airportsCities[cityName].forEach(airport => {
+
+                let weather = {};
+
+                validCitiesWeather.forEach(cityWeather => {
+                    //console.log(cityWeather.name)
+                    if(cityWeather.name === cityName){
+                        return weather = cityWeather;
+                    }
+                })
+
+                finalResults.push({
+                    fromCity: airport.cityFrom,
+                    toCity: airport.cityTo,
+                    fromDate: reqParams.fromDate,
+                    toDate: reqParams.toDate,
+                    price: airport.price,
+                    flightDuration: airport.fly_duration,
+                    temp: weather.forecast
+                });
+
+            })
+        }
+        
+        res.send(finalResults)
     }
     catch(e){
         console.log("Error");
