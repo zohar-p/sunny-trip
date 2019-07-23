@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const moment = require('moment');
 const CityCode = require('../models/City-Code')
+const Search = require('../models/Search')
 const request = require('request-promise-native');
 
 
@@ -45,6 +46,24 @@ router.get("/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp", async funct
         console.log("hi4");
         return res.send(e)
     }
+})
+
+router.get('/search', async (req, res) => {
+    const allSavedSearches = await Search.find({})
+    res.send(allSavedSearches)
+})
+
+router.post('/search', (req, res) => {
+    const inputValues = req.body
+    const newSearch = new Search(inputValues)
+    newSearch.save()
+    res.send(newSearch)
+})
+
+router.delete('/search/:id', async (req, res) => {
+    const id = req.params.id
+    const deletedDoc = await Search.findByIdAndDelete({_id: id})
+    res.send(deletedDoc)
 })
 
 module.exports = router;
