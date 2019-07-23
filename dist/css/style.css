@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Acme', sans-serif;
+  font-family: 'Source Code Pro', monospace;
   width: 100%;
 }
 
@@ -31,10 +31,9 @@ body {
 
 .app-name {
   font-family: 'Bungee Outline', cursive;
-  font-size: 5vw;
+  font-size: 7vw;
   font-weight: bold;
   text-align: center;
-  height: 15vh;
 }
 
 #container-search {
@@ -47,11 +46,20 @@ body {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 3vw 3vh;
+  margin: 7vh 12vw;
 }
 
 #container-buttons {
-  padding: 1vh 9vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .input-box {
@@ -68,15 +76,18 @@ body {
 .search-input {
   height: 5vh;
   margin: 0.5vh 0;
-  font-family: 'Acme', sans-serif;
+  font-family: 'Source Code Pro', monospace;
+  padding-left: 0.3vw;
 }
 
 .btn {
   background-color: #0b0138;
   color: white;
-  height: 100%;
   text-align: center;
   margin: 0 0.5vw;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .btn:hover {
@@ -94,6 +105,10 @@ body {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 1vh 0vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .flight {
@@ -156,8 +171,35 @@ body {
 }
 
 .no-result {
-  height: 7vh;
+  border: 0.5vw solid #240202;
+  height: auto;
   font-size: 5vw;
   margin: 5vh auto;
+  padding: 5vw;
+}
+
+.search {
+  border: 0.5vw solid #240202;
+  font-size: 1vw;
+  margin: 1vh 1vw;
+  padding: 1vw;
+  height: auto;
+  width: 30vw;
+}
+
+.search .delete-saved-search-btn {
+  font-size: 0.8vw;
+  width: 5vw;
+  background-color: #770404;
+  float: right;
+}
+
+.search .delete-saved-search-btn:hover {
+  background-color: #f4f4fc;
+  color: #770404;
+}
+
+.search .search-para {
+  padding: 0.3vh 0.5vw;
 }
 /*# sourceMappingURL=style.css.map */
