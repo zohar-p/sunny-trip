@@ -23,7 +23,10 @@ $('#search-btn').on('click', async function () {
 });
 
 $('#save-search-btn').on('click', function () {
-    const inputsValues = inputs.map(i => i.val())
-    logic.saveSearch(...inputsValues)
+    let inputsValues = {}
+    inputs.forEach(i => {
+        inputsValues[i] = i.val()
+    })
+    logic.saveSearch(inputsValues)
 });
 
