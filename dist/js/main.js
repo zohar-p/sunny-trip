@@ -11,6 +11,16 @@ const price = $('#price')
 const flightDuration = $('#flight-duration')
 const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, price, flightDuration]
 
+const checkEmptyInputs = (empty, notEmpty) => {
+    const emptyInputs = inputs.filter(i => i.val() == '')
+
+    if(emptyInputs.length){
+        notEmpty()
+    } else {
+        empty()
+    }
+}
+
 $('#search-btn').on('click', async function () {
     const emptyInputs = inputs.filter(i => i.val() == '')
 
@@ -23,10 +33,17 @@ $('#search-btn').on('click', async function () {
 });
 
 $('#save-search-btn').on('click', function () {
-    let inputsValues = {}
-    inputs.forEach(i => {
-        inputsValues[i] = i.val()
-    })
-    logic.saveSearch(inputsValues)
+
+    const emptyInputs = inputs.filter(i => i.val() == '')
+
+    if(emptyInputs.length){
+    } else {
+        let inputsValues = {}
+        inputs.forEach(i => {
+            inputsValues[i] = i.val()
+        })
+        logic.saveSearch(inputsValues)
+    }
+
 });
 
