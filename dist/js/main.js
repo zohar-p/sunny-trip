@@ -15,28 +15,27 @@ const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
 
     if(emptyInputs.length){
-        empty()
+        empty(emptyInputs)
     } else {
         notEmpty()
     }
 }
 
 const validateInputs = () => {
-    maxPrice < 1 ? renderer.renderEmptyInput(maxPrice, 'Max price must be at least 1') : null
-    flightDuration < 1 ? renderer.renderEmptyInput(flightDuration, 'Max flight duration must be at least 1') : null
+    maxPrice < 1 ? renderer.renderInputError(maxPrice, 'Max price must be at least 1') : null
+    flightDuration < 1 ? renderer.renderInputError(flightDuration, 'Max flight duration must be at least 1') : null
     if(toDate <= fromDate) {
-        renderer.renderEmptyInput(fromDate)
-        renderer.renderEmptyInput(toDate, 'Return date must be later than departure date')
+        renderer.renderInputError(fromDate)
+        renderer.renderInputError(toDate, 'Return date must be later than departure date')
     }
     if(toTemp <= fromTemp) {
-        renderer.renderEmptyInput(fromTemp)
-        renderer.renderEmptyInput(toTemp, 'Max temperature must be higher than min temperature')
+        renderer.renderInputError(fromTemp)
+        renderer.renderInputError(toTemp, 'Max temperature must be higher than min temperature')
     }
 }
 
 $('#search-btn').on('click', async function () { // does this have to be async?
-    const emptyInputs = inputs.filter(i => i.val() == '')
-    const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+    const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
     const preformSearch = async () => {
         await logic.getSearchResults(...inputs)
         renderer.renderSearchResults(logic.flights)

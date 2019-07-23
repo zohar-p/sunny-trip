@@ -16,8 +16,16 @@ class Renderer {
         $("#container-results").append(newHTML);
     }
 
-    renderEmptyInput(input) {
-        input.css("border", "red")
+    renderInputError(input, msg) {
+        input.addClass('input-error')
+        if(msg === 'empty') {
+            input.attr('placeholder', 'Field is empty')
+        } else {
+
+        }
+        // input.css("box-shadow", "inset 0 0 4px red")
+        // input::placeholder.css("color", "red")
+
     }
 
     renderNoResults() {
