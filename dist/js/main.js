@@ -2,13 +2,13 @@ const logic = new Logic
 const renderer = new Renderer
 const apiManager = new APIManager
 
-const fromCity = $('#from-city')
-const fromDate = $('#from-date')
-const toDate = $('#to-date')
-const maxPrice = $('#max-price')
-const flightDuration = $('#flight-duration')
-const fromTemp = $('#from-temp')
-const toTemp = $('#to-temp')
+const fromCity = $('#from-city-input')
+const fromDate = $('#from-date-input')
+const toDate = $('#to-date-input')
+const maxPrice = $('#max-price-input')
+const flightDuration = $('#flight-duration-input')
+const fromTemp = $('#from-temp-input')
+const toTemp = $('#to-temp-input')
 const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
 
 const checkEmptyInputs = (empty, notEmpty) => {
