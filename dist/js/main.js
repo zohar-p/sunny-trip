@@ -21,6 +21,19 @@ const checkEmptyInputs = (empty, notEmpty) => {
     }
 }
 
+const validateInputs = () => {
+    maxPrice < 1 ? renderer.renderEmptyInput(maxPrice, 'Max price must be at least 1') : null
+    flightDuration < 1 ? renderer.renderEmptyInput(flightDuration, 'Max flight duration must be at least 1') : null
+    if(toDate <= fromDate) {
+        renderer.renderEmptyInput(fromDate)
+        renderer.renderEmptyInput(toDate, 'Return date must be later than departure date')
+    }
+    if(toTemp <= fromTemp) {
+        renderer.renderEmptyInput(fromTemp)
+        renderer.renderEmptyInput(toTemp, 'Max temperature must be higher than min temperature')
+    }
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
     const emptyInputs = inputs.filter(i => i.val() == '')
     const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
@@ -29,7 +42,6 @@ $('#search-btn').on('click', async function () { // does this have to be async?
         renderer.renderSearchResults(logic.flights)
     }
 
-    
     checkEmptyInputs(renderEmptyInput, preformSearch)
 });
 
