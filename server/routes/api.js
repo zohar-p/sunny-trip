@@ -203,6 +203,7 @@ router.post("/search", (req, res) => {
 
 router.delete("/search/:id", async (req, res) => {
     const id = req.params.id;
+    console.log(id)
     const deletedDoc = await Search.findByIdAndDelete({ _id: id });
     res.send(deletedDoc);
 });
