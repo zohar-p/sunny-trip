@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const moment = require("moment");
-const CityCode = require("../models/City-Code");
-const Search = require("../models/Search");
 const request = require("request-promise-native");
 const removeAccents = require("remove-accents");
+const CityCode = require("../models/City-Code");
+const Search = require("../models/Search");
+const Utils = require("../utils/utils")
 const WEATHER_API_KEY = "bea57b220ef44538b62171913191707";
 
 router.get(
     "/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp",
-    async function(req, res) {
-        //TODO: the query need to be optional
+    async function (req, res) {
         let cityCodesReq = [];
         let airportsResults = [];
         let weatherReq = [];
@@ -22,13 +22,13 @@ router.get(
             toDate: req.params.toDate,
             fromTemp: req.params.fromTemp,
             toTemp: req.params.toTemp,
-            maxPrice: req.query.maxPrice,
-            dur: req.query.flightDuration
+            maxPrice: req.query.maxPrice || "",
+            dur: req.query.flightDuration || ""
         };
 
         //Format the dates:
-        reqParams.fromDate = moment(reqParams.fromDate, "YYYY-MM-DD").format("DD/MM/YYYY");
-        reqParams.toDate = moment(reqParams.toDate, "YYYY-MM-DD").format("DD/MM/YYYY");
+        reqParams.fromDate = moment(reqParams.fromDate, "DD-MM-YYYY").format("DD/MM/YYYY");
+        reqParams.toDate = moment(reqParams.toDate, "DD-MM-YYYY").format("DD/MM/YYYY");
 
         try {
             const cityCodes = await CityCode.find(
@@ -40,13 +40,7 @@ router.get(
             cityCodes.forEach(c =>
                 cityCodesReq.push(
                     request(
-                        `https://api.skypicker.com/flights?flyFrom=${
-                            c.airportCode
-                        }&date_from=${reqParams.fromDate}&date_to=${
-                            reqParams.toDate
-                        }&price_to=${reqParams.maxPrice}&max_fly_duration=${
-                            reqParams.dur
-                        }`
+                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.toDate}${Utils.isParamExist("maxPrice", reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
                     )
                 )
             );
