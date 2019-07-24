@@ -51,7 +51,11 @@ $('#search-btn').on('click', async function () { // does this have to be async?
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
-        renderer.renderSearchResults(logic.flights)
+        if(logic.flights == 'No results found') {
+            renderer.renderNoResults()
+        } else {
+            renderer.renderSearchResults(logic.flights)
+        }
     }
 
     checkInputErrors()
