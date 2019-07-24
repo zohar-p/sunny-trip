@@ -78,6 +78,10 @@ $('#container-results').on('click', '.delete-saved-search-btn', function () {
 
 $('#show-saved-searches-btn').on('click', async function () {
     const savedSearches = await logic.getSavedSearches()
+    savedSearches.forEach(s => {
+        s.fromDate = moment(s.fromDate).format('DD/MM/YYYY')
+        s.toDate = moment(s.toDate).format('DD/MM/YYYY')
+    })
     renderer.renderSavedSearches(savedSearches)
 })
 
