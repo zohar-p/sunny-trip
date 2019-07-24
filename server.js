@@ -18,7 +18,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', api)
 
 
-
+// data.forEach(d => {
+//     console.log(d.name);
+// })
 
 // Load all data to DB
 // let format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
