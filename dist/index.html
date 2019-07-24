@@ -100,7 +100,7 @@
 
     <script id='savedSearch-template' type='text/x-handlebars-template'>
         {{#each data}}
-        <div class="search" data-id='{{id}}'>
+        <div class="search" data-id='{{_id}}'>
             <p class="search-para">
             <div>You searched for a flight from <b>{{fromCity}}</b>, between <b>{{fromDate}}</b> and <b>{{toDate}}</b></div>
             <div>You looked for a flight with a max price of <b>€{{maxPrice}}</b> and a duration less than <b>{{flightDuration}}</b> hours.</div>

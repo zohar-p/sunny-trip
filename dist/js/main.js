@@ -80,9 +80,15 @@ $('#save-search-btn').on('click', function () {
     // checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
-$('#container-results').on('click', '.delete-saved-search-btn', function () {
+$('#container-results').on('click', '.delete-saved-search-btn', async function () {
     const relDBID = $(this).closest('.search').data('id')
-    logic.deleteSavedSearch(relDBID)
+    await logic.deleteSavedSearch(relDBID)
+    const savedSearches = await logic.getSavedSearches()
+    savedSearches.forEach(s => {
+        s.fromDate = moment(s.fromDate).format('DD/MM/YYYY')
+        s.toDate = moment(s.toDate).format('DD/MM/YYYY')
+    })
+    renderer.renderSavedSearches(savedSearches)
 });
 
 $('#show-saved-searches-btn').on('click', async function () {
