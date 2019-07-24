@@ -4,6 +4,7 @@ class Logic {
     }
 
     async getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration){
+        fromCity = fromCity.toLowerCase()
         const flightsResponse = await apiManager.getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
         console.log(flightsResponse)
         this.flights = flightsResponse
