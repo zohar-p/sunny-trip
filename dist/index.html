@@ -118,8 +118,12 @@
             <div class="saved-from-city">Fly from: <span class="from-city-value">{{fromCity}}</div>
             <div class="saved-from-date">Fly on: <span class="from-date-value">{{fromDate}}</span></div>
             <div class="saved-to-date">Return on: <span class="to-date-value">{{toDate}}</span></div>
+            {{#if maxPrice}}
             <div class="saved-max-price">Costs no more than: <span class="max-price-value">{{maxPrice}}</span>€</div>
+            {{/if}}
+            {{#if flightDuration}}
             <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value">{{flightDuration}}</span> hours</div>
+            {{/if}}
             <div class="saved-temp-range">Temperatures between: <span class="from-temp-value">{{fromTemp}}</span>°c to <span class="to-temp-value">{{toTemp}}</span>°c</div>
             <button class="delete-saved-search-btn btn">DELETE</button>
             <button class="search-again-btn btn">SEARCH AGAIN</button>
