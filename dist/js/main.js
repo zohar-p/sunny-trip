@@ -21,8 +21,10 @@ $('#dates-input').daterangepicker({
     "maxDate": moment().add(6, 'days').format('DD-MM-YYYY'),
     "opens": "center"
 }, function(start, end) {});
+
 const checkEmptyInputs = (empty, notEmpty) => {
-    const emptyInputs = inputs.filter(i => i.val() == false)
+    const requiredInputs = inputs.filter(i => i.data('required') == 'true')
+    const emptyInputs = requiredInputs.filter(i => i.val() == false)
     if(emptyInputs.length){
         empty(emptyInputs)
     } else {
@@ -32,10 +34,6 @@ const checkEmptyInputs = (empty, notEmpty) => {
 
 const validateInputs = () => {
     console.log('validating')
-    if(toDate <= fromDate) {
-        renderer.renderInputError(fromDate)
-        renderer.renderInputError(toDate, 'Return date must be later than departure date')
-    }
     if(toTemp <= fromTemp) {
         renderer.renderInputError(fromTemp)
         renderer.renderInputError(toTemp, 'Max temperature must be higher than min temperature')
