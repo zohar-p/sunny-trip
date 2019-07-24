@@ -11,6 +11,21 @@ const fromTemp = $('#from-temp-input')
 const toTemp = $('#to-temp-input')
 const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
 
+$('#date-picker').daterangepicker({
+    "locale": {
+        "format": "DD-MM-YYYY",
+        "separator": " / "
+    },
+    "autoApply": true,
+    "startDate": moment().format('DD-MM-YYYY'),
+    "endDate": moment().add(6, 'days').format('DD-MM-YYYY'),
+    "minDate": moment().format('DD-MM-YYYY'),
+    "maxDate": moment().add(6, 'days').format('DD-MM-YYYY'),
+    "opens": "center"
+}, function(start, end, label) {
+    console.log($('#date-picker').val())
+    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
 const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
 
