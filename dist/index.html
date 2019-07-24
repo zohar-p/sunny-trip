@@ -25,14 +25,9 @@
                 <input id="from-city-input" class="search-input" type="text" value="Tel Aviv">
             </div>
 
-            <div id="from-date-box" class="input-box">
-                <label for="from-date-input">Depart</label>
-                <input id="from-date-input" class="search-input" type="date" value="2019-07-25" >
-            </div>
-
-            <div id="to-date-box" class="input-box">
-                <label for="to-date-input">Return</label>
-                <input id="to-date-input" class="search-input" type="date" value="2019-07-29">
+            <div id="dates-box" class="input-box">
+                <label for="dates-input">Dates</label>
+                <input id="dates-input" class="search-input" type="text" value="25-07-2019 / 29-07-2019" >
             </div>
 
             <div id="max-price-box" class="input-box">
@@ -75,10 +70,10 @@
             <div class="flight">
                     <div class="flight-city-name">{{toCity}}</div>
                         <div class="flight-details">
-                        <div><b>From:</b> {{fromDate}}</div>
-                        <div><b>To:</b> {{fromDate}}</div>
+                        <div><b>Depart:</b> {{fromDate}}</div>
+                        <div><b>Return:</b> {{fromDate}}</div>
                         <div><b>Price:</b> €{{price}}</div>
-                        <div><b>Flight duration:</b> {{flightDuration}} hours</div>
+                        <div><b>Flight duration:</b> {{flightDuration}}</div>
                     </div>
                     <div class="city-weather">
                         <div><b>Temperature:</b> {{temp}}°c</div>
@@ -104,7 +99,8 @@
     </script>
 
 
-
+    <script src="moment/moment.js"></script>
+    <script src="daterangepicker/daterangepicker.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="js/APIManager.js"></script>
