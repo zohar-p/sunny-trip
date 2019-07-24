@@ -3,15 +3,13 @@ const renderer = new Renderer
 const apiManager = new APIManager
 
 const fromCity = $('#from-city-input')
-const fromDate = $('#from-date-input')
-const toDate = $('#to-date-input')
+const dates = $('#dates-input')
 const maxPrice = $('#max-price-input')
 const flightDuration = $('#flight-duration-input')
 const fromTemp = $('#from-temp-input')
 const toTemp = $('#to-temp-input')
-const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration]
-
-$('#date-picker').daterangepicker({
+const inputs = [fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration]
+$('#dates-input').daterangepicker({
     "locale": {
         "format": "DD-MM-YYYY",
         "separator": " / "
@@ -23,7 +21,6 @@ $('#date-picker').daterangepicker({
     "maxDate": moment().add(6, 'days').format('DD-MM-YYYY'),
     "opens": "center"
 }, function(start, end, label) {
-    console.log($('#date-picker').val())
     console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
 const checkEmptyInputs = (empty, notEmpty) => {
@@ -54,6 +51,7 @@ $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
+        console.log(inputsValues)
         await logic.getSearchResults(...inputsValues)
         renderer.renderSearchResults(logic.flights)
     }
