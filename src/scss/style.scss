@@ -1,11 +1,11 @@
 @import "_global";
 
 body{
-    background-color: $white;
+    background-color: $primary-bright;;
 }
 
 .nav-bar{
-    background-color: $white;
+    background-color: $primary-dark;
     height: 8vh;
     padding: 1vh 0.3vw;
 
@@ -13,15 +13,16 @@ body{
         float: left;
         width: 3vw;
         height: 6vh;
+        background-color: $primary-bright;
     }
     .btn{
-        background-color: $primary-dark;
-        color: $primary-bright;
+        background-color: $primary-bright;
+        color: $primary-dark;
         float: right;
 
         &:hover{
-            background-color: $primary-bright ;
-            color: $primary-dark;
+            background-color: $primary-dark ;
+            color: $primary-bright;
         }  
 
     }
@@ -46,15 +47,22 @@ body{
 }
 
 #container-search-btn{
+    display: flex;
+    flex-direction: column;
     height: 17vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
-}
+    #search-btn{
+        font-size: 2vw;
+    }
 
-#search-btn{
-    font-size: 2vw;
+    #save-search-btn{
+        font-size: 1vw;
+        margin-top: 0.5vh;
+        margin-bottom: 1.5vh;
+    }
 }
 
 #container-search{
@@ -63,6 +71,7 @@ body{
     flex-wrap: wrap;
     margin: 7vh 12vw;
 }
+
 
 
 
@@ -111,7 +120,7 @@ body{
     border: 0.5vw solid $accent;
     margin: 2vw 3vh;
     border-radius: 1vw;
-    background-color: $primary-bright;
+    background-color: $white;
     width: 30vw;
     
     .flight-city-name{
@@ -152,18 +161,19 @@ body{
 }
 
 .search{
-    background-color: $primary-bright;
+    background-color: $white;
     color: $primary-dark;
     border: 0.5vw solid $primary-dark;
     font-size: 1vw;
-    margin: 1vh 1vw;
-    padding: 1vw;
+    margin: 1vh 0.5vw;
+    padding: 0.5vw;
     height: auto;
     width: 30vw;
     border-radius: 1vw;
-    // hi
-
-
+    
+    .search-para{
+        padding: 0.3vh 0.5vw;
+    }
 
     .delete-saved-search-btn{
         font-size: 0.8vw;
@@ -179,7 +189,10 @@ body{
         }
     }
 
-    .search-para{
-        padding: 0.3vh 0.5vw;
+    .search-again-btn{
+        font-size: 0.8vw;
+        float: right; 
+        margin-top: 2vh; 
+        margin-right: 0;
     }
 }

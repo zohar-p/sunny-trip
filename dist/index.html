@@ -25,7 +25,6 @@
             <img class="logo"
                 src="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
                 alt="Sunny Trip Logo">
-            <button id="save-search-btn" class="btn">SAVE SEARCH</button>
             <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
         </div>
     </header>
@@ -35,48 +34,56 @@
 
             <div class="app-name">SUNNY TRIP</div>
 
-            <div id="container-search">
-                <div id="from-city-box" class="input-box">
-                    <label for="from-city-input">From</label>
-                    <input id="from-city-input" class="search-input" data-name="fromCity" type="text" value="Tel Aviv">
-                </div>
+            <div id="container-search-items">
 
-                <div id="dates-box" class="input-box">
-                    <label for="dates-input">Dates</label>
-                    <input id="dates-input" class="search-input" data-name="dates" type="text">
-                </div>
+                <div id="container-search">
 
-                <div id="max-price-box" class="input-box">
-                    <label for="max-price-input">Max Price</label>
-                    <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300">
-                </div>
+                    <div id="from-city-box" class="input-box">
+                        <label for="from-city-input">From</label>
+                        <input id="from-city-input" class="search-input" data-name="fromCity" type="text"
+                            value="Tel Aviv">
+                    </div>
 
-                <div id="flight-duration-box" class="input-box">
-                    <label for="flight-duration-input">Flight Duration</label>
-                    <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
-                        value="4">
-                </div>
+                    <div id="dates-box" class="input-box">
+                        <label for="dates-input">Dates</label>
+                        <input id="dates-input" class="search-input" data-name="dates" type="text">
+                    </div>
 
-                <div id="from-temp-box" class="input-box">
-                    <label for="from-temp-input">Min Temp.</label>
-                    <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
-                </div>
+                    <div id="max-price-box" class="input-box">
+                        <label for="max-price-input">Max Price</label>
+                        <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300">
+                    </div>
 
-                <div id="to-temp-box" class="input-box">
-                    <label for="to-temp-input">Max Temp.</label>
-                    <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
-                </div>
+                    <div id="flight-duration-box" class="input-box">
+                        <label for="flight-duration-input">Flight Duration</label>
+                        <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
+                            value="4">
+                    </div>
 
-            </div>
-            <div id="container-search-btn">
-                <button id="search-btn" class="btn">SEARCH</button>
+                    <div id="from-temp-box" class="input-box">
+                        <label for="from-temp-input">Min Temp.</label>
+                        <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
+                    </div>
+
+                    <div id="to-temp-box" class="input-box">
+                        <label for="to-temp-input">Max Temp.</label>
+                        <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
+                    </div>
+
+                </div>
+                
+                <div id="container-search-btn">
+
+                    <button id="search-btn" class="btn">SEARCH FLIGHTS</button>
+                    <button id="save-search-btn" class="btn">SAVE SEARCH</button>
+
+                </div>
             </div>
         </div>
 
         <div id="container-results"></div>
 
     </main>
-    <footer></footer>
 
     <script id='flights-template' type='text/x-handlebars-template'>
         {{#each data}}
@@ -100,13 +107,14 @@
 
     <script id='savedSearch-template' type='text/x-handlebars-template'>
         {{#each data}}
-        <div class="search" data-id='{{id}}'>
+        <div class="search" data-id='{{_id}}'>
             <p class="search-para">
             <div>You searched for a flight from <b>{{fromCity}}</b>, between <b>{{fromDate}}</b> and <b>{{toDate}}</b></div>
             <div>You looked for a flight with a max price of <b>€{{maxPrice}}</b> and a duration less than <b>{{flightDuration}}</b> hours.</div>
             <div>Your weather request was between <b>{{fromTemp}}°c</b> and <b>{{toTemp}}°c</b>.</div>
             </p>
             <button class="delete-saved-search-btn btn">DELETE</button>
+            <button class="search-again-btn btn">SEARCH AGAIN</button>
         </div>
         {{/each}}
     </script>

@@ -29,11 +29,11 @@ body {
 }
 
 body {
-  background-color: #ecf0f1;
+  background-color: #E8CDB2;
 }
 
 .nav-bar {
-  background-color: #ecf0f1;
+  background-color: #2F3033;
   height: 8vh;
   padding: 1vh 0.3vw;
 }
@@ -42,17 +42,18 @@ body {
   float: left;
   width: 3vw;
   height: 6vh;
+  background-color: #E8CDB2;
 }
 
 .nav-bar .btn {
-  background-color: #2F3033;
-  color: #E8CDB2;
+  background-color: #E8CDB2;
+  color: #2F3033;
   float: right;
 }
 
 .nav-bar .btn:hover {
-  background-color: #E8CDB2;
-  color: #2F3033;
+  background-color: #2F3033;
+  color: #E8CDB2;
 }
 
 .main-display {
@@ -72,9 +73,14 @@ body {
 }
 
 #container-search-btn {
-  height: 17vh;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 17vh;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -84,8 +90,14 @@ body {
           justify-content: center;
 }
 
-#search-btn {
+#container-search-btn #search-btn {
   font-size: 2vw;
+}
+
+#container-search-btn #save-search-btn {
+  font-size: 1vw;
+  margin-top: 0.5vh;
+  margin-bottom: 1.5vh;
 }
 
 #container-search {
@@ -159,7 +171,7 @@ body {
   border: 0.5vw solid #1A4735;
   margin: 2vw 3vh;
   border-radius: 1vw;
-  background-color: #E8CDB2;
+  background-color: #ecf0f1;
   width: 30vw;
 }
 
@@ -220,15 +232,19 @@ body {
 }
 
 .search {
-  background-color: #E8CDB2;
+  background-color: #ecf0f1;
   color: #2F3033;
   border: 0.5vw solid #2F3033;
   font-size: 1vw;
-  margin: 1vh 1vw;
-  padding: 1vw;
+  margin: 1vh 0.5vw;
+  padding: 0.5vw;
   height: auto;
   width: 30vw;
   border-radius: 1vw;
+}
+
+.search .search-para {
+  padding: 0.3vh 0.5vw;
 }
 
 .search .delete-saved-search-btn {
@@ -245,7 +261,10 @@ body {
   color: #440f0f;
 }
 
-.search .search-para {
-  padding: 0.3vh 0.5vw;
+.search .search-again-btn {
+  font-size: 0.8vw;
+  float: right;
+  margin-top: 2vh;
+  margin-right: 0;
 }
 /*# sourceMappingURL=style.css.map */
