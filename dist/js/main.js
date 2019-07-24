@@ -31,13 +31,13 @@ const checkInputErrors = () => {
     let isSearchValid = true
 
     notRequiredInputs.forEach(i => {
-        if(i.val() <= 0 && i.val() != ''){
+        if(i.val() <= 0 && i.val() != '') {
             renderer.renderInputError(i, `${i.val()} is an invalid value`)
             isSearchValid = false
         }
     })
 
-    const emptyRequiredInputs = requiredInputs.filter(i => i.val() == false)
+    const emptyRequiredInputs = requiredInputs.filter(i => i.val() == '')
     if(emptyRequiredInputs.length){
         emptyRequiredInputs.forEach(i => renderer.renderInputError(i, 'This field is required'))
         isSearchValid = false
@@ -61,8 +61,9 @@ const addWeatherConditions = () => {
     })
 }
 
-$('#search-btn').on('click', async function () { // does this have to be async?
+$('#search-btn').on('click', async function () {
     const preformSearch = async () => {
+        // renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
         if(logic.flights == 'No results found') {
