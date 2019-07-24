@@ -74,7 +74,8 @@ const displaySearchResults = () => {
     } else {
         calcAvgTemp()
         addWeatherConditions()
-        renderer.renderSearchResults(logic.flights)
+        logic.fuseSameCity()
+        renderer.renderDestinations(logic.structuredCities)
     }
 }
 
