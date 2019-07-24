@@ -32,6 +32,12 @@ body {
   background-color: #E8CDB2;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .nav-bar {
   background-color: #2f3033;
   height: 8vh;
@@ -108,6 +114,7 @@ body {
   margin: auto;
   margin-bottom: 20vh;
   border-radius: 2vh;
+  padding: 0.5vh 0;
 }
 
 #container-search {
@@ -139,7 +146,28 @@ body {
   height: 5vh;
   margin: 0.5vh 0;
   font-family: 'Montserrat', sans-serif;
-  padding-left: 0.3vw;
+  padding: 8px;
+}
+
+.temp-input {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 7vw;
+}
+
+.temp-input #from-temp-input {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 3vw;
+}
+
+.temp-input #to-temp-input {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 3vw;
 }
 
 .btn {
@@ -178,6 +206,8 @@ body {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "n n n" "d d w";
+  -ms-grid-rows: 1fr 2fr;
+      grid-template-rows: 1fr 2fr;
   border: 0.3vw solid #1A4735;
   margin: 2vw 3vh;
   border-radius: 1vw;
@@ -231,8 +261,8 @@ body {
 }
 
 .flight .conditionPic {
-  height: 7vh;
-  width: 3vw;
+  height: 10vh;
+  width: 5vw;
 }
 
 .no-result {
@@ -248,7 +278,7 @@ body {
 .search {
   background-color: #ecf0f1;
   color: #2f3033;
-  border: 0.5vw solid #2f3033;
+  border: 0.3vw solid #2f3033;
   font-size: 1vw;
   margin: 1vh 0.5vw;
   padding: 0.5vw;
@@ -280,5 +310,32 @@ body {
   float: right;
   margin-top: 2vh;
   margin-right: 0;
+}
+
+#Upper {
+  text-transform: capitalize;
+}
+
+.avgTemp {
+  font-size: 3vw;
+}
+
+.saved-msg {
+  border: 0.5vw solid #2f3033;
+  height: auto;
+  font-size: 2vw;
+  margin: 5vh auto;
+  padding: 5vw;
+  background-color: #ecf0f1;
+  border-radius: 2vw;
+}
+
+.input-error {
+  -webkit-box-shadow: inset 0 0 4px red;
+          box-shadow: inset 0 0 4px red;
+}
+
+.dash {
+  padding-top: 1.5vh;
 }
 /*# sourceMappingURL=style.css.map */
