@@ -28,6 +28,10 @@ class Renderer {
         }
     }
 
+    resetInputError(input){
+        input.removeClass('input-error')
+    }
+
     renderNoResults() {
         let noResults = `<div class="no-result">SORRY, NO RESULTS FOUND<div>`
         $("#container-results").empty();

@@ -68,6 +68,7 @@ const addWeatherConditions = () => {
 }
 
 $('#search-btn').on('click', async function () {
+    inputs.forEach(i => renderer.resetInputError(i))
     const preformSearch = async () => {
         renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
@@ -133,4 +134,8 @@ $('#container-results').on('click', '.search-again-btn', async function () {
     renderer.emptyContainerResults()
     await logic.getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
     renderer.renderSearchResults(logic.flights)
+});
+
+$('.search-input').on('focus', function () {
+    renderer.resetInputError($(this))
 });
