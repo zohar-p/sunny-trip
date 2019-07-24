@@ -33,7 +33,7 @@ body {
 }
 
 .nav-bar {
-  background-color: #2F3033;
+  background-color: #2f3033;
   height: 8vh;
   padding: 1vh 0.3vw;
 }
@@ -47,18 +47,19 @@ body {
 
 .nav-bar .btn {
   background-color: #E8CDB2;
-  color: #2F3033;
+  color: #2f3033;
   float: right;
 }
 
 .nav-bar .btn:hover {
-  background-color: #2F3033;
+  background-color: #2f3033;
   color: #E8CDB2;
 }
 
 .main-display {
   background-image: url("../assets/road2.jpg");
   background-size: cover;
+  height: 92vh;
 }
 
 .app-name {
@@ -67,7 +68,7 @@ body {
   font-size: 9vw;
   text-align: center;
   padding-top: 5vh;
-  padding-bottom: 11vh;
+  padding-bottom: 7vh;
   padding-left: 3.8vw;
   text-shadow: 0.2vw 0.1vh #ecf0f1;
 }
@@ -98,6 +99,15 @@ body {
   font-size: 1vw;
   margin-top: 0.5vh;
   margin-bottom: 1.5vh;
+}
+
+#container-search-items {
+  background-color: rgba(47, 48, 51, 0.692);
+  color: #ecf0f1;
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 20vh;
+  border-radius: 2vh;
 }
 
 #container-search {
@@ -134,8 +144,8 @@ body {
 
 .btn {
   background-color: #E8CDB2;
-  color: #2F3033;
-  border: 0.2vw solid #2F3033;
+  color: #2f3033;
+  border: 0.2vw solid #2f3033;
   text-align: center;
   margin: 0 0.5vw;
   -webkit-transition: 0.3s;
@@ -144,7 +154,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #2F3033;
+  background-color: #2f3033;
   color: #E8CDB2;
 }
 
@@ -167,8 +177,8 @@ body {
 .flight {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "n n" "d w";
-  border: 0.5vw solid #1A4735;
+      grid-template-areas: "n n n" "d d w";
+  border: 0.3vw solid #1A4735;
   margin: 2vw 3vh;
   border-radius: 1vw;
   background-color: #ecf0f1;
@@ -178,17 +188,19 @@ body {
 .flight .flight-city-name {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
+  -ms-grid-column-span: 3;
   grid-area: n;
-  font-family: 'Londrina Shadow', cursive;
+  font-family: 'Russo One', sans-serif;
   font-size: 4vw;
   font-weight: bold;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .flight .flight-details {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: d;
   padding: 1vw;
   display: -webkit-box;
@@ -204,7 +216,7 @@ body {
 
 .flight .city-weather {
   -ms-grid-row: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   grid-area: w;
   padding: 1vw;
   display: -webkit-box;
@@ -224,17 +236,19 @@ body {
 }
 
 .no-result {
-  border: 0.5vw solid #2F3033;
+  border: 0.5vw solid #2f3033;
   height: auto;
   font-size: 5vw;
   margin: 5vh auto;
   padding: 5vw;
+  background-color: #ecf0f1;
+  border-radius: 2vw;
 }
 
 .search {
   background-color: #ecf0f1;
-  color: #2F3033;
-  border: 0.5vw solid #2F3033;
+  color: #2f3033;
+  border: 0.5vw solid #2f3033;
   font-size: 1vw;
   margin: 1vh 0.5vw;
   padding: 0.5vw;

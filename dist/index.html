@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="css/style.css">
     <link
-        href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Montserrat|Nunito|Old+Standard+TT|Source+Code+Pro&display=swap"
+        href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Russo+One|Montserrat|Nunito|Old+Standard+TT|Source+Code+Pro&display=swap"
         rel="stylesheet">
     <link rel="icon"
         href="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png">
@@ -41,33 +41,32 @@
                     <div id="from-city-box" class="input-box">
                         <label for="from-city-input">From</label>
                         <input id="from-city-input" class="search-input" data-name="fromCity" type="text"
-                            value="Tel Aviv">
+                            value="Tel Aviv" data-required="true">
                     </div>
 
                     <div id="dates-box" class="input-box">
                         <label for="dates-input">Dates</label>
-                        <input id="dates-input" class="search-input" data-name="dates" type="text">
+                        <input id="dates-input" class="search-input" data-name="dates" type="text" data-required="true">
                     </div>
 
                     <div id="max-price-box" class="input-box">
                         <label for="max-price-input">Max Price</label>
-                        <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300">
+                        <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300" data-required="false">
                     </div>
 
                     <div id="flight-duration-box" class="input-box">
-                        <label for="flight-duration-input">Flight Duration</label>
-                        <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
-                            value="4">
+                        <label for="flight-duration-input">Flight Duration (hr)</label>
+                        <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number" value="4" data-required="false">
                     </div>
 
                     <div id="from-temp-box" class="input-box">
                         <label for="from-temp-input">Min Temp.</label>
-                        <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
+                        <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15" data-required="true">
                     </div>
 
                     <div id="to-temp-box" class="input-box">
                         <label for="to-temp-input">Max Temp.</label>
-                        <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
+                        <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30" data-required="true">
                     </div>
 
                 </div>
@@ -96,9 +95,9 @@
                         <div>Flight duration: <b>{{flightDuration}}</b> </div>
                     </div>
                     <div class="city-weather">
-                        <div>Temperature: <b>{{avgTemp}}°c</b> </div>
-                        <div><b>{{condition}}</b></div>
-                        <img class="conditionPic" src='{{conditionPic}}' alt="Weather Icon">
+                        <div><b>{{avgTemp}}°c</b></div>
+                        <img class="conditionPic" src='{{conditionIcon}}' alt="Weather Icon">
+                        <!-- <div><b>{{conditionText}}</b></div> -->
                     </div>
             </div>
         {{/each}}
