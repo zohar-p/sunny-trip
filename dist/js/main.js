@@ -133,6 +133,7 @@ $('#container-results').on('click', '.search-again-btn', async function () {
     const maxPrice = searchBox.find('.max-price-value').text()
     const flightDuration = searchBox.find('.flight-duration-value').text()
     renderer.emptyContainerResults()
+    renderer.renderLoading();
     await logic.getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
     renderer.renderSearchResults(logic.flights)
 });
