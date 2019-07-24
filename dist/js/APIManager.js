@@ -1,6 +1,9 @@
 class APIManager {
 
-    getSearchResults(fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDuration){
+    getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration){
+        dates = dates.split(' / ')
+        const fromDate = dates[0]
+        const toDate = dates[1]
         return this.useAjax('get', `/flights/${fromCity}/${fromDate}/${toDate}/${fromTemp}/${toTemp}?maxPrice=${maxPrice}&flightDuration=${flightDuration}`)
     }
 
@@ -9,7 +12,7 @@ class APIManager {
     }
     
     getSavedSearches(){
-        this.useAjax('get', '/search')
+        return this.useAjax('get', '/search')
     }
 
     deleteSavedSearch(DBID){
