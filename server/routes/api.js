@@ -29,6 +29,10 @@ router.get(
         //Format the dates:
         reqParams.fromDate = moment(reqParams.fromDate, "DD-MM-YYYY").format("DD/MM/YYYY");
         reqParams.toDate = moment(reqParams.toDate, "DD-MM-YYYY").format("DD/MM/YYYY");
+        const fromDateFormat = moment(reqParams.fromDate,"DD/MM/YYYY");
+        const toDateFormat = moment(reqParams.toDate,"DD/MM/YYYY");
+        const diffDates = toDateFormat.diff(fromDateFormat, 'days')+1
+        
 
         try {
             const cityCodes = await CityCode.find(
@@ -91,10 +95,22 @@ router.get(
                 result => !(result instanceof Error)
             );
 
+
+            
+            
             //Take only the cities with the valid weather
             let validWeather = weatherValidResults.filter(cityWeat => {
                 cityWeat = JSON.parse(cityWeat);
-                const isTempValid = cityWeat.forecast.forecastday.every(
+
+                //Take the forecast of the specific dates
+                const specificDates = cityWeat.forecast.forecastday.filter(dayWeat => {
+                    if(moment(dayWeat.date,"YYYY-MM-DD").isSameOrAfter(fromDateFormat)
+                        && moment(dayWeat.date,"YYYY-MM-DD").isSameOrBefore(toDateFormat))
+                            return dayWeat
+                })
+
+                //Check if those dates are in the temp range
+                const isTempValid = specificDates.every(
                     dayWeat => {
                         return (
                             dayWeat.day.avgtemp_c >= reqParams.fromTemp &&
@@ -106,11 +122,20 @@ router.get(
                 if (isTempValid) return cityWeat;
             });
 
+            //Return don't have any valid temp
             if (validWeather.length === 0) return res.send("No results found");
 
             let validCitiesWeather = validWeather.map(weather => {
                 weather = JSON.parse(weather);
-                let forecast = weather.forecast.forecastday.map(f => {
+
+                //Take the forecast of the specific dates
+                const specificDates = weather.forecast.forecastday.filter(dayWeat => {
+                    if(moment(dayWeat.date,"YYYY-MM-DD").isSameOrAfter(fromDateFormat)
+                        && moment(dayWeat.date,"YYYY-MM-DD").isSameOrBefore(toDateFormat))
+                            return dayWeat
+                })
+
+                let forecast = specificDates.map(f => {
                     return {
                         date: f.date,
                         avgTemp: f.day.avgtemp_c,
@@ -134,7 +159,6 @@ router.get(
                     let weather = {};
 
                     validCitiesWeather.forEach(cityWeather => {
-                        //console.log(cityWeather.name)
                         if (cityWeather.name === cityName) {
                             return (weather = cityWeather);
                         }
@@ -154,7 +178,7 @@ router.get(
 
             res.send(finalResults);
         } catch (e) {
-            console.log("Error");
+            console.log("Error", e);
             return res.send(e);
         }
     }
