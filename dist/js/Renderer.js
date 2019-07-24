@@ -27,7 +27,7 @@ class Renderer {
     renderDestinationFlights(destination) {
         const source = $('#destination-info-template').html();
         const template = Handlebars.compile(source);
-        const newHTML = template({ data });
+        const newHTML = template({ data: destination });
         $("#container-results").append(newHTML); 
     }
 
