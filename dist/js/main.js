@@ -22,10 +22,8 @@ const checkEmptyInputs = (empty, notEmpty) => {
 }
 
 const validateInputs = () => {
-    maxPrice < 1 ? renderer.renderInputError(maxPrice, 'Max price must be at least 1') : null
-    flightDuration < 1 ? renderer.renderInputError(flightDuration, 'Max flight duration must be at least 1') : null
+    console.log('validating')
     if(toDate <= fromDate) {
-        console.log('error')
         renderer.renderInputError(fromDate)
         renderer.renderInputError(toDate, 'Return date must be later than departure date')
     }
@@ -35,6 +33,10 @@ const validateInputs = () => {
     }
 }
 
+const checkInputErrors = () => {
+    console.log('checking')
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
     const preformSearch = async () => {
@@ -42,6 +44,8 @@ $('#search-btn').on('click', async function () { // does this have to be async?
         await logic.getSearchResults(...inputsValues)
         renderer.renderSearchResults(logic.flights)
     }
+
+    checkInputErrors()
     
     checkEmptyInputs(renderEmptyInput, preformSearch)
 });
