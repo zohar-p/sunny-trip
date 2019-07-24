@@ -76,7 +76,8 @@ $('#container-results').on('click', '.delete-saved-search-btn', function () {
     logic.deleteSavedSearch(relDBID)
 });
 
-$('#show-saved-searches-btn').on('click', function () {
-    logic.getSavedSearches()
+$('#show-saved-searches-btn').on('click', async function () {
+    const savedSearches = await logic.getSavedSearches()
+    renderer.renderSavedSearches(savedSearches)
 })
 
