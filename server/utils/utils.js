@@ -11,8 +11,6 @@ module.exports = {
         
         // Will display time in 10:30 format
         return hours + ':' + minutes.substr(-2);
-
-        
     }
 
 

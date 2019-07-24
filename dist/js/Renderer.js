@@ -28,6 +28,13 @@ class Renderer {
         }
     }
 
+    renderLoading(){
+        $("#container-results").empty();
+        $("#container-results").append(`
+            <div class="loader"></div>   
+        `);
+    }
+
     renderNoResults() {
         let noResults = `<div class="no-result">SORRY, NO RESULTS FOUND<div>`
         $("#container-results").empty();

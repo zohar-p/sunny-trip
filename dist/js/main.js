@@ -65,6 +65,7 @@ $('#search-btn').on('click', async function () {
     const preformSearch = async () => {
         // renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
+        renderer.renderLoading();
         await logic.getSearchResults(...inputsValues)
         if(logic.flights == 'No results found') {
             renderer.renderNoResults()
