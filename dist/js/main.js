@@ -46,6 +46,22 @@ const checkInputErrors = () => {
     console.log('checking')
 }
 
+const calcAvgTemp = () => {
+    logic.flights.forEach(f => {
+        let sum = 0
+        f.temp.forEach(t => sum += Number(t.avgTemp))
+        const avgTemp = Math.round(sum / f.temp.length)
+        f.avgTemp = avgTemp
+    })
+}
+
+const addWeatherConditions = () => {
+    logic.flights.forEach(f => {
+        f.conditionIcon = f.temp[0].condition.icon
+        f.conditionText = f.temp[0].condition.text
+    })
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
 
@@ -55,6 +71,8 @@ $('#search-btn').on('click', async function () { // does this have to be async?
         if(logic.flights == 'No results found') {
             renderer.renderNoResults()
         } else {
+            calcAvgTemp()
+            addWeatherConditions()
             renderer.renderSearchResults(logic.flights)
         }
     }
