@@ -167,6 +167,11 @@ router.get("/search", async (req, res) => {
 
 router.post("/search", (req, res) => {
     const inputValues = req.body;
+    // console.log(inputValues.fromDate)
+    // console.log(moment(inputValues.fromDate, 'DD-MM-YYYY').format())
+    inputValues.fromDate = moment(inputValues.fromDate, 'DD-MM-YYYY').format()
+    inputValues.toDate = moment(inputValues.toDate, 'DD-MM-YYYY').format()
+    // res.end()
     const newSearch = new Search(inputValues);
     newSearch.save();
     res.send(newSearch);

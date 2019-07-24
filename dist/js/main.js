@@ -20,12 +20,9 @@ $('#dates-input').daterangepicker({
     "minDate": moment().format('DD-MM-YYYY'),
     "maxDate": moment().add(6, 'days').format('DD-MM-YYYY'),
     "opens": "center"
-}, function(start, end, label) {
-    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-});
+}, function(start, end) {});
 const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
-
     if(emptyInputs.length){
         empty()
     } else {
@@ -51,7 +48,6 @@ $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
-        console.log(inputsValues)
         await logic.getSearchResults(...inputsValues)
         renderer.renderSearchResults(logic.flights)
     }
@@ -60,15 +56,19 @@ $('#search-btn').on('click', async function () { // does this have to be async?
 });
 
 $('#save-search-btn').on('click', function () {
-    const saveSearch = () => {
+    // const saveSearch = () => {
         let inputsValues = {}
         inputs.forEach(i => {
-            inputsValues[i] = i.val()
+            inputsValues[i.data('name')] = i.val()
         })
+        inputsValues.dates = inputsValues.dates.split(' / ')
+        inputsValues.fromDate = inputsValues.dates[0]
+        inputsValues.toDate = inputsValues.dates[1]
+        delete inputsValues.dates
         logic.saveSearch(inputsValues)
-    }
+    // }
 
-    checkEmptyInputs(renderEmptyInput, saveSearch)
+    // checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
 $('#container-results').on('click', '.delete-saved-search-btn', function () {
@@ -76,7 +76,12 @@ $('#container-results').on('click', '.delete-saved-search-btn', function () {
     logic.deleteSavedSearch(relDBID)
 });
 
-$('#show-saved-searches-btn').on('click', function () {
-    logic.getSavedSearches()
+$('#show-saved-searches-btn').on('click', async function () {
+    const savedSearches = await logic.getSavedSearches()
+    savedSearches.forEach(s => {
+        s.fromDate = moment(s.fromDate).format('DD/MM/YYYY')
+        s.toDate = moment(s.toDate).format('DD/MM/YYYY')
+    })
+    renderer.renderSavedSearches(savedSearches)
 })
 

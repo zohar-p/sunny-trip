@@ -12,7 +12,7 @@ class APIManager {
     }
     
     getSavedSearches(){
-        this.useAjax('get', '/search')
+        return this.useAjax('get', '/search')
     }
 
     deleteSavedSearch(DBID){
