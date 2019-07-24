@@ -104,16 +104,16 @@ input[type=number]::-webkit-outer-spin-button {
 
 .temp-input{
     display: inline-flex;
-    width: 7vw; 
+    width: 8vw; 
 
         #from-temp-input{
             display: inline-flex;
-            width: 3vw; 
+            width: 4vw; 
         }
         
         #to-temp-input{
             display: inline-flex;
-            width: 3vw;    
+            width: 4vw;    
         }
 }
 
@@ -197,7 +197,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: $white;
     color: $primary-dark;
     border: 0.3vw solid $primary-dark;
-    font-size: 1vw;
+    font-size: 2vw;
     margin: 1vh 0.5vw;
     padding: 0.5vw;
     height: auto;
