@@ -50,7 +50,9 @@ $('#search-btn').on('click', async function () { // does this have to be async?
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
         logic.flights.forEach(f => {
-            f.avgAllTemps = f.temp.forEach(t => t.avgTemp)
+            f.avgAllTemps = f.temp.reduce((total, t) => total + t.avgTemp) / f.temp.length
+            // f.avgAllTemps = 'test'
+            console.log(f.avgAllTemps)
         })
         renderer.renderSearchResults(logic.flights)
     }
