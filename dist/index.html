@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sunny Trip</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Nunito|Source+Code+Pro&display=swap" rel="stylesheet">
     <link rel="icon"
@@ -27,7 +31,7 @@
 
             <div id="dates-box" class="input-box">
                 <label for="dates-input">Dates</label>
-                <input id="dates-input" class="search-input" type="text" value="25-07-2019 / 29-07-2019" >
+                <input id="dates-input" class="search-input" type="text">
             </div>
 
             <div id="max-price-box" class="input-box">
@@ -99,10 +103,9 @@
     </script>
 
 
-    <script src="moment/moment.js"></script>
-    <script src="daterangepicker/daterangepicker.js"></script>
+    <!-- <script src="moment/moment.js"></script> -->
     <script src="handlebars/dist/handlebars.js"></script>
-    <script src="jquery/dist/jquery.js"></script>
+    <!-- <script src="jquery/dist/jquery.js"></script> -->
     <script src="js/APIManager.js"></script>
     <script src="js/Renderer.js"></script>
     <script src="js/Logic.js"></script>
