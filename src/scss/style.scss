@@ -4,6 +4,12 @@ body{
     background-color: $primary-bright;;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .nav-bar{
     background-color: $primary-dark;
     height: 8vh;
@@ -24,16 +30,13 @@ body{
             background-color: $primary-dark ;
             color: $primary-bright;
         }  
-
-    }
-   
+    }  
 }
 
 .main-display{
     background-image: url("../assets/road2.jpg");
     background-size: cover;
     height: 92vh;
-
 }
 
 .app-name{
@@ -72,6 +75,7 @@ body{
     margin: auto;
     margin-bottom: 20vh;
     border-radius: 2vh;
+    padding: 0.5vh 0;
 }
 
 #container-search{
@@ -95,8 +99,24 @@ body{
     height: 5vh;
     margin: 0.5vh 0;
     font-family: 'Montserrat', sans-serif;
-    padding-left: 0.3vw;
+    padding: 8px;
 }
+
+.temp-input{
+    display: inline-flex;
+    width: 7vw; 
+
+        #from-temp-input{
+            display: inline-flex;
+            width: 3vw; 
+        }
+        
+        #to-temp-input{
+            display: inline-flex;
+            width: 3vw;    
+        }
+}
+
 
 .btn{
     background-color: $primary-bright;
@@ -126,6 +146,7 @@ body{
     grid-template-areas: 
     "n n n"
     "d d w";
+    grid-template-rows: 1fr 2fr;
     border: 0.3vw solid $accent;
     margin: 2vw 3vh;
     border-radius: 1vw;
@@ -155,8 +176,8 @@ body{
         justify-content: space-around;
     }
     .conditionPic{
-        height: 7vh;
-        width: 3vw;
+        height: 10vh;
+        width: 5vw;
     }
     
 }
@@ -175,7 +196,7 @@ body{
 .search{
     background-color: $white;
     color: $primary-dark;
-    border: 0.5vw solid $primary-dark;
+    border: 0.3vw solid $primary-dark;
     font-size: 1vw;
     margin: 1vh 0.5vw;
     padding: 0.5vw;
@@ -207,4 +228,30 @@ body{
         margin-top: 2vh; 
         margin-right: 0;
     }
+}
+
+#Upper{
+    text-transform: capitalize;
+}
+
+.avgTemp{
+    font-size: 3vw;
+}
+
+.saved-msg{
+    border: 0.5vw solid $primary-dark;
+    height: auto;
+    font-size: 2vw;
+    margin: 5vh auto;
+    padding: 5vw;
+    background-color: $white;
+    border-radius: 2vw;
+}
+
+.input-error{
+    box-shadow: inset 0 0 4px red;
+}
+
+.dash{
+    padding-top: 1.5vh;
 }

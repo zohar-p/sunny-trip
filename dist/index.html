@@ -31,6 +31,7 @@
 
     <main id="main">
         <div class="main-display">
+            <!-- <div class="saved-msg">YOUR SEARCH HAVE BEEN SAVED</div> -->
 
             <div class="app-name">SUNNY TRIP</div>
 
@@ -50,34 +51,40 @@
                     </div>
 
                     <div id="max-price-box" class="input-box">
-                        <label for="max-price-input">Max Price</label>
+                        <label for="max-price-input">Max Price (€)</label>
                         <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" min="1" value="300" data-required="false">
                     </div>
 
                     <div id="flight-duration-box" class="input-box">
                         <label for="flight-duration-input">Flight Duration (hr)</label>
-                        <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number" value="4" data-required="false">
+                        <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
+                            value="4" data-required="false" >
                     </div>
 
                     <div id="from-temp-box" class="input-box">
-                        <label for="from-temp-input">Min Temp.</label>
-                        <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15" data-required="true">
+                        <label for="temp-input">Temp. (°c)</label>
+                        <div class="temp-input">
+                            <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number"
+                                value="15" data-required="true">
+                                <pre class="dash"><strong> &#8213 </strong></pre>
+                            <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30"
+                                data-required="true">
+                        </div>
                     </div>
 
-                    <div id="to-temp-box" class="input-box">
-                        <label for="to-temp-input">Max Temp.</label>
-                        <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30" data-required="true">
-                    </div>
 
                 </div>
-                
-                <div id="container-search-btn">
 
+                <div id="container-search-btn">
+    
                     <button id="search-btn" class="btn">SEARCH FLIGHTS</button>
                     <button id="save-search-btn" class="btn">SAVE SEARCH</button>
-
+    
                 </div>
+
             </div>
+
+        </div>
         </div>
 
         <div id="container-results"></div>
@@ -89,13 +96,13 @@
             <div class="flight">
                     <div class="flight-city-name">{{toCity}}</div>
                         <div class="flight-details">
-                        <div>Depart: <b>{{fromDate}}</b></div>
-                        <div>Return: <b>{{toDate}}</b></div>
-                        <div>Price: <b>€{{price}}</b></div>
-                        <div>Flight duration: <b>{{flightDuration}}</b> </div>
-                    </div>
+                            <div>Depart: <b>{{fromDate}}</b></div>
+                             <div>Return: <b>{{toDate}}</b></div>
+                              <div>Price: <b>€{{price}}</b></div>
+                          <div>Flight duration: <b>{{flightDuration}}</b> </div>
+                         </div>
                     <div class="city-weather">
-                        <div><b>{{avgTemp}}°c</b></div>
+                        <div><b class="avgTemp">{{avgTemp}}°c</b></div>
                         <img class="conditionPic" src='{{conditionIcon}}' alt="Weather Icon">
                         <!-- <div><b>{{conditionText}}</b></div> -->
                     </div>
