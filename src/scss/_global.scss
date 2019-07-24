@@ -2,7 +2,7 @@
 $primary-dark: rgb(47, 48, 51) ;
 $primary-bright: #E8CDB2 ;
 $accent: #1A4735 ;
-$red: rgba(231, 76, 60,1.0);
+$red: #c0392b;
 $green: rgba(46, 204, 113,1.0);
 $blue: rgba(52, 152, 219,1.0);
 $yellow: rgba(241, 196, 15,1.0);
@@ -37,17 +37,17 @@ body{
     font-weight: bold;
     background-color: $primary-bright;
     color: $primary-dark;
-    border: 0.2vw solid $primary-dark;
+    border: 0.1vw solid $primary-dark;
     text-align: center;
     margin: 0 0.5vw;
-    transition: 0.5s;
+    transition: 0.3s;
     font-family: 'Montserrat', sans-serif;
     // box-shadow: 4px 4px 6px rgba(0, 0, 0, .6);
     
     &:hover{
         background-color: $primary-dark;    
         color: $primary-bright;
-        border: 0.2vw solid $primary-bright;
+        border-color: $primary-bright;
     }  
 
     &:active{

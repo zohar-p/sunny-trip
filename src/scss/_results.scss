@@ -5,45 +5,46 @@
     grid-template-columns: repeat(3, 1fr)
 }
 
-.flight{
+.result{
     padding: 1.2rem .6rem .6rem;
     border-radius: .6rem;
     background-color: darken($white, 5);
     box-shadow: 0 0 .4rem rgba(50, 50, 50, .6);
 
-    display: grid;
-    grid-template-areas: 
-    "n n n"
-    "d d w";
-    grid-template-rows: 1fr 2fr;
-    
-    .flight-city-name{
-        grid-area: n;
-        font-family: 'Russo One', sans-serif;
-        font-size: 4vw;
-        font-weight: bold;
-        text-align: center;
-        text-transform: capitalize;
-    }
-    .flight-details{
-        grid-area: d;
-        padding: 1vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .city-weather{
-        grid-area: w;
-        padding: 1vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    .conditionPic{
-        width: 6vw;
-        height: 6vw;
-    }
-    
+    &.flight {
+            display: grid;
+            grid-template-areas: 
+        "n n n"
+        "d d w";
+        grid-template-rows: 1fr 2fr;
+        
+        .flight-city-name{
+            grid-area: n;
+            font-family: 'Russo One', sans-serif;
+            font-size: 4vw;
+            font-weight: bold;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        .flight-details{
+            grid-area: d;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .city-weather{
+            grid-area: w;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .conditionPic{
+            width: 6vw;
+            height: 6vw;
+        }
+    }   
 }
 
 .no-result{
@@ -57,39 +58,37 @@
 
 }
 
-.search{
-    background-color: $white;
-    color: $primary-dark;
-    border: 0.3vw solid $primary-dark;
-    font-size: 2vw;
-    margin: 1vh 0.5vw;
-    padding: 0.5vw;
-    height: auto;
-    width: 30vw;
-    border-radius: 1vw;
-    
-    .search-para{
-        padding: 0.3vh 0.5vw;
+.search{    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .saved-values{
+        margin-bottom: .6rem;
     }
 
     .delete-saved-search-btn{
-        font-size: 0.8vw;
-        width: 5vw;
-        background-color: rgb(68, 15, 15);
-        color: rgb(244, 244, 252);
-        float: right; 
-        margin-top: 2vh;       
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.6rem;
+        background-color: transparent;
+        color: $black;
+        transition: .3s;
+
+        border: none;
+        outline: none;
 
         &:hover{
-            background-color: rgb(244, 244, 252);
-            color: rgb(68, 15, 15);
+            cursor: pointer;
+            color: $red;
+            text-shadow: 0 0 2px $red;
         }
     }
 
     .search-again-btn{
-        font-size: 0.8vw;
-        float: right; 
-        margin-top: 2vh; 
-        margin-right: 0;
+        margin-top: auto;
+        width: 80%;
+        align-self: center;
     }
 }

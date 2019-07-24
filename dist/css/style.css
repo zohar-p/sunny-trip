@@ -21,18 +21,18 @@ body {
   font-weight: bold;
   background-color: #E8CDB2;
   color: #2f3033;
-  border: 0.2vw solid #2f3033;
+  border: 0.1vw solid #2f3033;
   text-align: center;
   margin: 0 0.5vw;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   font-family: 'Montserrat', sans-serif;
 }
 
 .btn:hover {
   background-color: #2f3033;
   color: #E8CDB2;
-  border: 0.2vw solid #E8CDB2;
+  border-color: #E8CDB2;
 }
 
 .btn:active {
@@ -80,12 +80,15 @@ body {
       grid-template-columns: repeat(3, 1fr);
 }
 
-.flight {
+.result {
   padding: 1.2rem .6rem .6rem;
   border-radius: .6rem;
   background-color: #dde4e6;
   -webkit-box-shadow: 0 0 0.4rem rgba(50, 50, 50, 0.6);
           box-shadow: 0 0 0.4rem rgba(50, 50, 50, 0.6);
+}
+
+.result.flight {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "n n n" "d d w";
@@ -93,7 +96,7 @@ body {
       grid-template-rows: 1fr 2fr;
 }
 
-.flight .flight-city-name {
+.result.flight .flight-city-name {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
@@ -105,7 +108,7 @@ body {
   text-transform: capitalize;
 }
 
-.flight .flight-details {
+.result.flight .flight-details {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -122,7 +125,7 @@ body {
       justify-content: space-around;
 }
 
-.flight .city-weather {
+.result.flight .city-weather {
   -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: w;
@@ -138,7 +141,7 @@ body {
       justify-content: space-around;
 }
 
-.flight .conditionPic {
+.result.flight .conditionPic {
   width: 6vw;
   height: 6vw;
 }
@@ -154,40 +157,45 @@ body {
 }
 
 .search {
-  background-color: #ecf0f1;
-  color: #2f3033;
-  border: 0.3vw solid #2f3033;
-  font-size: 2vw;
-  margin: 1vh 0.5vw;
-  padding: 0.5vw;
-  height: auto;
-  width: 30vw;
-  border-radius: 1vw;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.search .search-para {
-  padding: 0.3vh 0.5vw;
+.search .saved-values {
+  margin-bottom: .6rem;
 }
 
 .search .delete-saved-search-btn {
-  font-size: 0.8vw;
-  width: 5vw;
-  background-color: #440f0f;
-  color: #f4f4fc;
-  float: right;
-  margin-top: 2vh;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.6rem;
+  background-color: transparent;
+  color: #2d3436;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border: none;
+  outline: none;
 }
 
 .search .delete-saved-search-btn:hover {
-  background-color: #f4f4fc;
-  color: #440f0f;
+  cursor: pointer;
+  color: #c0392b;
+  text-shadow: 0 0 2px #c0392b;
 }
 
 .search .search-again-btn {
-  font-size: 0.8vw;
-  float: right;
-  margin-top: 2vh;
-  margin-right: 0;
+  margin-top: auto;
+  width: 80%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 body {
@@ -246,7 +254,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #container-search-items {
-  background-color: rgba(47, 48, 51, 0.692);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #ecf0f1;
   width: 80vw;
   margin: auto;
