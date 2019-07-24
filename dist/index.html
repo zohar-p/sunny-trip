@@ -96,6 +96,20 @@
 
     </main>
 
+    <script id="destination-template" type="test/text/x-handlebars-template">
+        {{#each data}}
+        <div class="result destination">
+            <div class="destination-city-name">{{toCity}}</div>
+                <div class="destination-details">
+                    <div class="destination-avgTemp">{{avgTemp}}°c</div>
+                    <div class="destination-condition-text">{{conditionText}}°c</div>
+                    <img class="destination-conditionPic" src='{{conditionIcon}}' alt="Weather Icon">
+                 </div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
     <script id='flights-template' type='text/x-handlebars-template'>
         {{#each data}}
             <div class="flight">
