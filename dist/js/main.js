@@ -24,33 +24,41 @@ $('#dates-input').daterangepicker({
 const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
     if(emptyInputs.length){
-        empty()
+        empty(emptyInputs)
     } else {
         notEmpty()
     }
 }
 
 const validateInputs = () => {
-    maxPrice < 1 ? renderer.renderEmptyInput(maxPrice, 'Max price must be at least 1') : null
-    flightDuration < 1 ? renderer.renderEmptyInput(flightDuration, 'Max flight duration must be at least 1') : null
+    console.log('validating')
     if(toDate <= fromDate) {
-        renderer.renderEmptyInput(fromDate)
-        renderer.renderEmptyInput(toDate, 'Return date must be later than departure date')
+        renderer.renderInputError(fromDate)
+        renderer.renderInputError(toDate, 'Return date must be later than departure date')
     }
     if(toTemp <= fromTemp) {
-        renderer.renderEmptyInput(fromTemp)
-        renderer.renderEmptyInput(toTemp, 'Max temperature must be higher than min temperature')
+        renderer.renderInputError(fromTemp)
+        renderer.renderInputError(toTemp, 'Max temperature must be higher than min temperature')
     }
 }
 
+const checkInputErrors = () => {
+    console.log('checking')
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
-    const emptyInputs = inputs.filter(i => i.val() == '')
-    const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
+    const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
-        renderer.renderSearchResults(logic.flights)
+        if(logic.flights == 'No results found') {
+            renderer.renderNoResults()
+        } else {
+            renderer.renderSearchResults(logic.flights)
+        }
     }
+
+    checkInputErrors()
     
     checkEmptyInputs(renderEmptyInput, preformSearch)
 });
