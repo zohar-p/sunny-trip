@@ -60,6 +60,7 @@ input[type=number]::-webkit-outer-spin-button {
 .nav-bar .btn:hover {
   background-color: #2f3033;
   color: #E8CDB2;
+  border: 0.2vw solid #E8CDB2;
 }
 
 .main-display {
@@ -176,14 +177,24 @@ input[type=number]::-webkit-outer-spin-button {
   border: 0.2vw solid #2f3033;
   text-align: center;
   margin: 0 0.5vw;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   font-family: 'Montserrat', sans-serif;
+  -webkit-box-shadow: 0.3vw 0.3vw black;
+          box-shadow: 0.3vw 0.3vw black;
 }
 
 .btn:hover {
   background-color: #2f3033;
   color: #E8CDB2;
+  border: 0.2vw solid #E8CDB2;
+}
+
+.btn:active {
+  -webkit-box-shadow: 0.1vw 0.1vw black;
+          box-shadow: 0.1vw 0.1vw black;
+  -webkit-transform: translateY(0.2vw);
+          transform: translateY(0.2vw);
 }
 
 #container-results {
@@ -320,14 +331,23 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 3vw;
 }
 
-.saved-msg {
-  border: 0.5vw solid #2f3033;
-  height: auto;
-  font-size: 2vw;
-  margin: 5vh auto;
-  padding: 5vw;
+#show-saved-searches-btn {
+  position: relative;
+}
+
+#show-saved-searches-btn .saved-msg {
+  -webkit-clip-path: polygon(50% 0%, 65% 15%, 100% 15%, 100% 100%, 0 100%, 0 15%, 35% 15%);
+          clip-path: polygon(50% 0%, 65% 15%, 100% 15%, 100% 100%, 0 100%, 0 15%, 35% 15%);
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: -6%;
+  width: 110%;
+  font-size: 1.2vw;
+  padding: 1em;
+  padding-top: 1.5em;
   background-color: #ecf0f1;
-  border-radius: 2vw;
+  border-radius: 1vw;
 }
 
 .input-error {
@@ -337,5 +357,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .dash {
   padding-top: 1.5vh;
+}
+
+.from-city-value {
+  text-transform: capitalize;
 }
 /*# sourceMappingURL=style.css.map */

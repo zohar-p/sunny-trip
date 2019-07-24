@@ -25,13 +25,15 @@
             <img class="logo"
                 src="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
                 alt="Sunny Trip Logo">
-            <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
+            <button id="show-saved-searches-btn" class="btn">
+                SHOW SAVED SEARCHS
+                <div class="saved-msg">YOUR SEARCH HAVE BEEN SAVED</div>
+            </button>
         </div>
     </header>
 
     <main id="main">
         <div class="main-display">
-            <!-- <div class="saved-msg">YOUR SEARCH HAVE BEEN SAVED</div> -->
 
             <div class="app-name">SUNNY TRIP</div>
 
@@ -52,13 +54,14 @@
 
                     <div id="max-price-box" class="input-box">
                         <label for="max-price-input">Max Price (€)</label>
-                        <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" min="1" value="300" data-required="false">
+                        <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" min="1"
+                            value="300" data-required="false">
                     </div>
 
                     <div id="flight-duration-box" class="input-box">
                         <label for="flight-duration-input">Max Flight Duration (hr)</label>
                         <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
-                            value="4" data-required="false" >
+                            value="4" data-required="false">
                     </div>
 
                     <div id="from-temp-box" class="input-box">
@@ -66,7 +69,7 @@
                         <div class="temp-input">
                             <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number"
                                 value="15" data-required="true">
-                                <pre class="dash"><strong> &#8213 </strong></pre>
+                            <pre class="dash"><strong> &#8213 </strong></pre>
                             <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30"
                                 data-required="true">
                         </div>
@@ -76,10 +79,10 @@
                 </div>
 
                 <div id="container-search-btn">
-    
+
                     <button id="search-btn" class="btn">SEARCH FLIGHTS</button>
                     <button id="save-search-btn" class="btn">SAVE SEARCH</button>
-    
+
                 </div>
 
             </div>

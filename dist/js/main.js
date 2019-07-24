@@ -107,6 +107,7 @@ $('#save-search-btn').on('click', function () {
         inputsValues.toDate = inputsValues.dates[1]
         delete inputsValues.dates
         logic.saveSearch(inputsValues)
+        renderer.notifySavedSearch()
     }
 });
 
