@@ -1,6 +1,7 @@
 // VARIABLES
-// $primary: ;
-// $accent: ;
+$primary-dark: #2F3033 ;
+$primary-bright: #E8CDB2 ;
+$accent: #1A4735 ;
 $red: rgba(231, 76, 60,1.0);
 $green: rgba(46, 204, 113,1.0);
 $blue: rgba(52, 152, 219,1.0);
@@ -20,7 +21,7 @@ $grey: rgba(178, 190, 195,1.0);
 }
 
 body{
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     color: $black;
 }
@@ -31,6 +32,7 @@ body{
     cursor: pointer;
     outline: none;
     border: none;
+    font-weight: bold;
 }
 
 .hr{
