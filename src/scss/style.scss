@@ -1,4 +1,5 @@
 @import "_global";
+@import "_nav-bar";
 
 body{
     background-color: $primary-bright;;
@@ -8,30 +9,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
-}
-
-.nav-bar{
-    background-color: $primary-dark;
-    height: 8vh;
-    padding: 1vh 0.3vw;
-
-    .logo{
-        float: left;
-        width: 3vw;
-        height: 6vh;
-        background-color: $primary-bright;
-    }
-    .btn{
-        background-color: $primary-bright;
-        color: $primary-dark;
-        float: right;
-
-        &:hover{
-            background-color: $primary-dark ;
-            color: $primary-bright;
-            border: 0.2vw solid $primary-bright;
-        }  
-    }  
 }
 
 .main-display{
