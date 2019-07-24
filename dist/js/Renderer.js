@@ -17,23 +17,15 @@ class Renderer {
         $("#container-results").append(newHTML);
     }
 
-    renderInputPopUp(input, msg){
-        const inputBox = input.closest('.input-box')
-        inputBox.append(`<div class="input-popup">${msg}</div>`)
-    }
-
     renderInputError(input, msg) {
-        console.log(msg)
         input.addClass('input-error')
         if(msg === 'empty') {
+            input.val('')
             input.attr('placeholder', 'Field is empty')
         } else {
-            console.log('ran')
-            this.renderInputPopUp(input, msg)
+            input.val('')
+            input.attr('placeholder', msg)
         }
-        // input.css("box-shadow", "inset 0 0 4px red")
-        // input::placeholder.css("color", "red")
-
     }
 
     renderNoResults() {
