@@ -25,17 +25,13 @@ $('#dates-input').daterangepicker({
     "opens": "center"
 }, function(start, end) {});
 
+
+
 const checkInputErrors = () => {
     const requiredInputs = inputs.filter(i => i.data('required') == true)
     const notRequiredInputs = inputs.filter(i => i.data('required') == false)
     let isSearchValid = true
-
-    if(fromTemp.val() > toTemp.val()    ) {
-        renderer.renderInputError(fromTemp, '')
-        renderer.renderInputError(toTemp, '')
-        isSearchValid = false
-    }
-
+    
     notRequiredInputs.forEach(i => {
         if(i.val() <= 0 && i.val() != '') {
             renderer.renderInputError(i, `${i.val()} is an invalid value`)
@@ -45,6 +41,12 @@ const checkInputErrors = () => {
     const emptyRequiredInputs = requiredInputs.filter(i => i.val() == '')
     if(emptyRequiredInputs.length){
         emptyRequiredInputs.forEach(i => renderer.renderInputError(i, 'This field is required'))
+        isSearchValid = false
+    }
+
+    if(Number(fromTemp.val()) > Number(toTemp.val())) {
+        renderer.renderInputError(fromTemp, 'min')
+        renderer.renderInputError(toTemp, 'max')
         isSearchValid = false
     }
     return isSearchValid
