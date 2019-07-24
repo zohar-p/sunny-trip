@@ -27,52 +27,52 @@ class Renderer {
     }
 }
 // CHECK
-const render = new Renderer
+// const render = new Renderer
 
 // render.renderNoResults()
 
-let a = [{
-    toCity: "Tel Aviv",
-    fromDate: "01/01/2019",
-    toDate: "05/01/2019",
-    price: 34,
-    flightDuration: 4.6,
-    temp: 30,
-    condition: "cloudy",
-    conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
-},
-{
-    toCity: "Rome",
-    fromDate: "01/01/2019",
-    toDate: "05/01/2019",
-    price: 34,
-    flightDuration: 4.6,
-    temp: 30,
-    condition: "cloudy",
-    conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
-},
-{
-    toCity: "Paris",
-    fromDate: "01/01/2019",
-    toDate: "05/01/2019",
-    price: 34,
-    flightDuration: 4.6,
-    temp: 30,
-    condition: "cloudy",
-    conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
-},
-{
-    toCity: "New York",
-    fromDate: "01/01/2019",
-    toDate: "05/01/2019",
-    price: 34,
-    flightDuration: 4.6,
-    temp: 30,
-    condition: "cloudy",
-    conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
-}]
+// let a = [{
+//     toCity: "Tel Aviv",
+//     fromDate: "01/01/2019",
+//     toDate: "05/01/2019",
+//     price: 34,
+//     flightDuration: 4.6,
+//     temp: 30,
+//     condition: "cloudy",
+//     conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
+// },
+// {
+//     toCity: "Rome",
+//     fromDate: "01/01/2019",
+//     toDate: "05/01/2019",
+//     price: 34,
+//     flightDuration: 4.6,
+//     temp: 30,
+//     condition: "cloudy",
+//     conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
+// },
+// {
+//     toCity: "Paris",
+//     fromDate: "01/01/2019",
+//     toDate: "05/01/2019",
+//     price: 34,
+//     flightDuration: 4.6,
+//     temp: 30,
+//     condition: "cloudy",
+//     conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
+// },
+// {
+//     toCity: "New York",
+//     fromDate: "01/01/2019",
+//     toDate: "05/01/2019",
+//     price: 34,
+//     flightDuration: 4.6,
+//     temp: 30,
+//     condition: "cloudy",
+//     conditionPic: "https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
+// }]
 // console.log(a)
-render.renderSearchResults(a)
+// render.renderSearchResults(a)
 
 // // check saved
 // let b = [{
