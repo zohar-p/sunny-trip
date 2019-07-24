@@ -1,11 +1,11 @@
 @import "_global";
 
 body{
-    background-color: $white;
+    background-color: $primary-bright;;
 }
 
 .nav-bar{
-    background-color: $white;
+    background-color: $primary-dark;
     height: 8vh;
     padding: 1vh 0.3vw;
 
@@ -13,15 +13,16 @@ body{
         float: left;
         width: 3vw;
         height: 6vh;
+        background-color: $primary-bright;
     }
     .btn{
-        background-color: $primary-dark;
-        color: $primary-bright;
+        background-color: $primary-bright;
+        color: $primary-dark;
         float: right;
 
         &:hover{
-            background-color: $primary-bright ;
-            color: $primary-dark;
+            background-color: $primary-dark ;
+            color: $primary-bright;
         }  
 
     }
@@ -31,6 +32,7 @@ body{
 .main-display{
     background-image: url("../assets/road2.jpg");
     background-size: cover;
+    height: 92vh;
 
 }
 
@@ -40,21 +42,36 @@ body{
     font-size: 9vw;
     text-align: center;
     padding-top: 5vh;
-    padding-bottom: 11vh;
+    padding-bottom: 7vh;
     padding-left: 3.8vw;
     text-shadow: 0.2vw 0.1vh $white;
 }
 
 #container-search-btn{
+    display: flex;
+    flex-direction: column;
     height: 17vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
-}
+    #search-btn{
+        font-size: 2vw;
+    }
 
-#search-btn{
-    font-size: 2vw;
+    #save-search-btn{
+        font-size: 1vw;
+        margin-top: 0.5vh;
+        margin-bottom: 1.5vh;
+    }
+}
+#container-search-items{
+    background-color: rgba(47, 48, 51, 0.692);
+    color: $white;
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 20vh;
+    border-radius: 2vh;
 }
 
 #container-search{
@@ -63,6 +80,7 @@ body{
     flex-wrap: wrap;
     margin: 7vh 12vw;
 }
+
 
 
 
@@ -106,20 +124,21 @@ body{
 .flight{
     display: grid;
     grid-template-areas: 
-    "n n"
-    "d w";
-    border: 0.5vw solid $accent;
+    "n n n"
+    "d d w";
+    border: 0.3vw solid $accent;
     margin: 2vw 3vh;
     border-radius: 1vw;
-    background-color: $primary-bright;
+    background-color: $white;
     width: 30vw;
     
     .flight-city-name{
         grid-area: n;
-        font-family: 'Londrina Shadow', cursive;
+        font-family: 'Russo One', sans-serif;
         font-size: 4vw;
         font-weight: bold;
         text-align: center;
+        text-transform: capitalize;
     }
     .flight-details{
         grid-area: d;
@@ -148,22 +167,25 @@ body{
     font-size: 5vw;
     margin: 5vh auto;
     padding: 5vw;
+    background-color: $white;
+    border-radius: 2vw;
 
 }
 
 .search{
-    background-color: $primary-bright;
+    background-color: $white;
     color: $primary-dark;
     border: 0.5vw solid $primary-dark;
     font-size: 1vw;
-    margin: 1vh 1vw;
-    padding: 1vw;
+    margin: 1vh 0.5vw;
+    padding: 0.5vw;
     height: auto;
     width: 30vw;
     border-radius: 1vw;
-    // hi
-
-
+    
+    .search-para{
+        padding: 0.3vh 0.5vw;
+    }
 
     .delete-saved-search-btn{
         font-size: 0.8vw;
@@ -179,7 +201,10 @@ body{
         }
     }
 
-    .search-para{
-        padding: 0.3vh 0.5vw;
+    .search-again-btn{
+        font-size: 0.8vw;
+        float: right; 
+        margin-top: 2vh; 
+        margin-right: 0;
     }
 }

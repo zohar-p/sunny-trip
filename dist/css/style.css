@@ -29,11 +29,11 @@ body {
 }
 
 body {
-  background-color: #ecf0f1;
+  background-color: #E8CDB2;
 }
 
 .nav-bar {
-  background-color: #ecf0f1;
+  background-color: #2f3033;
   height: 8vh;
   padding: 1vh 0.3vw;
 }
@@ -42,22 +42,24 @@ body {
   float: left;
   width: 3vw;
   height: 6vh;
+  background-color: #E8CDB2;
 }
 
 .nav-bar .btn {
-  background-color: #2F3033;
-  color: #E8CDB2;
+  background-color: #E8CDB2;
+  color: #2f3033;
   float: right;
 }
 
 .nav-bar .btn:hover {
-  background-color: #E8CDB2;
-  color: #2F3033;
+  background-color: #2f3033;
+  color: #E8CDB2;
 }
 
 .main-display {
   background-image: url("../assets/road2.jpg");
   background-size: cover;
+  height: 92vh;
 }
 
 .app-name {
@@ -66,15 +68,20 @@ body {
   font-size: 9vw;
   text-align: center;
   padding-top: 5vh;
-  padding-bottom: 11vh;
+  padding-bottom: 7vh;
   padding-left: 3.8vw;
   text-shadow: 0.2vw 0.1vh #ecf0f1;
 }
 
 #container-search-btn {
-  height: 17vh;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 17vh;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -84,8 +91,23 @@ body {
           justify-content: center;
 }
 
-#search-btn {
+#container-search-btn #search-btn {
   font-size: 2vw;
+}
+
+#container-search-btn #save-search-btn {
+  font-size: 1vw;
+  margin-top: 0.5vh;
+  margin-bottom: 1.5vh;
+}
+
+#container-search-items {
+  background-color: rgba(47, 48, 51, 0.692);
+  color: #ecf0f1;
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 20vh;
+  border-radius: 2vh;
 }
 
 #container-search {
@@ -122,8 +144,8 @@ body {
 
 .btn {
   background-color: #E8CDB2;
-  color: #2F3033;
-  border: 0.2vw solid #2F3033;
+  color: #2f3033;
+  border: 0.2vw solid #2f3033;
   text-align: center;
   margin: 0 0.5vw;
   -webkit-transition: 0.3s;
@@ -132,7 +154,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #2F3033;
+  background-color: #2f3033;
   color: #E8CDB2;
 }
 
@@ -155,28 +177,30 @@ body {
 .flight {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "n n" "d w";
-  border: 0.5vw solid #1A4735;
+      grid-template-areas: "n n n" "d d w";
+  border: 0.3vw solid #1A4735;
   margin: 2vw 3vh;
   border-radius: 1vw;
-  background-color: #E8CDB2;
+  background-color: #ecf0f1;
   width: 30vw;
 }
 
 .flight .flight-city-name {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
+  -ms-grid-column-span: 3;
   grid-area: n;
-  font-family: 'Londrina Shadow', cursive;
+  font-family: 'Russo One', sans-serif;
   font-size: 4vw;
   font-weight: bold;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .flight .flight-details {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: d;
   padding: 1vw;
   display: -webkit-box;
@@ -192,7 +216,7 @@ body {
 
 .flight .city-weather {
   -ms-grid-row: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
   grid-area: w;
   padding: 1vw;
   display: -webkit-box;
@@ -212,23 +236,29 @@ body {
 }
 
 .no-result {
-  border: 0.5vw solid #2F3033;
+  border: 0.5vw solid #2f3033;
   height: auto;
   font-size: 5vw;
   margin: 5vh auto;
   padding: 5vw;
+  background-color: #ecf0f1;
+  border-radius: 2vw;
 }
 
 .search {
-  background-color: #E8CDB2;
-  color: #2F3033;
-  border: 0.5vw solid #2F3033;
+  background-color: #ecf0f1;
+  color: #2f3033;
+  border: 0.5vw solid #2f3033;
   font-size: 1vw;
-  margin: 1vh 1vw;
-  padding: 1vw;
+  margin: 1vh 0.5vw;
+  padding: 0.5vw;
   height: auto;
   width: 30vw;
   border-radius: 1vw;
+}
+
+.search .search-para {
+  padding: 0.3vh 0.5vw;
 }
 
 .search .delete-saved-search-btn {
@@ -245,7 +275,10 @@ body {
   color: #440f0f;
 }
 
-.search .search-para {
-  padding: 0.3vh 0.5vw;
+.search .search-again-btn {
+  font-size: 0.8vw;
+  float: right;
+  margin-top: 2vh;
+  margin-right: 0;
 }
 /*# sourceMappingURL=style.css.map */
