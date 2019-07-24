@@ -4,14 +4,57 @@ body{
     background-color: $white;
 }
 
-.app-name{
+.nav-bar{
+    background-color: $white;
+    height: 8vh;
+    padding: 1vh 0.3vw;
+
+    .logo{
+        float: left;
+        width: 3vw;
+        height: 6vh;
+    }
+    .btn{
+        background-color: $primary-dark;
+        color: $primary-bright;
+        float: right;
+
+        &:hover{
+            background-color: $primary-bright ;
+            color: $primary-dark;
+        }  
+
+    }
+   
+}
+
+.main-display{
     background-image: url("../assets/road2.jpg");
     background-size: cover;
-    font-family: 'Nunito', sans-serif;
+
+}
+
+.app-name{
+    font-family: 'Old Standard TT', serif;
+    font-family: bold;
     font-size: 9vw;
     text-align: center;
-    padding-top: 11vh;
+    padding-top: 5vh;
     padding-bottom: 11vh;
+    padding-left: 3.8vw;
+    text-shadow: 0.2vw 0.1vh $white;
+}
+
+#container-search-btn{
+    height: 17vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#search-btn{
+    font-size: 2vw;
 }
 
 #container-search{
@@ -19,14 +62,9 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     margin: 7vh 12vw;
-    
 }
 
-#container-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: center
-}
+
 
 .input-box{
     display: flex;
@@ -38,21 +76,22 @@ body{
     border: none;
     height: 5vh;
     margin: 0.5vh 0;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Montserrat', sans-serif;
     padding-left: 0.3vw;
 }
 
 .btn{
-    background-color: rgb(15, 9, 43);
-    color: white;
+    background-color: $primary-bright;
+    color: $primary-dark;
+    border: 0.2vw solid $primary-dark;
     text-align: center;
     margin: 0 0.5vw;
     transition: 0.3s;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Montserrat', sans-serif;
     
     &:hover{
-        background-color: white;
-        color: rgb(15, 9, 43);
+        background-color: $primary-dark;
+        color: $primary-bright;
     }  
 }
 
@@ -69,15 +108,14 @@ body{
     grid-template-areas: 
     "n n"
     "d w";
-    border: 0.5vw solid rgb(36, 2, 2);
+    border: 0.5vw solid $accent;
     margin: 2vw 3vh;
     border-radius: 1vw;
-    background-color: aliceblue;
+    background-color: $primary-bright;
     width: 30vw;
     
     .flight-city-name{
         grid-area: n;
-        // padding: 1vw;
         font-family: 'Londrina Shadow', cursive;
         font-size: 4vw;
         font-weight: bold;
@@ -105,7 +143,7 @@ body{
 }
 
 .no-result{
-    border: 0.5vw solid rgb(36, 2, 2);
+    border: 0.5vw solid $primary-dark;
     height: auto;
     font-size: 5vw;
     margin: 5vh auto;
@@ -114,7 +152,7 @@ body{
 }
 
 .search{
-    border: 0.5vw solid rgb(36, 2, 2);
+    border: 0.5vw solid $primary-dark;
     font-size: 1vw;
     margin: 1vh 1vw;
     padding: 1vw;
@@ -127,6 +165,7 @@ body{
         font-size: 0.8vw;
         width: 5vw;
         background-color: rgb(68, 15, 15);
+        color: rgb(244, 244, 252);
        float: right;        
 
         &:hover{

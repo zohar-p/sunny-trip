@@ -11,7 +11,9 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Nunito|Source+Code+Pro&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Montserrat|Nunito|Old+Standard+TT|Source+Code+Pro&display=swap"
+        rel="stylesheet">
     <link rel="icon"
         href="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png">
 </head>
@@ -19,7 +21,11 @@
 <body>
 
     <header id="header">
-        <div class="app-name">SUNNY TRIP</div>
+        <div class="nav-bar">
+            <img class="logo" src="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png" alt="Sunny Trip Logo">
+            <button id="save-search-btn" class="btn">SAVE SEARCH</button>
+            <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
+        </div>
     </header>
 
     <main id="main">
@@ -62,9 +68,7 @@
         </div>
 
 
-
         <div id="container-results"></div>
-
 
     </main>
     <footer></footer>
@@ -74,21 +78,21 @@
             <div class="flight">
                     <div class="flight-city-name">{{toCity}}</div>
                         <div class="flight-details">
-                        <div><b>Depart:</b> {{fromDate}}</div>
-                        <div><b>Return:</b> {{fromDate}}</div>
-                        <div><b>Price:</b> €{{price}}</div>
-                        <div><b>Flight duration:</b> {{flightDuration}}</div>
+                        <div>Depart: <b>{{fromDate}}</b></div>
+                        <div>Return: <b>{{toDate}}</b></div>
+                        <div>Price: <b>€{{price}}</b></div>
+                        <div>Flight duration: <b>{{flightDuration}}</b> </div>
                     </div>
                     <div class="city-weather">
-                        <div><b>Temperature:</b> {{temp}}°c</div>
-                        <div>{{condition}}</div>
+                        <div>Temperature: <b>{{temp}}°c</b> </div>
+                        <div><b>{{condition}}</b></div>
                         <img class="conditionPic" src='{{conditionPic}}' alt="Weather Icon">
                     </div>
             </div>
         {{/each}}
     </script>
 
-    
+
     <script id='savedSearch-template' type='text/x-handlebars-template'>
         {{#each data}}
         <div class="search" data-id='{{id}}'>
