@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   color: #2d3436;
 }
@@ -17,6 +17,7 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
+  font-weight: bold;
 }
 
 .hr {
@@ -31,14 +32,60 @@ body {
   background-color: #ecf0f1;
 }
 
-.app-name {
+.nav-bar {
+  background-color: #ecf0f1;
+  height: 8vh;
+  padding: 1vh 0.3vw;
+}
+
+.nav-bar .logo {
+  float: left;
+  width: 3vw;
+  height: 6vh;
+}
+
+.nav-bar .btn {
+  background-color: #2F3033;
+  color: #E8CDB2;
+  float: right;
+}
+
+.nav-bar .btn:hover {
+  background-color: #E8CDB2;
+  color: #2F3033;
+}
+
+.main-display {
   background-image: url("../assets/road2.jpg");
   background-size: cover;
-  font-family: 'Nunito', sans-serif;
+}
+
+.app-name {
+  font-family: 'Old Standard TT', serif;
+  font-family: bold;
   font-size: 9vw;
   text-align: center;
-  padding-top: 11vh;
+  padding-top: 5vh;
   padding-bottom: 11vh;
+  padding-left: 3.8vw;
+  text-shadow: 0.2vw 0.1vh #ecf0f1;
+}
+
+#container-search-btn {
+  height: 17vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#search-btn {
+  font-size: 2vw;
 }
 
 #container-search {
@@ -52,19 +99,6 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 7vh 12vw;
-}
-
-#container-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .input-box {
@@ -82,23 +116,24 @@ body {
   border: none;
   height: 5vh;
   margin: 0.5vh 0;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Montserrat', sans-serif;
   padding-left: 0.3vw;
 }
 
 .btn {
-  background-color: #0f092b;
-  color: white;
+  background-color: #E8CDB2;
+  color: #2F3033;
+  border: 0.2vw solid #2F3033;
   text-align: center;
   margin: 0 0.5vw;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn:hover {
-  background-color: white;
-  color: #0f092b;
+  background-color: #2F3033;
+  color: #E8CDB2;
 }
 
 #container-results {
@@ -121,10 +156,10 @@ body {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "n n" "d w";
-  border: 0.5vw solid #240202;
+  border: 0.5vw solid #1A4735;
   margin: 2vw 3vh;
   border-radius: 1vw;
-  background-color: aliceblue;
+  background-color: #E8CDB2;
   width: 30vw;
 }
 
@@ -177,7 +212,7 @@ body {
 }
 
 .no-result {
-  border: 0.5vw solid #240202;
+  border: 0.5vw solid #2F3033;
   height: auto;
   font-size: 5vw;
   margin: 5vh auto;
@@ -185,7 +220,7 @@ body {
 }
 
 .search {
-  border: 0.5vw solid #240202;
+  border: 0.5vw solid #2F3033;
   font-size: 1vw;
   margin: 1vh 1vw;
   padding: 1vw;
@@ -198,6 +233,7 @@ body {
   font-size: 0.8vw;
   width: 5vw;
   background-color: #440f0f;
+  color: #f4f4fc;
   float: right;
 }
 
