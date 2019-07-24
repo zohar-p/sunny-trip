@@ -36,4 +36,13 @@ class Renderer {
     emptyContainerResults(){
         $("#container-results").empty();
     }
+
+    notifySavedSearch(){
+        // this.smoothscrollto('.nav-bar')
+        $('.saved-msg').fadeIn(400);
+        setTimeout(() => {
+            $('.saved-msg').fadeOut(500);
+        }, 3000);
+
+    }
 }
