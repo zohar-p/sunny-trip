@@ -30,6 +30,12 @@ const checkInputErrors = () => {
     const notRequiredInputs = inputs.filter(i => i.data('required') == false)
     let isSearchValid = true
 
+    if(fromTemp.val() > toTemp.val()    ) {
+        renderer.renderInputError(fromTemp, '')
+        renderer.renderInputError(toTemp, '')
+        isSearchValid = false
+    }
+
     notRequiredInputs.forEach(i => {
         if(i.val() <= 0 && i.val() != '') {
             renderer.renderInputError(i, `${i.val()} is an invalid value`)
