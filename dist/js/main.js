@@ -13,7 +13,6 @@ const inputs = [fromCity, fromDate, toDate, fromTemp, toTemp, maxPrice, flightDu
 
 const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
-
     if(emptyInputs.length){
         empty()
     } else {
