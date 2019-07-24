@@ -154,3 +154,9 @@ $('#container-results').on('click', '.search-again-btn', async function () {
 $('.search-input').on('focus', function () {
     renderer.resetInputError($(this))
 });
+
+$('#container-results').on('click', '.destination', function () {
+    const destinationName = $(this).closest('.destination').find('.destination-city-name').text()
+    const relDestinationInfo = logic.structuredCities.find(c => c.toCity == destinationName)
+    renderer.renderDestinationFlights(relDestinationInfo)
+});
