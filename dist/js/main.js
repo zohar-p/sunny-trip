@@ -30,6 +30,12 @@ const checkInputErrors = () => {
     const notRequiredInputs = inputs.filter(i => i.data('required') == false)
     let isSearchValid = true
 
+    if(fromTemp.val() > toTemp.val()    ) {
+        renderer.renderInputError(fromTemp, '')
+        renderer.renderInputError(toTemp, '')
+        isSearchValid = false
+    }
+
     notRequiredInputs.forEach(i => {
         if(i.val() <= 0 && i.val() != '') {
             renderer.renderInputError(i, `${i.val()} is an invalid value`)
@@ -62,6 +68,7 @@ const addWeatherConditions = () => {
 }
 
 $('#search-btn').on('click', async function () {
+    inputs.forEach(i => renderer.resetInputError(i))
     const preformSearch = async () => {
         renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
@@ -128,4 +135,8 @@ $('#container-results').on('click', '.search-again-btn', async function () {
     renderer.emptyContainerResults()
     await logic.getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
     renderer.renderSearchResults(logic.flights)
+});
+
+$('.search-input').on('focus', function () {
+    renderer.resetInputError($(this))
 });

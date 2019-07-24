@@ -28,6 +28,10 @@ class Renderer {
         }
     }
 
+    resetInputError(input){
+        input.removeClass('input-error')
+    }
+    
     renderLoading(){
         $("#container-results").empty();
         $("#container-results").append(`
