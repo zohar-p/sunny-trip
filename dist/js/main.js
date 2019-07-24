@@ -64,6 +64,7 @@ const addWeatherConditions = () => {
 
 $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
+
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
