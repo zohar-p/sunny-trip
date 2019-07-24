@@ -18,6 +18,27 @@ body {
   outline: none;
   border: none;
   font-weight: bold;
+  background-color: #E8CDB2;
+  color: #2f3033;
+  border: 0.2vw solid #2f3033;
+  text-align: center;
+  margin: 0 0.5vw;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+  background-color: #2f3033;
+  color: #E8CDB2;
+  border: 0.2vw solid #E8CDB2;
+}
+
+.btn:active {
+  -webkit-box-shadow: 0.1vw 0.1vw black;
+          box-shadow: 0.1vw 0.1vw black;
+  -webkit-transform: translateY(0.2vw);
+          transform: translateY(0.2vw);
 }
 
 .hr {
@@ -165,32 +186,6 @@ input[type=number]::-webkit-outer-spin-button {
   display: -ms-inline-flexbox;
   display: inline-flex;
   width: 4.5vw;
-}
-
-.btn {
-  background-color: #E8CDB2;
-  color: #2f3033;
-  border: 0.2vw solid #2f3033;
-  text-align: center;
-  margin: 0 0.5vw;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  font-family: 'Montserrat', sans-serif;
-  -webkit-box-shadow: 0.3vw 0.3vw black;
-          box-shadow: 0.3vw 0.3vw black;
-}
-
-.btn:hover {
-  background-color: #2f3033;
-  color: #E8CDB2;
-  border: 0.2vw solid #E8CDB2;
-}
-
-.btn:active {
-  -webkit-box-shadow: 0.1vw 0.1vw black;
-          box-shadow: 0.1vw 0.1vw black;
-  -webkit-transform: translateY(0.2vw);
-          transform: translateY(0.2vw);
 }
 
 #container-results {

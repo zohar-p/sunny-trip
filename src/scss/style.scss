@@ -93,28 +93,6 @@ input[type=number]::-webkit-outer-spin-button {
         }
 }
 
-.btn{
-    background-color: $primary-bright;
-    color: $primary-dark;
-    border: 0.2vw solid $primary-dark;
-    text-align: center;
-    margin: 0 0.5vw;
-    transition: 0.5s;
-    font-family: 'Montserrat', sans-serif;
-    box-shadow: 0.3vw 0.3vw black;
-    
-    &:hover{
-        background-color: $primary-dark;    
-        color: $primary-bright;
-        border: 0.2vw solid $primary-bright;
-    }  
-
-    &:active{
-        box-shadow: 0.1vw 0.1vw black;
-        transform: translateY(0.2vw)
-    }
-}
-
 #container-results{
     display: flex;
     flex-direction: row;
