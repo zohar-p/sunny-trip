@@ -51,7 +51,6 @@ $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = () => emptyInputs.forEach(i => renderer.renderEmptyInput(i))
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
-        console.log(inputsValues)
         await logic.getSearchResults(...inputsValues)
         renderer.renderSearchResults(logic.flights)
     }
