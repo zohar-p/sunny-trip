@@ -153,21 +153,21 @@ input[type=number]::-webkit-outer-spin-button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 7vw;
+  width: 8vw;
 }
 
 .temp-input #from-temp-input {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 3vw;
+  width: 4vw;
 }
 
 .temp-input #to-temp-input {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 3vw;
+  width: 4vw;
 }
 
 .btn {
@@ -280,7 +280,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #ecf0f1;
   color: #2f3033;
   border: 0.3vw solid #2f3033;
-  font-size: 1vw;
+  font-size: 2vw;
   margin: 1vh 0.5vw;
   padding: 0.5vw;
   height: auto;

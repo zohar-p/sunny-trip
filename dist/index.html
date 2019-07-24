@@ -56,7 +56,7 @@
                     </div>
 
                     <div id="flight-duration-box" class="input-box">
-                        <label for="flight-duration-input">Flight Duration (hr)</label>
+                        <label for="flight-duration-input">Max Flight Duration (hr)</label>
                         <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
                             value="4" data-required="false" >
                     </div>
@@ -112,15 +112,15 @@
         {{/each}}
     </script>
 
-
     <script id='savedSearch-template' type='text/x-handlebars-template'>
         {{#each data}}
         <div class="search" data-id='{{_id}}'>
-            <p class="search-para">
-            <div>You searched for a flight from <b id="Upper">{{fromCity}}</b>, between <b>{{fromDate}}</b> and <b>{{toDate}}</b></div>
-            <div>You looked for a flight with a max price of <b>€{{maxPrice}}</b> and a duration less than <b>{{flightDuration}}</b> hours.</div>
-            <div>Your weather request was between <b>{{fromTemp}}°c</b> and <b>{{toTemp}}°c</b>.</div>
-            </p>
+            <div class="saved-from-city">Fly from: <span class="from-city-value">{{fromCity}}</div>
+            <div class="saved-from-date">Fly on: <span class="from-date-value">{{fromDate}}</span></div>
+            <div class="saved-to-date">Return on: <span class="to-date-value">{{toDate}}</span></div>
+            <div class="saved-max-price">Costs no more than: <span class="max-price-value">{{maxPrice}}</span>€</div>
+            <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value">{{flightDuration}}</span> hours</div>
+            <div class="saved-temp-range">Temperatures between: <span class="from-temp-value">{{fromTemp}}</span>°c to <span class="to-temp-value">{{toTemp}}</span>°c</div>
             <button class="delete-saved-search-btn btn">DELETE</button>
             <button class="search-again-btn btn">SEARCH AGAIN</button>
         </div>
