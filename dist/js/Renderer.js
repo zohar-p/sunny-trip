@@ -30,9 +30,17 @@ class Renderer {
     resetInputError(input){
         input.removeClass('input-error')
     }
+
+    smoothScrollTo = function(scrollTo){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: scrollTo.offset().top
+        }, 1600);
+    }
     
     renderLoading(){
-        $("#container-results").empty();
+        $("#container-results").empty()
+            .css('height', '100vh');
+        this.smoothScrollTo($("#container-results"))
         $("#container-results").append(`
             <div class="loader"></div>   
         `);

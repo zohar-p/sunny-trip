@@ -25,6 +25,8 @@ $('#dates-input').daterangepicker({
     "opens": "center"
 }, function(start, end) {});
 
+
+
 const checkInputErrors = () => {
     const requiredInputs = inputs.filter(i => i.data('required') == true)
     const notRequiredInputs = inputs.filter(i => i.data('required') == false)
