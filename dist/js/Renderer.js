@@ -1,7 +1,6 @@
 class Renderer {
 
     renderSearchResults(data) {
-        console.log(data)
         const source = $('#flights-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template({ data });
