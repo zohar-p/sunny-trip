@@ -1,7 +1,6 @@
 class Renderer {
 
     renderSearchResults(data) {
-        console.log(data)
         const source = $('#flights-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template({ data });
@@ -26,6 +25,25 @@ class Renderer {
             input.val('')
             input.attr('placeholder', msg)
         }
+    }
+
+    resetInputError(input){
+        input.removeClass('input-error')
+    }
+
+    smoothScrollTo = function(scrollTo){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: scrollTo.offset().top
+        }, 1600);
+    }
+    
+    renderLoading(){
+        $("#container-results").empty()
+            .css('height', '100vh');
+        this.smoothScrollTo($("#container-results"))
+        $("#container-results").append(`
+            <div class="loader"></div>   
+        `);
     }
 
     renderNoResults() {

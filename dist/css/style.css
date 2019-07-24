@@ -161,14 +161,14 @@ input[type=number]::-webkit-outer-spin-button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 4vw;
+  width: 4.5vw;
 }
 
 .temp-input #to-temp-input {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: 4vw;
+  width: 4.5vw;
 }
 
 .btn {

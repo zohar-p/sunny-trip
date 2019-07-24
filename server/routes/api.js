@@ -38,24 +38,17 @@ router.get(
         const fromDateFormat = moment(reqParams.fromDate, "DD/MM/YYYY");
         const toDateFormat = moment(reqParams.toDate, "DD/MM/YYYY");
 
-
         try {
             const cityCodes = await CityCode.find(
                 { city: reqParams.fromCity },
                 { airportCode: 1 }
             );
 
-            //const bs = await request('http://www.apixu.com/doc/conditions.json');
-
-           
-
-
             //For each city code, push Flight request to array
             cityCodes.forEach(c =>
                 cityCodesReq.push(
                     request(
-                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist('price_to', reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}&partner=picky`
-                    )
+                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist('price_to', reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}&partner=picky`)
                 )
             );
 
@@ -91,10 +84,7 @@ router.get(
             //For each city, push Weather request to array
             for (cityKey in airportsCities) {
                 weatherReq.push(
-                    request(
-                        `http://api.apixu.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${cityKey}&days=10`
-                    )
-                );
+                    request(`http://api.apixu.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${cityKey}&days=10`));
             }
 
             //Error handle for promise all
@@ -104,9 +94,6 @@ router.get(
             const weatherValidResults = weatherResults.filter(
                 result => !(result instanceof Error)
             );
-
-
-
 
             //Take only the cities with the valid weather
             let validWeather = weatherValidResults.filter(cityWeat => {
@@ -171,36 +158,6 @@ router.get(
                         countries[airportsCities[cityName][0].countryTo.name.toLowerCase()] = "Country";
                 }
             }
-            
-            // for(country in countries){
-            //     countryDetailsReq.push(request(`https://restcountries.eu/rest/v2/name/${country}`));
-            //     console.log(country)
-            // }
-            
-            // //Error handle for promise all
-            // const countryRes = await Promise.all(
-            //     countryDetailsReq.map(p => p.catch(e => e))
-            // );
-            // const countryValidRes = countryRes.filter(
-            //     result => !(result instanceof Error)
-            // );
-
-            // //Set all the results to airportsResults
-            // countryValidRes.forEach(r => {
-            //     countryDetailsResults.push(JSON.parse(r));
-            // });
-
-            // //Get Flag
-            // console.log(countryDetailsResults)
-            // countryDetailsResults.forEach(c => {
-            //     if(c.length > 1){
-            //         //TODO
-            //     }else{
-            //         // c.forEach(minC => {
-            //         //     if(minC.name ===)
-            //         // })
-            //     }
-            // })
 
             let finalResults = [];
             for (cityName in airportsCities) {
@@ -254,11 +211,8 @@ router.get("/search", async (req, res) => {
 
 router.post("/search", (req, res) => {
     const inputValues = req.body;
-    // console.log(inputValues.fromDate)
-    // console.log(moment(inputValues.fromDate, 'DD-MM-YYYY').format())
     inputValues.fromDate = moment(inputValues.fromDate, 'DD-MM-YYYY').format()
     inputValues.toDate = moment(inputValues.toDate, 'DD-MM-YYYY').format()
-    // res.end()
     const newSearch = new Search(inputValues);
     newSearch.save();
     res.send(newSearch);
@@ -272,3 +226,35 @@ router.delete("/search/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+/**
+ *  // for(country in countries){
+            //     countryDetailsReq.push(request(`https://restcountries.eu/rest/v2/name/${country}`));
+            //     console.log(country)
+            // }
+            
+            // //Error handle for promise all
+            // const countryRes = await Promise.all(
+            //     countryDetailsReq.map(p => p.catch(e => e))
+            // );
+            // const countryValidRes = countryRes.filter(
+            //     result => !(result instanceof Error)
+            // );
+
+            // //Set all the results to airportsResults
+            // countryValidRes.forEach(r => {
+            //     countryDetailsResults.push(JSON.parse(r));
+            // });
+
+            // //Get Flag
+            // console.log(countryDetailsResults)
+            // countryDetailsResults.forEach(c => {
+            //     if(c.length > 1){
+            //         //TODO
+            //     }else{
+            //         // c.forEach(minC => {
+            //         //     if(minC.name ===)
+            //         // })
+            //     }
+            // })
+ */

@@ -25,21 +25,28 @@ $('#dates-input').daterangepicker({
     "opens": "center"
 }, function(start, end) {});
 
+
+
 const checkInputErrors = () => {
     const requiredInputs = inputs.filter(i => i.data('required') == true)
     const notRequiredInputs = inputs.filter(i => i.data('required') == false)
     let isSearchValid = true
-
+    
     notRequiredInputs.forEach(i => {
         if(i.val() <= 0 && i.val() != '') {
             renderer.renderInputError(i, `${i.val()} is an invalid value`)
             isSearchValid = false
         }
     })
-
     const emptyRequiredInputs = requiredInputs.filter(i => i.val() == '')
     if(emptyRequiredInputs.length){
         emptyRequiredInputs.forEach(i => renderer.renderInputError(i, 'This field is required'))
+        isSearchValid = false
+    }
+
+    if(Number(fromTemp.val()) > Number(toTemp.val())) {
+        renderer.renderInputError(fromTemp, 'min')
+        renderer.renderInputError(toTemp, 'max')
         isSearchValid = false
     }
     return isSearchValid
@@ -61,18 +68,27 @@ const addWeatherConditions = () => {
     })
 }
 
+const displaySearchResults = () => {
+    if(logic.flights == 'No results found') {
+        renderer.renderNoResults()
+    } else {
+        calcAvgTemp()
+        addWeatherConditions()
+        renderer.renderSearchResults(logic.flights)
+    }
+}
+
 $('#search-btn').on('click', async function () {
+    inputs.forEach(i => renderer.resetInputError(i))
+
     const preformSearch = async () => {
         renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
+        renderer.renderLoading();
+
         await logic.getSearchResults(...inputsValues)
-        if(logic.flights == 'No results found') {
-            renderer.renderNoResults()
-        } else {
-            calcAvgTemp()
-            addWeatherConditions()
-            renderer.renderSearchResults(logic.flights)
-        }
+
+        displaySearchResults()
     }
 
     const isSearchValid = checkInputErrors()
@@ -117,6 +133,7 @@ $('#show-saved-searches-btn').on('click', async function () {
 
 $('#container-results').on('click', '.search-again-btn', async function () {
     const searchBox = $(this).closest('.search')
+
     const fromCity = searchBox.find('.from-city-value').text()
     const fromDate = searchBox.find('.from-date-value').text().split('/').join('-')
     const toDate = searchBox.find('.to-date-value').text().split('/').join('-')
@@ -125,7 +142,14 @@ $('#container-results').on('click', '.search-again-btn', async function () {
     const toTemp = searchBox.find('.to-temp-value').text()
     const maxPrice = searchBox.find('.max-price-value').text()
     const flightDuration = searchBox.find('.flight-duration-value').text()
+
     renderer.emptyContainerResults()
+    renderer.renderLoading();
+
     await logic.getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
-    renderer.renderSearchResults(logic.flights)
+    displaySearchResults()
+});
+
+$('.search-input').on('focus', function () {
+    renderer.resetInputError($(this))
 });
