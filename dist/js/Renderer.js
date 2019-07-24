@@ -56,7 +56,7 @@ class Renderer {
     }
 
     notifySavedSearch(){
-        // this.smoothscrollto('.nav-bar')
+        this.smoothScrollTo($('.nav-bar'))
         $('.saved-msg').fadeIn(400);
         setTimeout(() => {
             $('.saved-msg').fadeOut(500);

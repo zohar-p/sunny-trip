@@ -123,6 +123,7 @@ $('#container-results').on('click', '.delete-saved-search-btn', async function (
 });
 
 $('#show-saved-searches-btn').on('click', async function () {
+    renderer.smoothScrollTo($('#container-results'))
     const savedSearches = await logic.getSavedSearches()
     savedSearches.forEach(s => {
         s.fromDate = moment(s.fromDate).format('DD/MM/YYYY')
