@@ -220,6 +220,8 @@ body {
 }
 
 .search {
+  background-color: #E8CDB2;
+  color: #2F3033;
   border: 0.5vw solid #2F3033;
   font-size: 1vw;
   margin: 1vh 1vw;
@@ -235,6 +237,7 @@ body {
   background-color: #440f0f;
   color: #f4f4fc;
   float: right;
+  margin-top: 2vh;
 }
 
 .search .delete-saved-search-btn:hover {

@@ -152,6 +152,8 @@ body{
 }
 
 .search{
+    background-color: $primary-bright;
+    color: $primary-dark;
     border: 0.5vw solid $primary-dark;
     font-size: 1vw;
     margin: 1vh 1vw;
@@ -159,6 +161,8 @@ body{
     height: auto;
     width: 30vw;
     border-radius: 1vw;
+    // hi
+
 
 
     .delete-saved-search-btn{
@@ -166,7 +170,8 @@ body{
         width: 5vw;
         background-color: rgb(68, 15, 15);
         color: rgb(244, 244, 252);
-       float: right;        
+        float: right; 
+        margin-top: 2vh;       
 
         &:hover{
             background-color: rgb(244, 244, 252);
