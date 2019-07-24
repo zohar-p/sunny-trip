@@ -22,51 +22,56 @@
 
     <header id="header">
         <div class="nav-bar">
-            <img class="logo" src="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png" alt="Sunny Trip Logo">
+            <img class="logo"
+                src="https://cdn1.iconfinder.com/data/icons/airplane-glyph/64/Airplane_Flight_Airport_Transportation-07-512.png"
+                alt="Sunny Trip Logo">
             <button id="save-search-btn" class="btn">SAVE SEARCH</button>
             <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
         </div>
     </header>
 
     <main id="main">
-        <div id="container-search">
-            <div id="from-city-box" class="input-box">
-                <label for="from-city-input">From</label>
-                <input id="from-city-input" class="search-input" data-name="fromCity" type="text" value="Tel Aviv">
-            </div>
+        <div class="main-display">
 
-            <div id="dates-box" class="input-box">
-                <label for="dates-input">Dates</label>
-                <input id="dates-input" class="search-input" data-name="dates" type="text">
-            </div>
+            <div class="app-name">SUNNY TRIP</div>
 
-            <div id="max-price-box" class="input-box">
-                <label for="max-price-input">Max Price</label>
-                <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300" >
-            </div>
+            <div id="container-search">
+                <div id="from-city-box" class="input-box">
+                    <label for="from-city-input">From</label>
+                    <input id="from-city-input" class="search-input" data-name="fromCity" type="text" value="Tel Aviv">
+                </div>
 
-            <div id="flight-duration-box" class="input-box">
-                <label for="flight-duration-input">Flight Duration</label>
-                <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number" value="4">
-            </div>
+                <div id="dates-box" class="input-box">
+                    <label for="dates-input">Dates</label>
+                    <input id="dates-input" class="search-input" data-name="dates" type="text">
+                </div>
 
-            <div id="from-temp-box" class="input-box">
-                <label for="from-temp-input">Min Temp.</label>
-                <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
-            </div>
+                <div id="max-price-box" class="input-box">
+                    <label for="max-price-input">Max Price</label>
+                    <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300">
+                </div>
 
-            <div id="to-temp-box" class="input-box">
-                <label for="to-temp-input">Max Temp.</label>
-                <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
-            </div>
+                <div id="flight-duration-box" class="input-box">
+                    <label for="flight-duration-input">Flight Duration</label>
+                    <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
+                        value="4">
+                </div>
 
+                <div id="from-temp-box" class="input-box">
+                    <label for="from-temp-input">Min Temp.</label>
+                    <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
+                </div>
+
+                <div id="to-temp-box" class="input-box">
+                    <label for="to-temp-input">Max Temp.</label>
+                    <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
+                </div>
+
+            </div>
+            <div id="container-search-btn">
+                <button id="search-btn" class="btn">SEARCH</button>
+            </div>
         </div>
-        <div id="container-buttons">
-            <button id="search-btn" class="btn">SEARCH</button>
-            <button id="save-search-btn" class="btn">SAVE SEARCH</button>
-            <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
-        </div>
-
 
         <div id="container-results"></div>
 
