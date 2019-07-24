@@ -63,7 +63,7 @@ const addWeatherConditions = () => {
 
 $('#search-btn').on('click', async function () {
     const preformSearch = async () => {
-        // renderer.emptyContainerResults()
+        renderer.emptyContainerResults()
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
         if(logic.flights == 'No results found') {
@@ -114,3 +114,14 @@ $('#show-saved-searches-btn').on('click', async function () {
     renderer.renderSavedSearches(savedSearches)
 })
 
+$('#container-results').on('click', '.search-again-btn', async function () {
+    const searchBox = $(this).closest('.search')
+    const fromCity = searchBox.find('.from-city-value')
+    const dates = `${searchBox.find('.from-date-value')} / ${searchBox.find('.to-date-value')}`
+    const fromTemp = searchBox.find('.from-temp-value')
+    const toTemp = searchBox.find('.to-temp-value')
+    const maxPrice = searchBox.find('.max-price-value')
+    const flightDuration = searchBox.find('.flight-duration-value')
+    renderer.emptyContainerResults()
+    await getSearchResults(fromCity, dates, fromTemp, toTemp, maxPrice, flightDuration)
+});
