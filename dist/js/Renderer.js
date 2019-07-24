@@ -1,9 +1,7 @@
 class Renderer {
 
     renderSearchResults(data) {
-        data.forEach(data=>data.condition = data.temp[0].condition.text);
-        data.forEach(data=> data.temp = data.temp[0].avgTemp);
-        data.forEach(data=>data.conditionPic = data.temp[0].condition.icon);
+        console.log(data)
         const source = $('#flights-template').html();
         const template = Handlebars.compile(source);
         const newHTML = template({ data });
@@ -29,9 +27,9 @@ class Renderer {
     }
 }
 // CHECK
-const render = new Renderer
+// const render = new Renderer
 
-render.renderNoResults()
+// render.renderNoResults()
 
 // let a = [{
 //     cityName: "Tel Aviv",
