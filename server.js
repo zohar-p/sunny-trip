@@ -16,12 +16,6 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', api)
 
-const a = "BBB"
-const b = "//a"
-const c = "Bdd"
-const d = "4/d"
-const e = "/ss"
-const arr = [a,b,c,d,e];
 
 // Load all data to DB
 // let format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
