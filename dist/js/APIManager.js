@@ -16,7 +16,7 @@ class APIManager {
     }
 
     deleteSavedSearch(DBID){
-        this.useAjax('delete/:' + DBID, '/search')
+        this.useAjax('delete', '/search/' + DBID)
     }
 
     useAjax(method, url, success = response=>response, data){

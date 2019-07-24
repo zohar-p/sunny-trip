@@ -46,14 +46,33 @@ const checkInputErrors = () => {
     console.log('checking')
 }
 
+const calcAvgTemp = () => {
+    logic.flights.forEach(f => {
+        let sum = 0
+        f.temp.forEach(t => sum += Number(t.avgTemp))
+        const avgTemp = Math.round(sum / f.temp.length)
+        f.avgTemp = avgTemp
+    })
+}
+
+const addWeatherConditions = () => {
+    logic.flights.forEach(f => {
+        f.conditionIcon = f.temp[0].condition.icon
+        f.conditionText = f.temp[0].condition.text
+    })
+}
+
 $('#search-btn').on('click', async function () { // does this have to be async?
     const renderEmptyInput = emptyInputs => emptyInputs.forEach(i => renderer.renderInputError(i, `empty`))
+
     const preformSearch = async () => {
         let inputsValues = inputs.map(i => i = i.val())
         await logic.getSearchResults(...inputsValues)
         if(logic.flights == 'No results found') {
             renderer.renderNoResults()
         } else {
+            calcAvgTemp()
+            addWeatherConditions()
             renderer.renderSearchResults(logic.flights)
         }
     }
@@ -79,9 +98,15 @@ $('#save-search-btn').on('click', function () {
     // checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
-$('#container-results').on('click', '.delete-saved-search-btn', function () {
+$('#container-results').on('click', '.delete-saved-search-btn', async function () {
     const relDBID = $(this).closest('.search').data('id')
-    logic.deleteSavedSearch(relDBID)
+    await logic.deleteSavedSearch(relDBID)
+    const savedSearches = await logic.getSavedSearches()
+    savedSearches.forEach(s => {
+        s.fromDate = moment(s.fromDate).format('DD/MM/YYYY')
+        s.toDate = moment(s.toDate).format('DD/MM/YYYY')
+    })
+    renderer.renderSavedSearches(savedSearches)
 });
 
 $('#show-saved-searches-btn').on('click', async function () {
