@@ -20,9 +20,7 @@ $('#dates-input').daterangepicker({
     "minDate": moment().format('DD-MM-YYYY'),
     "maxDate": moment().add(6, 'days').format('DD-MM-YYYY'),
     "opens": "center"
-}, function(start, end, label) {
-    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-});
+}, function(start, end) {});
 const checkEmptyInputs = (empty, notEmpty) => {
     const emptyInputs = inputs.filter(i => i.val() == false)
     if(emptyInputs.length){
@@ -59,15 +57,19 @@ $('#search-btn').on('click', async function () { // does this have to be async?
 });
 
 $('#save-search-btn').on('click', function () {
-    const saveSearch = () => {
+    // const saveSearch = () => {
         let inputsValues = {}
         inputs.forEach(i => {
-            inputsValues[i] = i.val()
+            inputsValues[i.data('name')] = i.val()
         })
+        inputsValues.dates = inputsValues.dates.split(' / ')
+        inputsValues.fromDate = inputsValues.dates[0]
+        inputsValues.toDate = inputsValues.dates[1]
+        delete inputsValues.dates
         logic.saveSearch(inputsValues)
-    }
+    // }
 
-    checkEmptyInputs(renderEmptyInput, saveSearch)
+    // checkEmptyInputs(renderEmptyInput, saveSearch)
 });
 
 $('#container-results').on('click', '.delete-saved-search-btn', function () {
