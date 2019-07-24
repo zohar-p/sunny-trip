@@ -7,6 +7,7 @@ const CityCode = require("../models/City-Code");
 const Search = require("../models/Search");
 const Utils = require("../utils/utils")
 const WEATHER_API_KEY = "bea57b220ef44538b62171913191707";
+//https://api.skypicker.com/flights?flyFrom=TLV&date_from=24/07/2019&date_to=24/07/2019&return_from=26/07/2019&return_to=26/07/2019&max_stopovers=0
 
 router.get(
     "/flights/:fromCity/:fromDate/:toDate/:fromTemp/:toTemp",
@@ -15,6 +16,8 @@ router.get(
         let airportsResults = [];
         let weatherReq = [];
         let weatherResults = [];
+        let countryDetailsReq =[]
+        let countryDetailsResults =[]
 
         const reqParams = {
             fromCity: req.params.fromCity.replace("-", " ").toLowerCase(),
@@ -23,10 +26,11 @@ router.get(
             fromTemp: req.params.fromTemp,
             toTemp: req.params.toTemp,
             maxPrice: req.query.maxPrice || "",
-            dur: req.query.flightDuration || ""
+            dur: req.query.flightDuration || "",
+            lang: req.query.lang || ""
         };
 
-        console.log(reqParams.maxPrice);
+        reqParams.lang.toLowerCase();
 
         //Format the dates:
         reqParams.fromDate = moment(reqParams.fromDate, "DD-MM-YYYY").format("DD/MM/YYYY");
@@ -41,11 +45,16 @@ router.get(
                 { airportCode: 1 }
             );
 
+            //const bs = await request('http://www.apixu.com/doc/conditions.json');
+
+           
+
+
             //For each city code, push Flight request to array
             cityCodes.forEach(c =>
                 cityCodesReq.push(
                     request(
-                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist('price_to', reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
+                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist('price_to', reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}&partner=picky`
                     )
                 )
             );
@@ -147,12 +156,51 @@ router.get(
                 return { name: weather.location.name.toLowerCase(), forecast };
             });
 
+            const countries = {};
             for (cityName in airportsCities) {
                 const valid = validCitiesWeather.some(
                     validWeather => cityName.toLowerCase() === validWeather.name
                 );
-                if (!valid) delete airportsCities[cityName];
+                if (!valid) 
+                    delete airportsCities[cityName];
+                else{
+
+                    if (airportsCities[cityName][0].countryTo.name in countries)
+                        continue
+                    else 
+                        countries[airportsCities[cityName][0].countryTo.name.toLowerCase()] = "Country";
+                }
             }
+            
+            // for(country in countries){
+            //     countryDetailsReq.push(request(`https://restcountries.eu/rest/v2/name/${country}`));
+            //     console.log(country)
+            // }
+            
+            // //Error handle for promise all
+            // const countryRes = await Promise.all(
+            //     countryDetailsReq.map(p => p.catch(e => e))
+            // );
+            // const countryValidRes = countryRes.filter(
+            //     result => !(result instanceof Error)
+            // );
+
+            // //Set all the results to airportsResults
+            // countryValidRes.forEach(r => {
+            //     countryDetailsResults.push(JSON.parse(r));
+            // });
+
+            // //Get Flag
+            // console.log(countryDetailsResults)
+            // countryDetailsResults.forEach(c => {
+            //     if(c.length > 1){
+            //         //TODO
+            //     }else{
+            //         // c.forEach(minC => {
+            //         //     if(minC.name ===)
+            //         // })
+            //     }
+            // })
 
             let finalResults = [];
             for (cityName in airportsCities) {
@@ -174,17 +222,22 @@ router.get(
                         temp: weather.forecast,
                         away: {
                             airport: airport.route[0].flyFrom,
+                            airLine: airport.route[0].airline,
+                            flightNumber: airport.route[0].operating_flight_no,
                             aHour: Utils.convertHour(airport.route[0].aTime),
                             dHour: Utils.convertHour(airport.route[0].dTime)
                         },
                         return: {
                             airport: airport.route[1].flyFrom,
+                            airLine: airport.route[1].airline,
+                            flightNumber: airport.route[1].operating_flight_no,
                             aHour: Utils.convertHour(airport.route[1].aTime),
                             dHour: Utils.convertHour(airport.route[1].dTime)
                         }
                     });
                 });
             }
+
 
             res.send(finalResults);
         } catch (e) {
