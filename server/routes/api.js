@@ -26,13 +26,14 @@ router.get(
             dur: req.query.flightDuration || ""
         };
 
+        console.log(reqParams.maxPrice);
+
         //Format the dates:
         reqParams.fromDate = moment(reqParams.fromDate, "DD-MM-YYYY").format("DD/MM/YYYY");
         reqParams.toDate = moment(reqParams.toDate, "DD-MM-YYYY").format("DD/MM/YYYY");
-        const fromDateFormat = moment(reqParams.fromDate,"DD/MM/YYYY");
-        const toDateFormat = moment(reqParams.toDate,"DD/MM/YYYY");
-        const diffDates = toDateFormat.diff(fromDateFormat, 'days')+1
-        
+        const fromDateFormat = moment(reqParams.fromDate, "DD/MM/YYYY");
+        const toDateFormat = moment(reqParams.toDate, "DD/MM/YYYY");
+
 
         try {
             const cityCodes = await CityCode.find(
@@ -44,7 +45,7 @@ router.get(
             cityCodes.forEach(c =>
                 cityCodesReq.push(
                     request(
-                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist("maxPrice", reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
+                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist('price_to', reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
                     )
                 )
             );
@@ -96,17 +97,17 @@ router.get(
             );
 
 
-            
-            
+
+
             //Take only the cities with the valid weather
             let validWeather = weatherValidResults.filter(cityWeat => {
                 cityWeat = JSON.parse(cityWeat);
 
                 //Take the forecast of the specific dates
                 const specificDates = cityWeat.forecast.forecastday.filter(dayWeat => {
-                    if(moment(dayWeat.date,"YYYY-MM-DD").isSameOrAfter(fromDateFormat)
-                        && moment(dayWeat.date,"YYYY-MM-DD").isSameOrBefore(toDateFormat))
-                            return dayWeat
+                    if (moment(dayWeat.date, "YYYY-MM-DD").isSameOrAfter(fromDateFormat)
+                        && moment(dayWeat.date, "YYYY-MM-DD").isSameOrBefore(toDateFormat))
+                        return dayWeat
                 })
 
                 //Check if those dates are in the temp range
@@ -130,12 +131,12 @@ router.get(
 
                 //Take the forecast of the specific dates
                 const specificDates = weather.forecast.forecastday.filter(dayWeat => {
-                    if(moment(dayWeat.date,"YYYY-MM-DD").isSameOrAfter(fromDateFormat)
-                        && moment(dayWeat.date,"YYYY-MM-DD").isSameOrBefore(toDateFormat))
-                            return dayWeat
+                    if (moment(dayWeat.date, "YYYY-MM-DD").isSameOrAfter(fromDateFormat)
+                        && moment(dayWeat.date, "YYYY-MM-DD").isSameOrBefore(toDateFormat))
+                        return dayWeat
                 })
 
-                let forecast = specificDates.map(f => {
+                const forecast = specificDates.map(f => {
                     return {
                         date: f.date,
                         avgTemp: f.day.avgtemp_c,
@@ -159,9 +160,8 @@ router.get(
                     let weather = {};
 
                     validCitiesWeather.forEach(cityWeather => {
-                        if (cityWeather.name === cityName) {
+                        if (cityWeather.name === cityName)
                             return (weather = cityWeather);
-                        }
                     });
 
                     finalResults.push({
@@ -171,7 +171,17 @@ router.get(
                         toDate: reqParams.toDate,
                         price: airport.price,
                         flightDuration: airport.fly_duration,
-                        temp: weather.forecast
+                        temp: weather.forecast,
+                        away: {
+                            airport: airport.route[0].flyFrom,
+                            aHour: Utils.convertHour(airport.route[0].aTime),
+                            dHour: Utils.convertHour(airport.route[0].dTime)
+                        },
+                        return: {
+                            airport: airport.route[1].flyFrom,
+                            aHour: Utils.convertHour(airport.route[1].aTime),
+                            dHour: Utils.convertHour(airport.route[1].dTime)
+                        }
                     });
                 });
             }

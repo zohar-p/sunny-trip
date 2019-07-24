@@ -3,6 +3,7 @@ const app = express()
 const api = require('./server/routes/api')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const moment = require("moment");
 const data = require('./city-to-code.json')
 const cityCode = require('./server/models/City-Code')
 const path = require('path')
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', api)
+
+
 
 
 // Load all data to DB
