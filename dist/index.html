@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sunny Trip</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="css/style.css">
     <link
         href="https://fonts.googleapis.com/css?family=Arimo|Londrina+Shadow|Montserrat|Nunito|Old+Standard+TT|Source+Code+Pro&display=swap"
@@ -25,46 +29,42 @@
     </header>
 
     <main id="main">
-        <div class="main-display">
-            <div class="app-name">SUNNY TRIP</div>
-
-            <div id="container-search">
-                <div id="from-city-box" class="input-box">
-                    <label for="from-city-input">From</label>
-                    <input id="from-city-input" class="search-input" type="text" placeholder="From: Tel Aviv">
-                </div>
-
-                <div id="dates-box" class="input-box">
-                    <label for="dates-input">Dates</label>
-                    <input id="dates-input" class="search-input" type="text" value="25-07-2019 / 29-07-2019">
-                </div>
-
-                <div id="max-price-box" class="input-box">
-                    <label for="max-price-input">Max Price</label>
-                    <input id="max-price-input" class="search-input" type="number" value="300">
-                </div>
-
-                <div id="flight-duration-box" class="input-box">
-                    <label for="flight-duration-input">Flight Duration</label>
-                    <input id="flight-duration-input" class="search-input" type="number" value="4">
-                </div>
-
-                <div id="from-temp-box" class="input-box">
-                    <label for="from-temp-input">Min Temp.</label>
-                    <input id="from-temp-input" class="search-input" type="number" value="15">
-                </div>
-
-                <div id="to-temp-box" class="input-box">
-                    <label for="to-temp-input">Max Temp.</label>
-                    <input id="to-temp-input" class="search-input" type="number" value="30">
-                </div>
-
+        <div id="container-search">
+            <div id="from-city-box" class="input-box">
+                <label for="from-city-input">From</label>
+                <input id="from-city-input" class="search-input" data-name="fromCity" type="text" value="Tel Aviv">
             </div>
 
-            <div id="container-search-btn">
-                <button id="search-btn" class="btn">SEARCH FLIGHTS</button>
+            <div id="dates-box" class="input-box">
+                <label for="dates-input">Dates</label>
+                <input id="dates-input" class="search-input" data-name="dates" type="text">
             </div>
 
+            <div id="max-price-box" class="input-box">
+                <label for="max-price-input">Max Price</label>
+                <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" value="300" >
+            </div>
+
+            <div id="flight-duration-box" class="input-box">
+                <label for="flight-duration-input">Flight Duration</label>
+                <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number" value="4">
+            </div>
+
+            <div id="from-temp-box" class="input-box">
+                <label for="from-temp-input">Min Temp.</label>
+                <input id="from-temp-input" class="search-input" data-name="fromTemp" type="number" value="15">
+            </div>
+
+            <div id="to-temp-box" class="input-box">
+                <label for="to-temp-input">Max Temp.</label>
+                <input id="to-temp-input" class="search-input" data-name="toTemp" type="number" value="30">
+            </div>
+
+        </div>
+        <div id="container-buttons">
+            <button id="search-btn" class="btn">SEARCH</button>
+            <button id="save-search-btn" class="btn">SAVE SEARCH</button>
+            <button id="show-saved-searches-btn" class="btn">SHOW SAVED SEARCHS</button>
         </div>
 
 
@@ -98,7 +98,7 @@
         <div class="search" data-id='{{id}}'>
             <p class="search-para">
             <div>You searched for a flight from <b>{{fromCity}}</b>, between <b>{{fromDate}}</b> and <b>{{toDate}}</b></div>
-            <div>You looked for a flight with a max price of <b>€{{price}}</b> and a duration less than <b>{{duration}}</b> hours.</div>
+            <div>You looked for a flight with a max price of <b>€{{maxPrice}}</b> and a duration less than <b>{{flightDuration}}</b> hours.</div>
             <div>Your weather request was between <b>{{fromTemp}}°c</b> and <b>{{toTemp}}°c</b>.</div>
             </p>
             <button class="delete-saved-search-btn btn">DELETE</button>
@@ -107,10 +107,7 @@
     </script>
 
 
-    <script src="moment/moment.js"></script>
-    <script src="daterangepicker/daterangepicker.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
-    <script src="jquery/dist/jquery.js"></script>
     <script src="js/APIManager.js"></script>
     <script src="js/Renderer.js"></script>
     <script src="js/Logic.js"></script>
