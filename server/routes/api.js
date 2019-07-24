@@ -44,7 +44,7 @@ router.get(
             cityCodes.forEach(c =>
                 cityCodesReq.push(
                     request(
-                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.toDate}${Utils.isParamExist("maxPrice", reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
+                        `https://api.skypicker.com/flights?flyFrom=${c.airportCode}&date_from=${reqParams.fromDate}&date_to=${reqParams.fromDate}&return_from=${reqParams.toDate}&return_to=${reqParams.toDate}&max_stopovers=0${Utils.isParamExist("maxPrice", reqParams.maxPrice)}${Utils.isParamExist("max_fly_duration", reqParams.dur)}`
                     )
                 )
             );
@@ -203,6 +203,7 @@ router.post("/search", (req, res) => {
 
 router.delete("/search/:id", async (req, res) => {
     const id = req.params.id;
+    console.log(id)
     const deletedDoc = await Search.findByIdAndDelete({ _id: id });
     res.send(deletedDoc);
 });
