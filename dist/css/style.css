@@ -209,16 +209,25 @@ body {
 }
 
 #container-results {
-  padding: 1rem;
-  display: -ms-grid;
-  display: grid;
-  grid-gap: 1rem;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  padding: 1.2rem .6rem .6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .destination {
   cursor: pointer;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,7 +237,18 @@ body {
           flex-direction: column;
 }
 
+.destination:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
 .destination .destination-city-name {
+  font-family: 'Russo One', sans-serif;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
   -ms-flex-preferred-size: 1;
       flex-basis: 1;
 }
@@ -257,9 +277,30 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.destination .destination-dates *:not(:last-child), .destination .destination-temps *:not(:last-child), .destination .destination-condition-texts *:not(:last-child), .destination .destination-condition-icons *:not(:last-child) {
+  padding-right: .4rem;
+}
+
+.destination .destination-dates *:not(:first-child), .destination .destination-temps *:not(:first-child), .destination .destination-condition-texts *:not(:first-child), .destination .destination-condition-icons *:not(:first-child) {
+  padding-left: .4rem;
+}
+
+.destination .destination-dates *, .destination .destination-temps * {
+  text-align: center;
+  width: 100%;
+}
+
+.destination .destination-dates *:not(:last-child), .destination .destination-temps *:not(:last-child) {
+  border-right: 1px solid #b2bec3;
+}
+
+.destination .day-temp {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .delete-saved-search-btn {
@@ -322,7 +363,7 @@ body {
 
 #dest-info-popup .dest-flight .dest-away, #dest-info-popup .dest-flight .dest-return {
   padding: .6rem;
-  height: 25vh;
+  height: 18vh;
   display: -ms-grid;
   display: grid;
   justify-items: center;
@@ -450,6 +491,9 @@ body {
 }
 
 .result {
+  -ms-flex-preferred-size: 1;
+      flex-basis: 1;
+  margin: .6rem;
   padding: 1.2rem .6rem .6rem;
   border-radius: .6rem;
   background-color: #e4e7f2;
@@ -516,7 +560,7 @@ body {
 }
 
 .no-result {
-  grid-column: 1 / -1;
+  margin: 0 auto;
   padding: 2rem;
   text-align: center;
   font-size: 3rem;
@@ -543,6 +587,10 @@ body {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.search .saved-input-value {
+  font-weight: bold;
 }
 
 body {
