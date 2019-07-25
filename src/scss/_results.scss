@@ -173,6 +173,7 @@
     border-radius: .6rem;
     background-color: darken($white, 5);
     box-shadow: 0 0 .4rem rgba(50, 50, 50, .6);
+    // grid-row: span1;
 
     &.flight {
             display: grid;
@@ -211,14 +212,10 @@
 }
 
 .no-result{
-    border: 0.5vw solid $primary-dark;
-    height: auto;
-    font-size: 5vw;
-    margin: 5vh auto;
-    padding: 5vw;
-    background-color: $white;
-    border-radius: 2vw;
-
+    grid-column: 1 / -1;
+    padding: 2rem;
+    text-align: center;
+    font-size: 3rem;
 }
 
 .search{    

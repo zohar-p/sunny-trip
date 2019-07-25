@@ -24,6 +24,7 @@ class Logic {
 
     fuseSameCity(){
         let fusedCities = []
+        let constructed = []
         this.flights.forEach(f =>{
             if(this.flights.length){
                 let destination = this.flights[0].toCity
@@ -34,7 +35,7 @@ class Logic {
         })
         
         fusedCities.forEach(c => {
-            this.structuredCities.push({
+            constructed.push({
                 toCity: c[0].toCity,
                 weather: c[0].temp,
                 conditionIcon: c[0].conditionIcon,
@@ -55,6 +56,7 @@ class Logic {
             })
 
         })
+        this.structuredCities = constructed
         console.log(this.structuredCities)
 
     }

@@ -62,7 +62,7 @@ class Renderer {
     }
 
     renderNoResults() {
-        let noResults = `<div class="no-result">SORRY, NO RESULTS FOUND<div>`
+        let noResults = `<div class="no-result result">SORRY, NO RESULTS FOUND<div>`
         $("#container-results").empty();
         $("#container-results").append(noResults);
     }
