@@ -111,6 +111,30 @@
         {{/each}}
     </script>
 
+    
+    <script id="destination-info-template" type="test/text/x-handlebars-template">
+        <div id="dest-info-popup">
+        {{#each data}}
+            <div class="dest-flight">
+                <div class="dest-away">
+                    <div class="flight-num">flight: {{away.airline}}{{away.flightNumber}}</div>
+                    <div class="dest-from-date">{{fromDate}}</div>
+                    <div class="dest-from-city">{{fromCity}}</div>
+                    <div class="dest-away-departue-airport">{{away.airport}}</div>
+                    <div class="dest-away-departue-time">{{away.dHour}}</div>
+                </div>
+                <div class="dest-return">
+                    <div class="flight-num">flight: {{return.airline}}{{return.flightNumber}}</div>
+                    <div class="dest-from-date">{{fromDate}}</div>
+                    <div class="dest-from-city">{{fromCity}}</div>
+                    <div class="dest-return-departue-airport">{{return.airport}}</div>
+                    <div class="dest-return-departue-time">{{return.dHour}}</div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </script>
+
     <script id='flights-template' type='text/x-handlebars-template'>
         {{#each data}}
             <div class="flight result">

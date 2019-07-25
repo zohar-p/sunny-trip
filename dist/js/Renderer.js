@@ -24,6 +24,14 @@ class Renderer {
         $("#container-results").append(newHTML);
     }
 
+    renderDestinationFlights(destination) {
+        console.log(destination)
+        const source = $('#destination-info-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template({ data: destination.flights });
+        $("#container-results").append(newHTML); 
+    }
+
     renderInputError(input, msg) {
         input.addClass('input-error')
         if(msg === 'empty') {
