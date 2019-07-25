@@ -56,13 +56,13 @@
                     <div id="max-price-box" class="input-box">
                         <label for="max-price-input">Max Price (€)</label>
                         <input id="max-price-input" class="search-input" data-name="maxPrice" type="number" min="1"
-                            value="300" data-required="false">
+                            data-required="false">
                     </div>
 
                     <div id="flight-duration-box" class="input-box">
                         <label for="flight-duration-input">Max Flight Duration (hr)</label>
                         <input id="flight-duration-input" class="search-input" data-name="flightDuration" type="number"
-                            value="4" data-required="false">
+                            data-required="false">
                     </div>
 
                     <div id="from-temp-box" class="input-box">
@@ -111,11 +111,11 @@
                         <div class="day-temp">{{avgTemp}}°c</div>
                     {{/each}}
                 </div>
-                <div class="destination-condition-texts">
+                <!-- <div class="destination-condition-texts">
                     {{#each weather}}
                         <div class="day-condition-text">{{condition.text}}°c</div>
                     {{/each}}
-                </div>
+                </div> -->
                 <div class="destination-condition-icons">
                     {{#each weather}}
                         <img src="{{condition.icon}}" class="day-condition-icon">
@@ -187,16 +187,16 @@
         <div class="search result" data-id='{{_id}}'>
             <button class="delete-saved-search-btn"><i class="far fa-trash-alt"></i></button>
             <div class="saved-values">
-                <div class="saved-from-city">Fly from: <span class="from-city-value">{{fromCity}}</div>
-                    <div class="saved-from-date">Fly on: <span class="from-date-value">{{fromDate}}</span></div>
-                    <div class="saved-to-date">Return on: <span class="to-date-value">{{toDate}}</span></div>
+                <div class="saved-from-city">Fly from: <span class="from-city-value saved-input-value">{{fromCity}}</div>
+                    <div class="saved-from-date">Fly on: <span class="from-date-value saved-input-value">{{fromDate}}</span></div>
+                    <div class="saved-to-date">Return on: <span class="to-date-value saved-input-value">{{toDate}}</span></div>
                     {{#if maxPrice}}
-                    <div class="saved-max-price">Costs no more than: <span class="max-price-value">{{maxPrice}}</span>€</div>
+                    <div class="saved-max-price">Costs no more than: <span class="max-price-value saved-input-value">{{maxPrice}}</span>€</div>
                     {{/if}}
                     {{#if flightDuration}}
-                    <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value">{{flightDuration}}</span> hours</div>
+                    <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value saved-input-value">{{flightDuration}}</span> hours</div>
                     {{/if}}
-                    <div class="saved-temp-range">Temperatures between: <span class="from-temp-value">{{fromTemp}}</span>°c and <span class="to-temp-value">{{toTemp}}</span>°c</div>
+                    <div class="saved-temp-range">Temperatures between: <span class="from-temp-value saved-input-value">{{fromTemp}}</span>°c and <span class="to-temp-value saved-input-value">{{toTemp}}</span>°c</div>
             </div>
             <button class="search-again-btn btn">SEARCH AGAIN</button>
         </div>

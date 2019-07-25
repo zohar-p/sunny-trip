@@ -71,6 +71,9 @@ const addWeatherConditions = () => {
 const displaySearchResults = () => {
     if(logic.flights == 'No results found') {
         renderer.renderNoResults()
+        setTimeout(() => {
+            renderer.smoothScrollTo($('.nav-bar'))
+        }, 1200);
     } else {
         calcAvgTemp()
         addWeatherConditions()

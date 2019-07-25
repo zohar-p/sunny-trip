@@ -56,8 +56,15 @@ class Logic {
             })
 
         })
-        this.structuredCities = constructed
+
+        constructed.forEach(c => {
+            c.weather.forEach(w => {
+                w.date = moment(w.date, 'YYYY-MM-DD').format('DD/MM/YYYY')
+            })
+        })
+
         console.log(this.structuredCities)
+        this.structuredCities = constructed
 
     }
 
