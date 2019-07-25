@@ -18,10 +18,11 @@
 #container-search-btn{
     display: flex;
     flex-direction: column;
-    height: 17vh;
+    height: 19vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2vh 0;
 
     #search-btn{
         font-size: 2vw;
@@ -36,18 +37,16 @@
 #container-search-items{
     background-color: rgba(0, 0, 0, 0.5);
     color: $white;
-    width: 80vw;
+    width: 70vw;
     margin: auto;
     margin-bottom: 20vh;
     border-radius: 2vh;
-    padding: 0.5vh 0;
+    padding: 1vh 0;
 }
 
 #container-search{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 7vh 12vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .input-box{
