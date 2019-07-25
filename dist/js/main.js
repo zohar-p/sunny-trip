@@ -163,4 +163,5 @@ $('#container-results').on('click', '.destination', function () {
 
 $('#container-results').on('click', '#close-popup-btn', function () {
     $('#dest-info-popup').remove()
+    renderer.removeBlur()
 });
