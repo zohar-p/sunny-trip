@@ -118,11 +118,13 @@
         {{#each data}}
             <div class="dest-flight">
                 <div class="dest-away">
+                    <div class="dest-price">{{price}}€</div>
                     <div class="dest-flight-num">flight: {{away.airLine}}{{away.flightNumber}}</div>
                     <div class="dest-from-date">{{fromDate}}</div>
                     <div class="dest-from-city">{{fromCity}}</div>
                     <div class="dest-departure-airport">Airport: {{away.airport}}</div>
                     <div class="dest-departure-time">{{away.dHour}}</div>
+                    <div class="dest-flight-duration">{{flightDuration}}</div>
                     <i class="fas fa-long-arrow-alt-right dest-right-arrow"></i>
                     <div class="dest-to-city">{{toCity}}</div>
                     <div class="dest-arrival-airport">Airport: {{return.airport}}</div>
@@ -134,6 +136,7 @@
                     <div class="dest-from-city">{{fromCity}}</div>
                     <div class="dest-departure-airport">{{return.airport}}</div>
                     <div class="dest-departure-time">{{return.aHour}}</div>
+                    <div class="dest-flight-duration">{{flightDuration}}</div>
                     <i class="fas fa-long-arrow-alt-left dest-left-arrow"></i>
                     <div class="dest-to-city">{{toCity}}</div>
                     <div class="dest-arrival-airport">Airport: {{return.airport}}</div>

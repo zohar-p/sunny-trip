@@ -42,7 +42,7 @@ class Logic {
                 flights: c.map(flight => { return {
                         away: flight.away,
                         return: flight.return,
-                        flightDuration: flight.flightDuration,
+                        price: flight.price,
                         flightDuration: flight.flightDuration,
                         fromCity: flight.fromCity,
                         toCity: flight.toCity,

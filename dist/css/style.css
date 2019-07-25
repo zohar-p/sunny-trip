@@ -236,6 +236,18 @@ body {
   border-bottom: 1px dashed #b2bec3;
 }
 
+#dest-info-popup .dest-price {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #E8CDB2;
+}
+
 #dest-info-popup .dest-flight-num {
   -ms-grid-column: 5;
   -ms-grid-column-span: 4;
@@ -279,6 +291,15 @@ body {
   -ms-grid-row: 5;
   -ms-grid-row-span: 1;
   grid-row: 5/6;
+}
+
+#dest-info-popup .dest-flight-duration {
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 4;
+  grid-column: 5/9;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
 }
 
 #dest-info-popup .dest-right-arrow {
