@@ -29,6 +29,7 @@ class Renderer {
         const template = Handlebars.compile(source);
         const newHTML = template({ data: destination.flights });
         $("#container-results").append(newHTML); 
+        $(".result").css("filter", "blur(2px)");
     }
 
     renderInputError(input, msg) {
@@ -77,5 +78,9 @@ class Renderer {
             $('.saved-msg').fadeOut(500);
         }, 3000);
 
+    }
+
+    removeBlur(){
+        $(".result").css("filter", "")
     }
 }

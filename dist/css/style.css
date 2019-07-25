@@ -60,6 +60,8 @@ body {
   height: 120px;
   -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
+  margin: auto;
+  margin-left: 150%;
 }
 
 @-webkit-keyframes spin {
@@ -564,6 +566,7 @@ body {
   padding: 2rem;
   text-align: center;
   font-size: 3rem;
+  margin: auto;
 }
 
 .search {
