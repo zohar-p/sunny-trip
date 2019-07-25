@@ -5,8 +5,30 @@
     grid-template-columns: repeat(3, 1fr)
 }
 
-.destination{
-    
+.delete-saved-search-btn{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#close-popup-btn{
+    float: right;
+}
+
+.delete-saved-search-btn, #close-popup-btn{
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: $black;
+    transition: .3s;
+
+    border: none;
+    outline: none;
+
+    &:hover{
+        cursor: pointer;
+        color: $red;
+        text-shadow: 0 0 2px $red;
+    }
 }
 
 #dest-info-popup{
@@ -22,7 +44,6 @@
     box-shadow: 0 0 10px rgba(50, 50, 50, .8);
     background-color: darken($white, 5);
     color: black;
-
     
     .dest-flight{
         margin-top: .6rem;
@@ -182,25 +203,6 @@
 
     .saved-values{
         margin-bottom: .6rem;
-    }
-
-    .delete-saved-search-btn{
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        font-size: 1.6rem;
-        background-color: transparent;
-        color: $black;
-        transition: .3s;
-
-        border: none;
-        outline: none;
-
-        &:hover{
-            cursor: pointer;
-            color: $red;
-            text-shadow: 0 0 2px $red;
-        }
     }
 
     .search-again-btn{
