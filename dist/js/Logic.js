@@ -36,13 +36,13 @@ class Logic {
         fusedCities.forEach(c => {
             this.structuredCities.push({
                 toCity: c[0].toCity,
-                avgTemp: c[0].avgTemp,
+                weather: c[0].temp,
                 conditionIcon: c[0].conditionIcon,
                 conditionText: c[0].conditionText,
                 flights: c.map(flight => { return {
                         away: flight.away,
                         return: flight.return,
-                        flightDuration: flight.flightDuration,
+                        price: flight.price,
                         flightDuration: flight.flightDuration,
                         fromCity: flight.fromCity,
                         toCity: flight.toCity,
@@ -56,6 +56,7 @@ class Logic {
 
         })
         console.log(this.structuredCities)
+
     }
 
 
