@@ -114,21 +114,30 @@
     
     <script id="destination-info-template" type="test/text/x-handlebars-template">
         <div id="dest-info-popup">
+            <button id="close-popup-btn"><i class="fas fa-times"></i></button>
         {{#each data}}
             <div class="dest-flight">
                 <div class="dest-away">
-                    <div class="flight-num">flight: {{away.airline}}{{away.flightNumber}}</div>
+                    <div class="dest-flight-num">flight: {{away.airLine}}{{away.flightNumber}}</div>
                     <div class="dest-from-date">{{fromDate}}</div>
                     <div class="dest-from-city">{{fromCity}}</div>
-                    <div class="dest-away-departue-airport">{{away.airport}}</div>
-                    <div class="dest-away-departue-time">{{away.dHour}}</div>
+                    <div class="dest-departure-airport">Airport: {{away.airport}}</div>
+                    <div class="dest-departure-time">{{away.dHour}}</div>
+                    <i class="fas fa-long-arrow-alt-right dest-right-arrow"></i>
+                    <div class="dest-to-city">{{toCity}}</div>
+                    <div class="dest-arrival-airport">Airport: {{return.airport}}</div>
+                    <div class="dest-arrival-time">{{away.aHour}}</div>
                 </div>
                 <div class="dest-return">
-                    <div class="flight-num">flight: {{return.airline}}{{return.flightNumber}}</div>
-                    <div class="dest-from-date">{{fromDate}}</div>
+                    <div class="dest-flight-num">flight: {{return.airLine}}{{return.flightNumber}}</div>
+                    <div class="dest-from-date">{{toDate}}</div>
                     <div class="dest-from-city">{{fromCity}}</div>
-                    <div class="dest-return-departue-airport">{{return.airport}}</div>
-                    <div class="dest-return-departue-time">{{return.dHour}}</div>
+                    <div class="dest-departure-airport">{{return.airport}}</div>
+                    <div class="dest-departure-time">{{return.aHour}}</div>
+                    <i class="fas fa-long-arrow-alt-left dest-left-arrow"></i>
+                    <div class="dest-to-city">{{toCity}}</div>
+                    <div class="dest-arrival-airport">Airport: {{return.airport}}</div>
+                    <div class="dest-arrival-time">{{return.dHour}}</div>
                 </div>
             </div>
         {{/each}}
