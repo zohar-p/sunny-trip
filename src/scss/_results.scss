@@ -9,6 +9,45 @@
     
 }
 
+#dest-info-popup{
+    padding: 1rem;
+    max-height: 85vh;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(50, 50, 50, .8);
+    background-color: darken($white, 5);
+
+        .dest-flight{
+            margin-top: .6rem;
+            width: 80vw;
+            box-shadow: 0 0 6px rgba(50, 50, 50, .6);
+            background-color: #fff;
+
+            display: flex;
+            flex-direction: column;
+            
+            & > *{
+                padding: .6rem;
+                height: 25vh;
+            }
+
+        }
+
+        .dest-away{
+            border-bottom: 2px dashed black;
+
+        }
+
+        .dest-return{
+
+        }
+}
+
 .result{
     padding: 1.2rem .6rem .6rem;
     border-radius: .6rem;

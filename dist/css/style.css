@@ -188,6 +188,46 @@ body {
       grid-template-columns: repeat(3, 1fr);
 }
 
+#dest-info-popup {
+  padding: 1rem;
+  max-height: 85vh;
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  overflow-y: auto;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0 0 10px rgba(50, 50, 50, 0.8);
+          box-shadow: 0 0 10px rgba(50, 50, 50, 0.8);
+  background-color: #dde4e6;
+}
+
+#dest-info-popup .dest-flight {
+  margin-top: .6rem;
+  width: 80vw;
+  -webkit-box-shadow: 0 0 6px rgba(50, 50, 50, 0.6);
+          box-shadow: 0 0 6px rgba(50, 50, 50, 0.6);
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#dest-info-popup .dest-flight > * {
+  padding: .6rem;
+  height: 25vh;
+}
+
+#dest-info-popup .dest-away {
+  border-bottom: 2px dashed black;
+}
+
 .result {
   padding: 1.2rem .6rem .6rem;
   border-radius: .6rem;
