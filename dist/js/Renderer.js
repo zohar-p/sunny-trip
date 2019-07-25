@@ -16,6 +16,21 @@ class Renderer {
         $("#container-results").append(newHTML);
     }
 
+    renderDestinations(data) {
+        const source = $('#destination-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template({ data });
+        $("#container-results").empty();
+        $("#container-results").append(newHTML);
+    }
+
+    renderDestinationFlights(destination) {
+        const source = $('#destination-info-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template({ data: destination.flights });
+        $("#container-results").append(newHTML); 
+    }
+
     renderInputError(input, msg) {
         input.addClass('input-error')
         if(msg === 'empty') {
@@ -58,7 +73,6 @@ class Renderer {
     notifySavedSearch(){
         this.smoothScrollTo($('.nav-bar'))
         $('.saved-msg').fadeIn(400);
-        console.log("hi")
         setTimeout(() => {
             $('.saved-msg').fadeOut(500);
         }, 3000);

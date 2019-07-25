@@ -1,0 +1,238 @@
+#container-results{
+    padding: 1rem;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr)
+}
+
+.destination {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    .destination-city-name{
+        flex-basis: 1;
+    }
+
+    .destination-weather{
+        flex-basis: 2;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination-dates, .destination-temps, .destination-condition-texts, .destination-condition-icons{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.delete-saved-search-btn{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#close-popup-btn{
+    float: right;
+}
+
+.delete-saved-search-btn, #close-popup-btn{
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: $black;
+    transition: .3s;
+
+    border: none;
+    outline: none;
+
+    &:hover{
+        cursor: pointer;
+        color: $red;
+        text-shadow: 0 0 2px $red;
+    }
+}
+
+#dest-info-popup{
+    padding: 1rem;
+    max-height: 85vh;
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(50, 50, 50, .8);
+    background-color: darken($white, 5);
+    color: black;
+    
+    .dest-flight{
+        margin-top: .6rem;
+        width: 80vw;
+        box-shadow: 0 0 6px rgba(50, 50, 50, .6);
+        background-color: #fff;
+        
+        display: flex;
+        flex-direction: column;
+        
+        .dest-away, .dest-return{
+            padding: .6rem;
+            height: 25vh;
+
+            display: grid;
+            justify-items: center;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            }
+
+        }
+
+        .dest-away{
+            border-bottom: 1px dashed $grey;
+
+        }
+
+        .dest-return{
+
+        }
+
+        .dest-price{
+            grid-column: 1/4;
+            grid-row: 1/2;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: $primary-bright;
+
+        }
+
+        .dest-flight-num{
+            grid-column: 5/9;
+            grid-row: 1/2;
+        }
+        
+        .dest-from-date{
+            grid-column: 5/9;
+            grid-row: 2/3;
+        }
+
+        .dest-from-city{
+            grid-column: 1/4;
+            grid-row: 3/4;
+        }
+        
+        .dest-departure-airport{
+            grid-column: 1/4;
+            grid-row: 4/5;
+        }
+                
+        .dest-departure-time{
+            grid-column: 1/4;
+            grid-row: 5/6;
+        }
+
+        .dest-flight-duration{
+            grid-column: 5/9;
+            grid-row: 4/5;
+        }
+
+        .dest-right-arrow{
+            font-size: 2.4rem;
+            grid-column: 5/9;
+            grid-row: 5/6;
+        }
+
+        .dest-left-arrow{
+            font-size: 2.4rem;
+            grid-column: 5/9;
+            grid-row: 5/6;
+        }
+
+        .dest-to-city{
+            grid-column: 9/13;
+            grid-row: 3/4;
+        }
+        
+        .dest-arrival-airport{
+            grid-column: 9/13;
+            grid-row: 4/5;
+        }
+                
+        .dest-arrival-time{
+            grid-column: 9/13;
+            grid-row: 5/6;
+        }
+
+}
+
+.result{
+    padding: 1.2rem .6rem .6rem;
+    border-radius: .6rem;
+    background-color: darken($white, 5);
+    box-shadow: 0 0 .4rem rgba(50, 50, 50, .6);
+
+    &.flight {
+            display: grid;
+            grid-template-areas: 
+        "n n n"
+        "d d w";
+        grid-template-rows: 1fr 2fr;
+        
+        .flight-city-name{
+            grid-area: n;
+            font-family: 'Russo One', sans-serif;
+            font-size: 4vw;
+            font-weight: bold;
+            text-align: center;
+            text-transform: capitalize;
+        }
+        .flight-details{
+            grid-area: d;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .city-weather{
+            grid-area: w;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .conditionPic{
+            width: 6vw;
+            height: 6vw;
+        }
+    }   
+}
+
+.no-result{
+    border: 0.5vw solid $primary-dark;
+    height: auto;
+    font-size: 5vw;
+    margin: 5vh auto;
+    padding: 5vw;
+    background-color: $white;
+    border-radius: 2vw;
+
+}
+
+.search{    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .saved-values{
+        margin-bottom: .6rem;
+    }
+
+    .search-again-btn{
+        margin-top: auto;
+        width: 80%;
+        align-self: center;
+    }
+}

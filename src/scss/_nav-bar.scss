@@ -1,0 +1,16 @@
+.nav-bar{
+    background-color: $primary-dark;
+    height: 8vh;
+    padding: .6rem;
+    display: flex;
+    align-items: center;
+
+    .logo{
+        margin-right: auto;
+        padding: .2rem;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        background-color: $primary-bright;
+    }
+}

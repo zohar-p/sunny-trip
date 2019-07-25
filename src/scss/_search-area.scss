@@ -1,0 +1,81 @@
+.main-display{
+    background-image: url("../assets/road2.jpg");
+    background-size: cover;
+    height: 92vh;
+}
+
+.app-name{
+    font-family: 'Old Standard TT', serif;
+    font-family: bold;
+    font-size: 9vw;
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 7vh;
+    padding-left: 3.8vw;
+    text-shadow: 0.2vw 0.1vh $white;
+}
+
+#container-search-btn{
+    display: flex;
+    flex-direction: column;
+    height: 17vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #search-btn{
+        font-size: 2vw;
+    }
+
+    #save-search-btn{
+        font-size: 1vw;
+        margin-top: 0.5vh;
+        margin-bottom: 1.5vh;
+    }
+}
+#container-search-items{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: $white;
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 20vh;
+    border-radius: 2vh;
+    padding: 0.5vh 0;
+}
+
+#container-search{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 7vh 12vw;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 2vw;
+}
+
+.search-input{
+    border: none;
+    height: 5vh;
+    margin: 0.5vh 0;
+    font-family: 'Montserrat', sans-serif;
+    padding: 8px;
+}
+
+.temp-input{
+    display: inline-flex;
+    width: 8vw; 
+
+        #from-temp-input{
+            display: inline-flex;
+            width: 4.5vw;
+            
+        }
+        
+        #to-temp-input{
+            display: inline-flex;
+            width: 4.5vw;    
+        }
+}

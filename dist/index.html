@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://kit.fontawesome.com/d7c719fdba.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="css/style.css">
     <link
@@ -95,10 +96,75 @@
         </div>
 
     </main>
+    <script id="destination-template" type="test/text/x-handlebars-template">
+        {{#each data}}
+        <div class="result destination">
+            <div class="destination-city-name">{{toCity}}</div>
+            <div class="destination-weather">
+                <div class="destination-dates">
+                    {{#each weather}}
+                        <div class="day-date">{{date}}</div>
+                    {{/each}}
+                </div>
+                <div class="destination-temps">
+                    {{#each weather}}
+                        <div class="day-temp">{{avgTemp}}°c</div>
+                    {{/each}}
+                </div>
+                <div class="destination-condition-texts">
+                    {{#each weather}}
+                        <div class="day-condition-text">{{condition.text}}°c</div>
+                    {{/each}}
+                </div>
+                <div class="destination-condition-icons">
+                    {{#each weather}}
+                        <img src="{{condition.icon}}" class="day-condition-icon">
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+
+    
+    <script id="destination-info-template" type="test/text/x-handlebars-template">
+        <div id="dest-info-popup">
+            <button id="close-popup-btn"><i class="fas fa-times"></i></button>
+        {{#each data}}
+            <div class="dest-flight">
+                <div class="dest-away">
+                    <div class="dest-price">{{price}}€</div>
+                    <div class="dest-flight-num">flight: {{away.airLine}}{{away.flightNumber}}</div>
+                    <div class="dest-from-date">{{fromDate}}</div>
+                    <div class="dest-from-city">{{fromCity}}</div>
+                    <div class="dest-departure-airport">Airport: {{away.airport}}</div>
+                    <div class="dest-departure-time">{{away.dHour}}</div>
+                    <div class="dest-flight-duration">{{flightDuration}}</div>
+                    <i class="fas fa-long-arrow-alt-right dest-right-arrow"></i>
+                    <div class="dest-to-city">{{toCity}}</div>
+                    <div class="dest-arrival-airport">Airport: {{return.airport}}</div>
+                    <div class="dest-arrival-time">{{away.aHour}}</div>
+                </div>
+                <div class="dest-return">
+                    <div class="dest-flight-num">flight: {{return.airLine}}{{return.flightNumber}}</div>
+                    <div class="dest-from-date">{{toDate}}</div>
+                    <div class="dest-from-city">{{fromCity}}</div>
+                    <div class="dest-departure-airport">{{return.airport}}</div>
+                    <div class="dest-departure-time">{{return.aHour}}</div>
+                    <div class="dest-flight-duration">{{flightDuration}}</div>
+                    <i class="fas fa-long-arrow-alt-left dest-left-arrow"></i>
+                    <div class="dest-to-city">{{toCity}}</div>
+                    <div class="dest-arrival-airport">Airport: {{return.airport}}</div>
+                    <div class="dest-arrival-time">{{return.dHour}}</div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </script>
 
     <script id='flights-template' type='text/x-handlebars-template'>
         {{#each data}}
-            <div class="flight">
+            <div class="flight result">
                     <div class="flight-city-name">{{toCity}}</div>
                         <div class="flight-details">
                             <div>Depart: <b>{{fromDate}}</b></div>
@@ -115,20 +181,23 @@
         {{/each}}
     </script>
 
+    
     <script id='savedSearch-template' type='text/x-handlebars-template'>
         {{#each data}}
-        <div class="search" data-id='{{_id}}'>
-            <div class="saved-from-city">Fly from: <span class="from-city-value">{{fromCity}}</div>
-            <div class="saved-from-date">Fly on: <span class="from-date-value">{{fromDate}}</span></div>
-            <div class="saved-to-date">Return on: <span class="to-date-value">{{toDate}}</span></div>
-            {{#if maxPrice}}
-            <div class="saved-max-price">Costs no more than: <span class="max-price-value">{{maxPrice}}</span>€</div>
-            {{/if}}
-            {{#if flightDuration}}
-            <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value">{{flightDuration}}</span> hours</div>
-            {{/if}}
-            <div class="saved-temp-range">Temperatures between: <span class="from-temp-value">{{fromTemp}}</span>°c to <span class="to-temp-value">{{toTemp}}</span>°c</div>
-            <button class="delete-saved-search-btn btn">DELETE</button>
+        <div class="search result" data-id='{{_id}}'>
+            <button class="delete-saved-search-btn"><i class="far fa-trash-alt"></i></button>
+            <div class="saved-values">
+                <div class="saved-from-city">Fly from: <span class="from-city-value">{{fromCity}}</div>
+                    <div class="saved-from-date">Fly on: <span class="from-date-value">{{fromDate}}</span></div>
+                    <div class="saved-to-date">Return on: <span class="to-date-value">{{toDate}}</span></div>
+                    {{#if maxPrice}}
+                    <div class="saved-max-price">Costs no more than: <span class="max-price-value">{{maxPrice}}</span>€</div>
+                    {{/if}}
+                    {{#if flightDuration}}
+                    <div class="saved-flight-duration">Fly no more than: <span class="flight-duration-value">{{flightDuration}}</span> hours</div>
+                    {{/if}}
+                    <div class="saved-temp-range">Temperatures between: <span class="from-temp-value">{{fromTemp}}</span>°c and <span class="to-temp-value">{{toTemp}}</span>°c</div>
+            </div>
             <button class="search-again-btn btn">SEARCH AGAIN</button>
         </div>
         {{/each}}
