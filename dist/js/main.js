@@ -160,3 +160,7 @@ $('#container-results').on('click', '.destination', function () {
     const relDestinationInfo = logic.structuredCities.find(c => c.toCity == destinationName)
     renderer.renderDestinationFlights(relDestinationInfo)
 });
+
+$('#container-results').on('click', '#close-popup-btn', function () {
+    $('#dest-info-popup').remove()
+});
