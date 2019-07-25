@@ -21,31 +21,91 @@
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(50, 50, 50, .8);
     background-color: darken($white, 5);
+    color: black;
 
-        .dest-flight{
-            margin-top: .6rem;
-            width: 80vw;
-            box-shadow: 0 0 6px rgba(50, 50, 50, .6);
-            background-color: #fff;
+    
+    .dest-flight{
+        margin-top: .6rem;
+        width: 80vw;
+        box-shadow: 0 0 6px rgba(50, 50, 50, .6);
+        background-color: #fff;
+        
+        display: flex;
+        flex-direction: column;
+        
+        .dest-away, .dest-return{
+            padding: .6rem;
+            height: 25vh;
 
-            display: flex;
-            flex-direction: column;
-            
-            & > *{
-                padding: .6rem;
-                height: 25vh;
+            display: grid;
+            justify-items: center;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(5, 1fr);
             }
 
         }
 
         .dest-away{
-            border-bottom: 2px dashed black;
+            border-bottom: 1px dashed $grey;
 
         }
 
         .dest-return{
 
         }
+
+        .dest-flight-num{
+            grid-column: 5/9;
+            grid-row: 1/2;
+        }
+        
+        .dest-from-date{
+            grid-column: 5/9;
+            grid-row: 2/3;
+        }
+
+        .dest-from-city{
+            grid-column: 1/4;
+            grid-row: 3/4;
+        }
+        
+        .dest-departure-airport{
+            grid-column: 1/4;
+            grid-row: 4/5;
+        }
+                
+        .dest-departure-time{
+            grid-column: 1/4;
+            grid-row: 5/6;
+        }
+
+        .dest-right-arrow{
+            font-size: 2.4rem;
+            grid-column: 5/9;
+            grid-row: 5/6;
+        }
+
+        .dest-left-arrow{
+            font-size: 2.4rem;
+            grid-column: 5/9;
+            grid-row: 5/6;
+        }
+
+        .dest-to-city{
+            grid-column: 9/13;
+            grid-row: 3/4;
+        }
+        
+        .dest-arrival-airport{
+            grid-column: 9/13;
+            grid-row: 4/5;
+        }
+                
+        .dest-arrival-time{
+            grid-column: 9/13;
+            grid-row: 5/6;
+        }
+
 }
 
 .result{

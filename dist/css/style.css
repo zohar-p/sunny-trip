@@ -202,6 +202,7 @@ body {
   -webkit-box-shadow: 0 0 10px rgba(50, 50, 50, 0.8);
           box-shadow: 0 0 10px rgba(50, 50, 50, 0.8);
   background-color: #dde4e6;
+  color: black;
 }
 
 #dest-info-popup .dest-flight {
@@ -219,13 +220,112 @@ body {
           flex-direction: column;
 }
 
-#dest-info-popup .dest-flight > * {
+#dest-info-popup .dest-flight .dest-away, #dest-info-popup .dest-flight .dest-return {
   padding: .6rem;
   height: 25vh;
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -ms-grid-rows: (1fr)[5];
+      grid-template-rows: repeat(5, 1fr);
 }
 
 #dest-info-popup .dest-away {
-  border-bottom: 2px dashed black;
+  border-bottom: 1px dashed #b2bec3;
+}
+
+#dest-info-popup .dest-flight-num {
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 4;
+  grid-column: 5/9;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+#dest-info-popup .dest-from-date {
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 4;
+  grid-column: 5/9;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+#dest-info-popup .dest-from-city {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+#dest-info-popup .dest-departure-airport {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+}
+
+#dest-info-popup .dest-departure-time {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
+}
+
+#dest-info-popup .dest-right-arrow {
+  font-size: 2.4rem;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 4;
+  grid-column: 5/9;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
+}
+
+#dest-info-popup .dest-left-arrow {
+  font-size: 2.4rem;
+  -ms-grid-column: 5;
+  -ms-grid-column-span: 4;
+  grid-column: 5/9;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
+}
+
+#dest-info-popup .dest-to-city {
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 4;
+  grid-column: 9/13;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+}
+
+#dest-info-popup .dest-arrival-airport {
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 4;
+  grid-column: 9/13;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+}
+
+#dest-info-popup .dest-arrival-time {
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 4;
+  grid-column: 9/13;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
 }
 
 .result {
