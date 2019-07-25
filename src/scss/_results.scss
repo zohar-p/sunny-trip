@@ -5,6 +5,31 @@
     grid-template-columns: repeat(3, 1fr)
 }
 
+.destination {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    .destination-city-name{
+        flex-basis: 1;
+    }
+
+    .destination-weather{
+        flex-basis: 2;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination-dates, .destination-temps, .destination-condition-texts, .destination-condition-icons{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
 .delete-saved-search-btn{
     position: absolute;
     top: 1rem;

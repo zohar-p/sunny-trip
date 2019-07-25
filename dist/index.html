@@ -96,16 +96,31 @@
         </div>
 
     </main>
-
     <script id="destination-template" type="test/text/x-handlebars-template">
         {{#each data}}
         <div class="result destination">
             <div class="destination-city-name">{{toCity}}</div>
-                <div class="destination-details">
-                    <div class="destination-avgTemp">{{avgTemp}}°c</div>
-                    <div class="destination-condition-text">{{conditionText}}°c</div>
-                    <img class="destination-conditionPic" src='{{conditionIcon}}' alt="Weather Icon">
-                 </div>
+            <div class="destination-weather">
+                <div class="destination-dates">
+                    {{#each weather}}
+                        <div class="day-date">{{date}}</div>
+                    {{/each}}
+                </div>
+                <div class="destination-temps">
+                    {{#each weather}}
+                        <div class="day-temp">{{avgTemp}}°c</div>
+                    {{/each}}
+                </div>
+                <div class="destination-condition-texts">
+                    {{#each weather}}
+                        <div class="day-condition-text">{{condition.text}}°c</div>
+                    {{/each}}
+                </div>
+                <div class="destination-condition-icons">
+                    {{#each weather}}
+                        <img src="{{condition.icon}}" class="day-condition-icon">
+                    {{/each}}
+                </div>
             </div>
         </div>
         {{/each}}
