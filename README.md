@@ -1,4 +1,15 @@
 # sunny-trip
+Find flights based on your weather preferences!
+
+## How to Run
+- Run `mongod` in your terminal.
+- Run `node server` at the root directory, the project will then be served on port 3000.
+- Go to [localhost:3000](https://localhost:3000).
+
+### Premise
+The app helps you choose a destination for  spontaneous short vacations based on the weather conditions you would like to have on your stay. Just adjust the filters to your liking and let the app find matching destinations and flight tickets.
+
+
 
 ## MVP
 queries:
